@@ -29,9 +29,12 @@ export default function ContactPage() {
     try {
       setStatus("sending");
 
-      const res = await fetch("/api/contact", {
+      const res = await fetch("https://formspree.io/f/xbddkabb", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify({
           name: name.trim(),
           email: email.trim(),
@@ -49,7 +52,6 @@ export default function ContactPage() {
       setEmail("");
       setMessage("");
 
-      // reset banner after a bit (optional)
       window.setTimeout(() => setStatus("idle"), 3500);
     } catch (err: any) {
       setStatus("error");
@@ -84,12 +86,17 @@ export default function ContactPage() {
                 padding: "10px 12px",
                 borderRadius: 10,
                 border: "2px solid rgba(0,0,0,0.12)",
-                background: status === "sent" ? "rgba(16,168,74,0.10)" : "rgba(216,37,61,0.10)",
+                background:
+                  status === "sent"
+                    ? "rgba(16,168,74,0.10)"
+                    : "rgba(216,37,61,0.10)",
                 color: "#111",
                 fontWeight: 700,
               }}
             >
-              {status === "sent" ? "Message sent successfully. I’ll reply soon." : errorMsg || "Failed to send message."}
+              {status === "sent"
+                ? "Message sent successfully. I’ll reply soon."
+                : errorMsg || "Failed to send message."}
             </div>
           )}
 
