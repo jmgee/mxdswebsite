@@ -19,7 +19,7 @@ export default function ServersPage() {
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/1024.png",
       discordUrl: "https://discord.gg/REPLACE_RIVALS",
       serverDesc: "Competitive RP hub with custom systems focused on progression and community events.",
-      keyFeatures: ["Custom UI", "Economy & progression", "Optimized scripts"],
+      keyFeatures: ["Semi Serious RP", "Optimized scripts", "Advanced Cardealer System"],
     },
     {
       name: "Highdays Cali",
@@ -29,7 +29,7 @@ export default function ServersPage() {
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/highdays1024.png",
       discordUrl: "https://discord.gg/REPLACE_HIGHDAYS",
       serverDesc: "Cali-inspired RP experience with smooth performance and curated gameplay loops.",
-      keyFeatures: ["Advanced Lua scripting", "Custom jobs", "MySQL database"],
+      keyFeatures: ["Semi Serious RP", "Barilan Server", "Low Resources & Optimized"],
     },
     {
       name: "BINI City",
@@ -38,8 +38,8 @@ export default function ServersPage() {
       join: false,
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/bini1024.png",
       discordUrl: "https://discord.gg/REPLACE_HIGHDAYS",
-      serverDesc: "Inspired by the Nations Girl Group. A Semi-Serious roleplay community",
-      keyFeatures: ["Dear Blooms", "Custom Scripts", "MySQL database"],
+      serverDesc: "Inspired by the Nations Girl Group. A Semi Serious RP community",
+      keyFeatures: ["Semi Serious RP", "Dear Blooms", "Low Resources"],
     },
     {
       name: "District 8",
@@ -49,7 +49,7 @@ export default function ServersPage() {
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/district8.png",
       discordUrl: "https://discord.gg/REPLACE_HIGHDAYS",
       serverDesc: "Built with Qbox Framework. Serious Roleplay with realistic scripts",
-      keyFeatures: ["Serious RP", "Custom Scripts", "MySQL database"],
+      keyFeatures: ["Serious RP", "Custom Scripts", "Qbox Framework"],
     },
     {
       name: "The Hallows City: Blackout",
@@ -59,7 +59,7 @@ export default function ServersPage() {
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/thc.png",
       discordUrl: "https://discord.gg/REPLACE_HALLOWS",
       serverDesc: "Zombie survival mode with blackout events, loot cycles, and high-risk zones.",
-      keyFeatures: ["Zombie AI systems", "Loot & crafting", "Event-driven gameplay"],
+      keyFeatures: ["Zombie Server", "Loot & crafting", "Realistic Zombie System"],
     },
     {
       name: "SouthSide City",
@@ -69,7 +69,17 @@ export default function ServersPage() {
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/ss1024.png",
       discordUrl: "https://discord.gg/REPLACE_SOUTHSIDE",
       serverDesc: "Street RP ecosystem with gang systems, territory control, and balanced economy.",
-      keyFeatures: ["Gang systems", "Territory control", "Custom UI"],
+      keyFeatures: ["Custom Gang System", "Custom Business", "Whitelisted Jobs"],
+    },
+    {
+      name: "Cavite City Reborn",
+      status: "Offline",
+      tag: "Roleplay",
+      join: false,
+      logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/cavite1024.png",
+      discordUrl: "https://discord.gg/REPLACE_ESCOLTA",
+      serverDesc: "Built with Custom Scripts & Advanced Whitelisted Jobs.",
+      keyFeatures: ["Serious RP", "Custom Scripts", "Realistic Life"],
     },
     {
       name: "Escolta RP",
@@ -79,7 +89,7 @@ export default function ServersPage() {
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/escolta1024.png",
       discordUrl: "https://discord.gg/REPLACE_ESCOLTA",
       serverDesc: "Metro RP with polished interactions, streamlined UI, and stable server operations.",
-      keyFeatures: ["Performance optimization", "Server management", "MySQL database"],
+      keyFeatures: ["Semi Serious RP", "Friendly Staffs", "Mid Economy"],
     },
     {
       name: "Trinity Roleplay",
@@ -99,7 +109,7 @@ export default function ServersPage() {
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/br1024.png",
       discordUrl: "https://discord.gg/REPLACE_BLACKROSE",
       serverDesc: "High-fidelity RP with custom mechanics and stable, scalable infrastructure.",
-      keyFeatures: ["Custom scripts", "Stability checks", "Optimized resources"],
+      keyFeatures: ["Since 2021", "Custom Scripts", "Optimized resources"],
     },
     {
       name: "Autonomy RP",
@@ -109,7 +119,7 @@ export default function ServersPage() {
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/autonomy1024.png",
       discordUrl: "https://discord.gg/REPLACE_AUTONOMY",
       serverDesc: "Modern RP build with improved performance baselines and iterative feature delivery.",
-      keyFeatures: ["Custom UI", "Quality-of-life systems", "Performance tuning"],
+      keyFeatures: ["Custom Business", "Serious RP", "Custom Scripts"],
     },
     {
       name: "New Horizon RP",
@@ -119,7 +129,7 @@ export default function ServersPage() {
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/newhorizon1024.png",
       discordUrl: "https://discord.gg/REPLACE_NEWHORIZON",
       serverDesc: "Fresh RP framework with clean UX patterns and maintainable server architecture.",
-      keyFeatures: ["Framework customization", "Database optimization", "Server monitoring"],
+      keyFeatures: ["Serious RP", "Friendly Staffs", "Accepting Newbies"],
     },
     {
       name: "Majesty City V2",
@@ -129,49 +139,170 @@ export default function ServersPage() {
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/mjsty_1024.png",
       discordUrl: "https://discord.gg/REPLACE_MAJESTY",
       serverDesc: "Premium RP experience with custom systems, refined UI, and reliable operations.",
-      keyFeatures: ["Custom UI", "Advanced Lua scripting", "MySQL database"],
+      keyFeatures: ["Gangs vs Police", "Advanced Cardealer System", "Custom Framework"],
     },
   ];
 
   return (
-    <div className="mxds-pageEnter">
+    <div className="mxds-svPage">
       <style>{`
-        .mxds-pageEnter{
+        .mxds-svPage{
+          position: relative;
           opacity: 0;
           transform: translateY(10px);
-          animation: mxdsPageIn 520ms ease-out forwards;
+          animation: svPageIn 680ms cubic-bezier(.2,.9,.2,1) forwards;
         }
-        @keyframes mxdsPageIn{
+        @keyframes svPageIn{
           to{ opacity: 1; transform: translateY(0); }
         }
 
-        .mxds-enterHeader{
-          opacity: 0;
-          transform: translateY(8px);
-          animation: mxdsItemIn 520ms ease-out forwards;
-          animation-delay: 80ms;
-        }
-
-        .mxds-enterCard{
+        /* Spotlight sweep background (pure CSS) */
+        .mxds-svPage::before{
+          content:"";
+          position:absolute;
+          inset:-80px -60px;
+          background:
+            radial-gradient(700px 380px at 20% 0%, rgba(249,161,1,0.14), rgba(0,0,0,0) 60%),
+            radial-gradient(700px 420px at 80% 10%, rgba(249,161,1,0.10), rgba(0,0,0,0) 60%),
+            radial-gradient(900px 520px at 50% 100%, rgba(0,0,0,0.04), rgba(0,0,0,0) 70%);
           opacity: 0;
           transform: translateY(14px);
-          animation: mxdsItemIn 560ms ease-out forwards;
+          animation: svSpotIn 900ms ease-out 120ms forwards;
+          pointer-events:none;
+          z-index: 0;
+          filter: blur(0px);
+        }
+        @keyframes svSpotIn{
+          to{ opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes mxdsItemIn{
-          to{ opacity: 1; transform: translateY(0); }
+        /* Keep content above spotlight */
+        .mxds-svStack{
+          position: relative;
+          z-index: 1;
+        }
+
+        /* Header reveal: fade + slight scale */
+        .mxds-svHeader{
+          opacity: 0;
+          transform: translateY(10px) scale(0.99);
+          animation: svHeaderIn 680ms cubic-bezier(.2,.9,.2,1) 120ms forwards;
+        }
+        @keyframes svHeaderIn{
+          to{ opacity:1; transform: translateY(0) scale(1); }
+        }
+
+        /* Title glow pulse (subtle, premium) */
+        .mxds-svTitleGlow{
+          display:inline-block;
+          position: relative;
+        }
+        .mxds-svTitleGlow::after{
+          content:"";
+          position:absolute;
+          left: 10%;
+          right: 10%;
+          top: 60%;
+          height: 12px;
+          background: radial-gradient(circle, rgba(249,161,1,0.28), rgba(0,0,0,0) 70%);
+          filter: blur(10px);
+          opacity: 0;
+          animation: svTitleGlow 1200ms ease-out 520ms forwards;
+          pointer-events:none;
+        }
+        @keyframes svTitleGlow{
+          0%{ opacity:0; transform: translateY(6px); }
+          35%{ opacity:1; transform: translateY(0); }
+          100%{ opacity:0; transform: translateY(-2px); }
+        }
+
+        /* Card entrance: spring-ish pop + tilt settle */
+        .mxds-svCardEnter{
+          opacity: 0;
+          transform: translateY(18px) scale(0.985) rotateX(2deg);
+          transform-origin: 50% 80%;
+          animation: svCardIn 720ms cubic-bezier(.18,.88,.2,1) forwards;
+          will-change: transform, opacity;
+        }
+        @keyframes svCardIn{
+          0%{ opacity: 0; transform: translateY(18px) scale(0.985) rotateX(2deg); }
+          55%{ opacity: 1; transform: translateY(-2px) scale(1.01) rotateX(0deg); }
+          100%{ opacity: 1; transform: translateY(0) scale(1) rotateX(0deg); }
+        }
+        .mxds-svLogoWrap{
+          position: relative;
+          width: 44px;
+          height: 44px;
+          margin: 2px auto 10px;
+          display: grid;
+          place-items: center;
+        }
+        .mxds-svLogoImg{
+          width: 44px;
+          height: 44px;
+          border-radius: 10px;
+          object-fit: cover;
+          display: block;
+          transform: scale(0.9);
+          opacity: 0;
+          animation: svLogoPop 520ms cubic-bezier(.2,.9,.2,1) forwards;
+        }
+        @keyframes svLogoPop{
+          0%{ transform: scale(0.88); opacity: 0; }
+          65%{ transform: scale(1.04); opacity: 1; }
+          100%{ transform: scale(1); opacity: 1; }
+        }
+        .mxds-svLogoWrap::after{
+          content:"";
+          position:absolute;
+          inset:-6px;
+          border-radius: 14px;
+          border: 2px solid rgba(249,161,1,0.28);
+          opacity: 0;
+          transform: scale(0.92);
+          animation: svRing 900ms ease-out 220ms forwards;
+          pointer-events:none;
+        }
+        @keyframes svRing{
+          0%{ opacity: 0; transform: scale(0.92); }
+          25%{ opacity: 1; }
+          100%{ opacity: 0; transform: scale(1.06); }
+        }
+
+        /* Hover: lift + shadow polish (keeps it “alive”) */
+        .mxds-serverCard{
+          transition: transform 180ms ease, box-shadow 180ms ease;
+        }
+        .mxds-serverCard:hover{
+          transform: translateY(-4px);
+          box-shadow: 0 22px 60px rgba(0,0,0,0.12);
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce){
+          .mxds-svPage, .mxds-svPage::before, .mxds-svHeader, .mxds-svCardEnter,
+          .mxds-svLogoImg, .mxds-svLogoWrap::after, .mxds-svTitleGlow::after{
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+          }
+          .mxds-serverCard{ transition: none !important; }
         }
       `}</style>
 
-      <div className="mxds-center mxds-enterHeader">
-        <h2 className="mxds-pageTitle">Servers Showcase</h2>
-        <p className="mxds-pageLead">List of developed and maintained servers</p>
-      </div>
+      <div className="mxds-svStack">
+        <div className="mxds-center mxds-svHeader">
+          <h2 className="mxds-pageTitle">
+            <span className="mxds-svTitleGlow">Servers Showcase</span>
+          </h2>
+          <p className="mxds-pageLead">List of developed and maintained servers</p>
+        </div>
 
-      <div className="mxds-serverGrid">
-        {servers.map((s, idx) => (
-          <ServerCard key={s.name} item={s} index={idx} />
-        ))}
+        <div className="mxds-serverGrid">
+          {servers.map((s, idx) => (
+            <ServerCard key={s.name} item={s} index={idx} />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -183,23 +314,18 @@ function ServerCard({ item, index }: { item: ServerItem; index: number }) {
 
   return (
     <article
-      className="mxds-card mxds-serverCard mxds-enterCard"
-      style={{ animationDelay: `${140 + index * 70}ms` }}
+      className="mxds-card mxds-serverCard mxds-svCardEnter"
+      style={{ animationDelay: `${220 + index * 70}ms` }}
     >
-      <div className="mxds-serverLogo" aria-hidden="true">
+      <div className="mxds-svLogoWrap" aria-hidden="true">
         {item.logoUrl ? (
           <img
             src={item.logoUrl}
             alt=""
             loading="lazy"
             referrerPolicy="no-referrer"
-            style={{
-              width: 44,
-              height: 44,
-              borderRadius: 10,
-              objectFit: "cover",
-              display: "block",
-            }}
+            className="mxds-svLogoImg"
+            style={{ animationDelay: `${260 + index * 70}ms` }}
           />
         ) : (
           <div className="mxds-serverLogoInner" />
@@ -217,7 +343,9 @@ function ServerCard({ item, index }: { item: ServerItem; index: number }) {
           <span className="mxds-tag">{item.tag}</span>
         </div>
       </div>
+
       <p className="mxds-serverDesc">{item.serverDesc}</p>
+
       <div>
         <p className="mxds-kfTitle">Key Features:</p>
         <div className="mxds-kfRow">

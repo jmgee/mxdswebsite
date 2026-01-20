@@ -168,10 +168,9 @@ export default function ContactPage() {
             </h3>
 
             <ul className="mxds-bullets" style={{ fontSize: 16, lineHeight: 2 }}>
-              <li>Custom script development</li>
-              <li>Server setup &amp; configuration</li>
-              <li>Performance tuning</li>
-              <li>Ongoing maintenance &amp; support</li>
+              <li>Custom Scripts Development</li>
+              <li>Developer/Maintainer Services</li>
+              <li>Server Packs</li>
             </ul>
           </section>
         </div>

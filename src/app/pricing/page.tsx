@@ -15,7 +15,7 @@ type Plan = {
 
 const PLANS: Plan[] = [
   {
-    name: "Basic Setup",
+    name: "Dev Basic Setup",
     subtitle: "Perfect for growing RP communities.",
     setupLabel: "Initial hiring fee",
     setupPrice: "₱5,000",
@@ -31,7 +31,7 @@ const PLANS: Plan[] = [
     variant: "standard",
   },
   {
-    name: "Premium Setup",
+    name: "Dev Premium Setup",
     subtitle: "Suitable for users who require comprehensive development.",
     setupLabel: "Initial hiring fee",
     setupPrice: "₱10,000",
