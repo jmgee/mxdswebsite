@@ -15,23 +15,24 @@ type Plan = {
 
 const PLANS: Plan[] = [
   {
-    name: "Dev Basic Setup",
+    name: "Basic Setup Plan",
     subtitle: "Perfect for growing RP communities.",
     setupLabel: "Initial hiring fee",
     setupPrice: "₱5,000",
     monthlyPrice: "₱3,000 /month",
-    features: ["Full Resources/Scripts Configuration", 
-      "Server Configuration", 
+    features: [
+      "Full Resources/Scripts Configuration",
+      "Server Configuration",
       "Resources/Assets Installation",
       "Script Bug/Exploit Fixes",
       "Fully Managed Server",
-      "Live Chat Support thru Discord"
+      "Live Chat Support thru Discord",
     ],
     note: "Excludes major custom script creations",
     variant: "standard",
   },
   {
-    name: "Dev Premium Setup",
+    name: "Premium Setup Plan",
     subtitle: "Suitable for users who require comprehensive development.",
     setupLabel: "Initial hiring fee",
     setupPrice: "₱10,000",
@@ -45,13 +46,28 @@ const PLANS: Plan[] = [
       "Full Script Optimize",
       "Fully Managed Server (24/7 Support)",
       "Live Chat Support thru Discord (24/7 Support)",
-      "Free Server Pack Included based on your server needs"
+      "Free Server Pack included (based on your server needs)",
     ],
-    note: "Suitable for users who wants a 24/7 Dev Support.",
+    note: "Best for servers that want 24/7 developer support.",
     popular: true,
     variant: "featured",
   },
 ];
+
+const PLAN_NOTES = {
+  general: [
+    `Please review the Terms & Agreement in the “Store Terms” channel on our Discord server before purchasing.`,
+  ],
+  basic: [
+    `A 50% down payment is required before work begins (via the available payment options).`,
+    `This plan does not include a Server Pack or a Clothing Pack.`,
+  ],
+  premium: [
+    `Full payment (100%) is required upon opening the ticket.`,
+    `A Server Pack is included and will be tailored to your server’s needs.`,
+    `A Clothing Pack is not included.`,
+  ],
+};
 
 export default function PricingPage() {
   return (
@@ -85,6 +101,60 @@ export default function PricingPage() {
         {PLANS.map((plan, idx) => (
           <PlanCard key={plan.name} plan={plan} index={idx} />
         ))}
+      </section>
+
+      {/* Notes box (centered, animated) */}
+      <section
+        className={`${styles.notesWrap} ${styles.notesEnter}`}
+        aria-label="Important notes for plans"
+        style={{ animationDelay: "780ms" }}
+      >
+        <div className={styles.notesCard}>
+          <div className={styles.notesHeader}>
+            <h3 className={styles.notesTitle}>Important Notes</h3>
+            <p className={styles.notesSub}>
+              Please read these before opening a ticket or sending payment.
+            </p>
+          </div>
+
+          <div className={styles.notesGrid}>
+            <div className={styles.notesGroup}>
+              <div className={styles.notesGroupTitle}>
+                <span>General</span>
+                <span className={styles.notesTag}>READ FIRST</span>
+              </div>
+              <ul className={styles.notesList}>
+                {PLAN_NOTES.general.map((n) => (
+                  <li key={n}>{n}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className={styles.notesGroup}>
+              <div className={styles.notesGroupTitle}>
+                <span>Basic Setup Plan</span>
+                <span className={styles.notesTag}>50% DOWN</span>
+              </div>
+              <ul className={styles.notesList}>
+                {PLAN_NOTES.basic.map((n) => (
+                  <li key={n}>{n}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className={styles.notesGroup}>
+              <div className={styles.notesGroupTitle}>
+                <span>Premium Setup Plan</span>
+                <span className={styles.notesTag}>100% UPON TICKET</span>
+              </div>
+              <ul className={styles.notesList}>
+                {PLAN_NOTES.premium.map((n) => (
+                  <li key={n}>{n}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   );
