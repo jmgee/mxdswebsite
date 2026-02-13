@@ -102,6 +102,16 @@ export default function ServersPage() {
       keyFeatures: ["Custom jobs", "Progression systems", "Advanced Lua scripting"],
     },
     {
+      name: "City of Hope Reunited",
+      status: "Offline",
+      tag: "Roleplay",
+      join: false,
+      logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/1024.png",
+      discordUrl: "https://discord.gg/REPLACE_COH",
+      serverDesc: "Since 2023. A fresh start for City of Hope with improved performance and new features.",
+      keyFeatures: ["Semi-Serious RP", "Custom Scripts", "Optimized Resources"],
+    },
+    {
       name: "Blackrose Roleplay",
       status: "Offline",
       tag: "Roleplay",
