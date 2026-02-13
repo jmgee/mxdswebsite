@@ -138,31 +138,7 @@ export default function ContactPage() {
               {status === "sending" ? "Sending..." : "Send Message"}
             </button>
 
-            {/* Mini Discord CTA under the form */}
-            <div style={{ marginTop: 12, display: "flex", justifyContent: "center" }}>
-              <a
-                href={DISCORD_INVITE}
-                target="_blank"
-                rel="noreferrer"
-                className="mxds-chip"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "10px 12px",
-                  borderRadius: 10,
-                  border: "2px solid rgba(249,161,1,0.35)",
-                  background: "rgba(249,161,1,0.10)",
-                  fontWeight: 800,
-                }}
-                aria-label="Join M Developments Discord (opens in a new tab)"
-              >
-                <span aria-hidden="true" style={{ display: "inline-flex" }}>
-                  <IconChat />
-                </span>
-                Prefer Discord? Join M Developments →
-              </a>
-            </div>
+            {/* Removed the “Prefer Discord? Join M Developments →” CTA */}
           </form>
         </section>
 
@@ -179,7 +155,6 @@ export default function ContactPage() {
               <span>defnotmxds@gmail.com</span>
             </div>
 
-            {/* Clean Discord row (no JOIN pill, no extra text) */}
             <div className="mxds-contactRow">
               <span className="mxds-icon" aria-hidden="true">
                 <IconChat />
@@ -197,11 +172,8 @@ export default function ContactPage() {
             </div>
           </section>
 
-          {/* Keep the Discord panel (as requested) */}
-          <section
-            className="mxds-card mxds-cardAccent"
-            style={{ position: "relative", overflow: "hidden" }}
-          >
+          {/* Keep the Discord panel */}
+          <section className="mxds-card mxds-cardAccent" style={{ position: "relative", overflow: "hidden" }}>
             <div
               aria-hidden="true"
               style={{
