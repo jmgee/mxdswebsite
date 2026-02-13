@@ -403,10 +403,13 @@
   width: min(980px, 100%);
   border-radius: 18px;
   padding: 22px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background: rgba(255, 255, 255, 0.65);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
-  backdrop-filter: blur(10px);
+
+  border: 2px solid transparent;
+  background:
+    var(--mxds-card-fill) padding-box,
+    var(--mxds-card-border-strong) border-box;
+
+  box-shadow: var(--mxds-card-shadow);
 }
 
 .notesHeader {
@@ -417,14 +420,15 @@
 .notesTitle {
   margin: 0;
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: -0.02em;
+  color: var(--text);
 }
 
 .notesSub {
   margin: 6px 0 0;
   font-size: 13px;
-  opacity: 0.75;
+  color: var(--muted);
 }
 
 .notesGrid {
@@ -436,14 +440,18 @@
 .notesGroup {
   border-radius: 14px;
   padding: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background: rgba(255, 255, 255, 0.75);
-  transition: transform 180ms ease, box-shadow 180ms ease;
+
+  border: 2px solid rgba(249, 161, 1, 0.35);
+  background: rgba(255, 255, 255, 0.85);
+
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
 .notesGroup:hover {
   transform: translateY(-2px);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+  border-color: rgba(249, 161, 1, 0.55);
 }
 
 .notesGroupTitle {
@@ -451,18 +459,21 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: 10px;
+  color: var(--text);
 }
 
 .notesTag {
   font-size: 11px;
-  font-weight: 800;
-  padding: 4px 8px;
+  font-weight: 900;
+  padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(245, 158, 11, 0.14);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  color: #a16207;
+
+  background: var(--chip-bg);
+  border: 2px solid rgba(249, 161, 1, 0.35);
+  color: #222;
+
   white-space: nowrap;
 }
 
@@ -472,12 +483,12 @@
   display: grid;
   gap: 8px;
   font-size: 13px;
-  color: rgba(0, 0, 0, 0.72);
-  line-height: 1.5;
+  color: rgba(17, 17, 17, 0.78);
+  line-height: 1.55;
 }
 
 .notesList li::marker {
-  color: rgba(245, 158, 11, 0.9);
+  color: rgba(249, 161, 1, 0.95);
 }
 
 .notesEnter {
