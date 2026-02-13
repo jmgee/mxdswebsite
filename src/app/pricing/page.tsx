@@ -44,7 +44,8 @@ const PLANS: Plan[] = [
       "Script Bug/Exploit Fixes",
       "Full Script Optimize",
       "Fully Managed Server (24/7 Support)",
-      "Live Chat Support thru Discord (24/7 Support)"
+      "Live Chat Support thru Discord (24/7 Support)",
+      "Free Server Pack Included based on your server needs"
     ],
     note: "Suitable for users who wants a 24/7 Dev Support.",
     popular: true,
