@@ -69,6 +69,7 @@ export default function ContactPage() {
           Let’s work together on your next project. Use the form or join the Discord for faster replies.
         </p>
       </div>
+
       <div className="mxds-contactGrid">
         <section className="mxds-card">
           <h3 className="mxds-cardTitle" style={{ fontSize: 20, marginBottom: 6 }}>
@@ -77,6 +78,7 @@ export default function ContactPage() {
           <p className="mxds-cardText" style={{ marginTop: 0 }}>
             Fill out the form below and I’ll get back to you within 24 hours.
           </p>
+
           {(status === "sent" || status === "error") && (
             <div
               className="mxds-cardText"
@@ -96,6 +98,7 @@ export default function ContactPage() {
                 : errorMsg || "Failed to send message."}
             </div>
           )}
+
           <form onSubmit={onSubmit}>
             <div className="mxds-formStack">
               <input
@@ -105,6 +108,7 @@ export default function ContactPage() {
                 onChange={(e) => setName(e.target.value)}
                 autoComplete="name"
               />
+
               <input
                 className="mxds-formField"
                 placeholder="Your Email"
@@ -113,6 +117,7 @@ export default function ContactPage() {
                 autoComplete="email"
                 inputMode="email"
               />
+
               <textarea
                 className="mxds-formArea"
                 placeholder="Tell me about your project..."
@@ -120,6 +125,7 @@ export default function ContactPage() {
                 onChange={(e) => setMessage(e.target.value)}
               />
             </div>
+
             <button
               className="mxds-sendBtn"
               type="submit"
@@ -131,6 +137,8 @@ export default function ContactPage() {
             >
               {status === "sending" ? "Sending..." : "Send Message"}
             </button>
+
+            {/* Mini Discord CTA under the form */}
             <div style={{ marginTop: 12, display: "flex", justifyContent: "center" }}>
               <a
                 href={DISCORD_INVITE}
@@ -157,6 +165,7 @@ export default function ContactPage() {
             </div>
           </form>
         </section>
+
         <div className="mxds-sideStack">
           <section className="mxds-card">
             <h3 className="mxds-cardTitle" style={{ fontSize: 20 }}>
@@ -169,41 +178,17 @@ export default function ContactPage() {
               </span>
               <span>defnotmxds@gmail.com</span>
             </div>
-            <a
-              href={DISCORD_INVITE}
-              target="_blank"
-              rel="noreferrer"
-              className="mxds-contactRow"
-              style={{
-                textDecoration: "none",
-                borderRadius: 10,
-                padding: "10px 12px",
-                marginLeft: -12,
-                marginRight: -12,
-                transition: "background 160ms ease",
-              }}
-              aria-label="Join M Developments Discord (opens in a new tab)"
-              onMouseEnter={(e) => ((e.currentTarget.style.background = "rgba(249,161,1,0.08)"))}
-              onMouseLeave={(e) => ((e.currentTarget.style.background = "transparent"))}
-            >
+
+            {/* Clean Discord row (no JOIN pill, no extra text) */}
+            <div className="mxds-contactRow">
               <span className="mxds-icon" aria-hidden="true">
                 <IconChat />
               </span>
-              <span style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-                <span>
-                  Discord: <strong>_mxds.</strong>
-                  <span style={{ marginLeft: 8, opacity: 0.85 }}>• Fastest response</span>
-                </span>
-
-                <span
-                  className="mxds-tag"
-                  style={{ marginLeft: "auto" }}
-                  aria-hidden="true"
-                >
-                  JOIN
-                </span>
+              <span>
+                Discord: <strong>_mxds.</strong>
               </span>
-            </a>
+            </div>
+
             <div className="mxds-contactRow">
               <span className="mxds-icon" aria-hidden="true">
                 <IconGithub />
@@ -211,12 +196,11 @@ export default function ContactPage() {
               <span>github.com/defnotmxds</span>
             </div>
           </section>
+
+          {/* Keep the Discord panel (as requested) */}
           <section
             className="mxds-card mxds-cardAccent"
-            style={{
-              position: "relative",
-              overflow: "hidden",
-            }}
+            style={{ position: "relative", overflow: "hidden" }}
           >
             <div
               aria-hidden="true"
@@ -255,7 +239,14 @@ export default function ContactPage() {
                   Join Discord →
                 </a>
 
-                <span style={{ marginLeft: 12, fontSize: 12.5, color: "rgba(17,17,17,0.70)", alignSelf: "center" }}>
+                <span
+                  style={{
+                    marginLeft: 12,
+                    fontSize: 12.5,
+                    color: "rgba(17,17,17,0.70)",
+                    alignSelf: "center",
+                  }}
+                >
                   Opens in a new tab
                 </span>
               </div>
