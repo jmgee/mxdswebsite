@@ -61,7 +61,7 @@ const SERVERS: ServerItem[] = [
     keyFeatures: ["Serious RP", "Qbox Framework"],
   },
   {
-    name: "The Hallows City",
+    name: "The Hallows City: Blackout",
     tag: "Zombie",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/thc.png",
     discordUrl: "https://discord.gg/REPLACE_HALLOWS",
