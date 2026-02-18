@@ -34,7 +34,7 @@ const SERVERS: ServerItem[] = [
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/rivals1024.png",
     discordUrl: "https://discord.gg/REPLACE_RIVALS",
     serverDesc: "An immersive PVP PH Based Roleplay Server with custom scripts and systems.",
-    keyFeatures: ["Semi Serious RP", "Barilan Server", "Advanced Cardealer System"],
+    keyFeatures: ["Barilan Server", "Advanced Cardealer System"],
   },
   {
     name: "Highdays Cali",
@@ -42,7 +42,7 @@ const SERVERS: ServerItem[] = [
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/highdays1024.png",
     discordUrl: "https://discord.gg/REPLACE_HIGHDAYS",
     serverDesc: "An immersive PVP PH Based Roleplay Server with custom scripts and systems.",
-    keyFeatures: ["Semi Serious RP", "Barilan Server", "Low Resources & Optimized"],
+    keyFeatures: ["Barilan Server", "Low Resources & Optimized"],
   },
   {
     name: "BINI City",
@@ -50,7 +50,7 @@ const SERVERS: ServerItem[] = [
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/bini1024.png",
     discordUrl: "https://discord.gg/REPLACE_HIGHDAYS",
     serverDesc: "An immersive Semi-Serious RP Server with custom scripts and systems.",
-    keyFeatures: ["Semi Serious RP", "Dear Blooms", "Low Resources"],
+    keyFeatures: ["Semi Serious RP", "Low Resources"],
   },
   {
     name: "District 8",
@@ -58,10 +58,10 @@ const SERVERS: ServerItem[] = [
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/district8.png",
     discordUrl: "https://discord.gg/REPLACE_HIGHDAYS",
     serverDesc: "An immersive Qbox Roleplay Server with custom scripts and systems.",
-    keyFeatures: ["Serious RP", "Custom Scripts", "Qbox Framework"],
+    keyFeatures: ["Serious RP", "Qbox Framework"],
   },
   {
-    name: "The Hallows City: Blackout",
+    name: "The Hallows City",
     tag: "Zombie",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/thc.png",
     discordUrl: "https://discord.gg/REPLACE_HALLOWS",
@@ -223,6 +223,9 @@ export default function ServersPage() {
               ? "mxds-statusOffline"
               : "mxds-statusChecking";
 
+          const joinHref = server.discordUrl?.trim();
+          const canJoin = isOnline && !!joinHref;
+
           return (
             <article key={server.name} className="mxds-card mxds-serverCard">
               {server.logoUrl ? (
@@ -236,7 +239,6 @@ export default function ServersPage() {
                 </div>
               ) : null}
 
-              {/* Name on the left, Status + Tag on the right (like your screenshot) */}
               <div className="mxds-serverTitleRow">
                 <div className="mxds-serverName">{server.name}</div>
 
@@ -267,6 +269,20 @@ export default function ServersPage() {
                     ))}
                   </div>
                 </>
+              ) : null}
+              {canJoin ? (
+                <div style={{ marginTop: "auto" }}>
+                  <hr className="mxds-hr" />
+                  <a
+                    className="mxds-joinBtn"
+                    href={joinHref}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    aria-label={`Join ${server.name} Discord`}
+                  >
+                    Join Server
+                  </a>
+                </div>
               ) : null}
             </article>
           );
