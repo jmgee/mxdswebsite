@@ -90,7 +90,7 @@ export default function PricingPage() {
             </span>
             <span className={styles.pillWideText}>
               <span className={styles.pillMuted}>Current Workload</span>{" "}
-              <span className={styles.pillStrong}>0 Active Server</span>
+              <span className={styles.pillStrong}>1 Active Server</span>
             </span>
           </span>
         </div>

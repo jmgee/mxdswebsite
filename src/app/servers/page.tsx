@@ -12,6 +12,16 @@ type ServerItem = {
 export default function ServersPage() {
   const servers: ServerItem[] = [
     {
+      name: "London Roleplay",
+      status: "Online",
+      tag: "Roleplay",
+      join: false,
+      logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/london1024.png",
+      discordUrl: "https://discord.gg/GhDFMuVqUU",
+      serverDesc: "QB Core Framework-based RP with custom scripts, optimized performance, and a welcoming community.",
+      keyFeatures: ["50K Cash Starting", "Semi Serious RP"],
+    },
+    {
       name: "Rivals City",
       status: "Offline",
       tag: "Roleplay",
