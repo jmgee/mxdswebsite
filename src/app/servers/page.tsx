@@ -203,56 +203,69 @@ export default function ServersPage() {
     fetchStatuses();
   }, []);
 
-  return (
-    <div className="mxds-container mxds-svPage">
-      <div className="mxds-center mxds-svHeader">
-        <h2 className="mxds-pageTitle">Servers Showcase</h2>
-        <p className="mxds-pageLead">List of developed and maintained servers</p>
-      </div>
+return (
+  <div className="mxds-container mxds-svPage">
+    <div className="mxds-center mxds-svHeader">
+      <h2 className="mxds-pageTitle">Servers Showcase</h2>
+      <p className="mxds-pageLead">List of developed and maintained servers</p>
+    </div>
 
-      <div className="mxds-serverGrid">
-        {SERVERS.map((server) => {
-          const live = liveData[server.name];
-          const status = live?.status ?? "Checking";
-          const isOnline = status === "Online";
+    <div className="mxds-serverGrid">
+      {SERVERS.map((server) => {
+        const live = liveData[server.name];
+        const status = live?.status ?? "Checking";
+        const isOnline = status === "Online";
 
-          return (
-            <article key={server.name} className="mxds-card mxds-serverCard">
-              {server.logoUrl && (
-                <div className="mxds-svMedia">
-                  <img
-                    src={server.logoUrl}
-                    alt={`${server.name} cover`}
-                    className="mxds-svLogoImg"
-                    loading="lazy"
-                  />
-                </div>
-              )}
+        return (
+          <article key={server.name} className="mxds-card mxds-serverCard">
+            {server.logoUrl ? (
+              <div className="mxds-svAvatar" aria-hidden="true">
+                <img
+                  src={server.logoUrl}
+                  alt={`${server.name} logo`}
+                  className="mxds-svAvatarImg"
+                  loading="lazy"
+                />
+              </div>
+            ) : null}
 
-              <div className="mxds-serverHead">
-                <div className="mxds-serverName">{server.name}</div>
+            <div className="mxds-serverTitleRow">
+              <div className="mxds-serverName">{server.name}</div>
 
-                <div
-                  className={`mxds-status ${
-                    status === "Online" ? "mxds-statusOnline" : "mxds-statusOffline"
-                  }`}
-                >
-                  <span className="mxds-dot" aria-hidden="true" />
-                  {status}
-                </div>
+              <div
+                className={`mxds-status ${
+                  status === "Online" ? "mxds-statusOnline" : "mxds-statusOffline"
+                }`}
+              >
+                <span className="mxds-dot" aria-hidden="true" />
+                {status}
               </div>
 
-              {isOnline && (
-                <div className="mxds-playerCount">
-                  {live?.players} / {live?.maxPlayers} Players
-                </div>
-              )}
+              <span className="mxds-tag">{server.tag}</span>
+            </div>
 
-              <p className="mxds-serverDesc">{server.serverDesc}</p>
-            </article>
-          );
-        })}
-      </div>
+            {isOnline && (
+              <div className="mxds-playerCount">
+                {live?.players} / {live?.maxPlayers} Players
+              </div>
+            )}
+
+            <p className="mxds-serverDesc">{server.serverDesc}</p>
+
+            {server.keyFeatures?.length ? (
+              <>
+                <div className="mxds-kfTitle">Key Features:</div>
+                <div className="mxds-kfRow">
+                  {server.keyFeatures.map((kf) => (
+                    <span key={kf}>{kf}</span>
+                  ))}
+                </div>
+              </>
+            ) : null}
+          </article>
+        );
+      })}
     </div>
-  );
+  </div>
+);
 }

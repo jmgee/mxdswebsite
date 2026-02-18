@@ -619,3 +619,37 @@ button, input, textarea{ font-family: inherit; }
   color: #333;
   opacity: 0.9;
 }
+
+.mxds-svAvatar{
+  width: 64px;
+  height: 64px;
+  margin: 2px auto 12px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+
+  background: rgba(249,161,1,0.10);
+  border: 2px solid rgba(0,0,0,0.12);
+
+  overflow: hidden;
+}
+
+.mxds-svAvatarImg{
+  width: 100%;
+  height: 100%;
+  display: block;
+
+  object-fit: contain;
+  padding: 10px;
+}
+
+.mxds-serverTitleRow{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mxds-serverTitleRow .mxds-tag{
+  margin-left: auto;
+}
