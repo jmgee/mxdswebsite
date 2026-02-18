@@ -151,7 +151,12 @@ const SERVERS: ServerItem[] = [
 ];
 
 export default function ServersPage() {
+  const [mounted, setMounted] = useState(false);
   const [liveData, setLiveData] = useState<Record<string, ServerLiveState>>({});
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     async function fetchStatuses() {
@@ -202,8 +207,11 @@ export default function ServersPage() {
   }, []);
 
   return (
-    <div className="mxds-container mxds-svPage">
-      <div className="mxds-center mxds-svHeader">
+    <div className={`mxds-container mxds-svPage ${mounted ? "mxds-svEnter" : ""}`}>
+      <div
+        className={`mxds-center mxds-svHeader ${mounted ? "mxds-reveal" : ""}`}
+        style={mounted ? ({ animationDelay: "60ms" } as React.CSSProperties) : undefined}
+      >
         <h2 className="mxds-pageTitle">Servers I've Handled</h2>
         <p className="mxds-pageLead">
           Here are some of the successful FiveM servers I've developed, managed, and maintained.
@@ -211,7 +219,7 @@ export default function ServersPage() {
       </div>
 
       <div className="mxds-serverGrid">
-        {SERVERS.map((server) => {
+        {SERVERS.map((server, idx) => {
           const live = liveData[server.name];
           const status = live?.status ?? "Checking";
           const isOnline = status === "Online";
@@ -227,7 +235,15 @@ export default function ServersPage() {
           const canJoin = isOnline && !!joinHref;
 
           return (
-            <article key={server.name} className="mxds-card mxds-serverCard">
+            <article
+              key={server.name}
+              className={`mxds-card mxds-serverCard mxds-svCard ${mounted ? "mxds-reveal" : ""}`}
+              style={
+                mounted
+                  ? ({ animationDelay: `${140 + idx * 70}ms` } as React.CSSProperties)
+                  : undefined
+              }
+            >
               {server.logoUrl ? (
                 <div className="mxds-svAvatar" aria-hidden="true">
                   <img
@@ -270,8 +286,9 @@ export default function ServersPage() {
                   </div>
                 </>
               ) : null}
+
               {canJoin ? (
-                <div style={{ marginTop: "auto" }}>
+                <div className={`mxds-svJoin ${mounted ? "mxds-svJoinEnter" : ""}`} style={{ marginTop: "auto" }}>
                   <hr className="mxds-hr" />
                   <a
                     className="mxds-joinBtn"
