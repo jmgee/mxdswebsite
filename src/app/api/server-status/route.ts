@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 const SERVERS = [
   {
     name: "London Roleplay",
@@ -13,43 +15,28 @@ export async function GET() {
       try {
         const response = await fetch(
           `https://servers-frontend.fivem.net/api/servers/single/${server.serverId}`,
-          {
-            next: { revalidate: 60 }, 
-            headers: {
-              "User-Agent": "mxds-server-check"
-            }
-          }
+          { cache: "no-store" }
         );
 
         if (!response.ok) {
-          return {
-            name: server.name,
-            status: "Offline"
-          };
+          return { name: server.name, status: "Offline" };
         }
 
         const json = await response.json();
-
         const data = json?.Data;
 
         if (!data) {
-          return {
-            name: server.name,
-            status: "Offline"
-          };
+          return { name: server.name, status: "Offline" };
         }
 
         return {
           name: server.name,
           status: "Online",
-          players: typeof data.clients === "number" ? data.clients : 0,
-          maxPlayers: typeof data.sv_maxclients === "number" ? data.sv_maxclients : 0
+          players: data.clients ?? 0,
+          maxPlayers: data.sv_maxclients ?? 0
         };
-      } catch (error) {
-        return {
-          name: server.name,
-          status: "Offline"
-        };
+      } catch {
+        return { name: server.name, status: "Offline" };
       }
     })
   );
