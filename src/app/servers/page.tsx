@@ -26,10 +26,10 @@ export default function ServersPage() {
       status: "Offline",
       tag: "Roleplay",
       join: false,
-      logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/1024.png",
+      logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/rivals1024.png",
       discordUrl: "https://discord.gg/REPLACE_RIVALS",
-      serverDesc: "Competitive RP hub with custom systems focused on progression and community events.",
-      keyFeatures: ["Semi Serious RP", "Optimized scripts", "Advanced Cardealer System"],
+      serverDesc: "PVP RP based on Philippine Server with custom mechanics, balanced economy",
+      keyFeatures: ["Semi Serious RP", "Barilan Server", "Advanced Cardealer System"],
     },
     {
       name: "Highdays Cali",
