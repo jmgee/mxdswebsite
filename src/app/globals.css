@@ -444,15 +444,71 @@ button, input, textarea{ font-family: inherit; }
 
 .mxds-joinBtn{
   margin-top: auto;
-  background: var(--join);
+  width: 100%;
+  height: 44px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.10);
+
+  background: linear-gradient(180deg, var(--join) 0%, var(--join-hover) 100%);
   color: #fff;
-  border: 0;
-  height: 36px;
-  border-radius: 6px;
+
   font-weight: 900;
-  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+
+  text-decoration: none;
+  user-select: none;
+
+  box-shadow:
+    0 14px 34px rgba(8,166,62,0.22),
+    0 2px 0 rgba(0,0,0,0.14);
+
+  transition:
+    transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 180ms ease,
+    box-shadow 180ms ease;
 }
-.mxds-joinBtn:hover{ background: var(--join-hover); }
+
+.mxds-joinBtn::after{
+  content: "→";
+  font-weight: 900;
+  transform: translateX(0);
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.95;
+}
+
+@media (hover:hover) and (pointer:fine){
+  .mxds-joinBtn:hover{
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+    box-shadow:
+      0 18px 44px rgba(8,166,62,0.28),
+      0 2px 0 rgba(0,0,0,0.14);
+  }
+  .mxds-joinBtn:hover::after{
+    transform: translateX(3px);
+  }
+  .mxds-joinBtn:active{
+    transform: translateY(0) scale(0.99);
+  }
+}
+
+.mxds-joinBtn:focus-visible{
+  outline: 3px solid rgba(8,166,62,0.25);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .mxds-joinBtn, .mxds-joinBtn::after{
+    transition: none !important;
+  }
+}
 
 .mxds-expertise{
   margin: 20px auto 0;
