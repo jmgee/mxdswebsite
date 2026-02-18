@@ -2,6 +2,8 @@ type ServerItem = {
   name: string;
   status: "Online" | "Offline";
   tag: "Roleplay" | "Zombie";
+  players?: number;
+  maxPlayers?: number;
   join?: boolean;
   logoUrl?: string;
   discordUrl?: string;
@@ -9,11 +11,26 @@ type ServerItem = {
   keyFeatures: string[];
 };
 
-export default function ServersPage() {
-  const servers: ServerItem[] = [
+async function getServerStatuses() {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SITE_URL}/api/server-status`,
+      { cache: "no-store" }
+    );
+
+    if (!res.ok) return [];
+    return res.json();
+  } catch {
+    return [];
+  }
+}
+
+export default async function ServersPage() {
+  const liveStatuses = await getServerStatuses();
+
+  const baseServers: Omit<ServerItem, "status">[] = [
     {
       name: "London Roleplay",
-      status: "Online",
       tag: "Roleplay",
       join: false,
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/london1024.png",
@@ -23,7 +40,6 @@ export default function ServersPage() {
     },
     {
       name: "Rivals City",
-      status: "Offline",
       tag: "Roleplay",
       join: false,
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/rivals1024.png",
@@ -33,7 +49,6 @@ export default function ServersPage() {
     },
     {
       name: "Highdays Cali",
-      status: "Offline",
       tag: "Roleplay",
       join: false,
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/highdays1024.png",
@@ -43,7 +58,6 @@ export default function ServersPage() {
     },
     {
       name: "BINI City",
-      status: "Offline",
       tag: "Roleplay",
       join: false,
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/bini1024.png",
@@ -53,7 +67,6 @@ export default function ServersPage() {
     },
     {
       name: "District 8",
-      status: "Offline",
       tag: "Roleplay",
       join: false,
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/district8.png",
@@ -63,7 +76,6 @@ export default function ServersPage() {
     },
     {
       name: "The Hallows City: Blackout",
-      status: "Offline",
       tag: "Zombie",
       join: false,
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/thc.png",
@@ -73,7 +85,6 @@ export default function ServersPage() {
     },
     {
       name: "SouthSide City",
-      status: "Offline",
       tag: "Roleplay",
       join: false,
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/ss1024.png",
@@ -83,7 +94,6 @@ export default function ServersPage() {
     },
     {
       name: "Cavite City Reborn",
-      status: "Offline",
       tag: "Roleplay",
       join: false,
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/cavite1024.png",
@@ -93,7 +103,6 @@ export default function ServersPage() {
     },
     {
       name: "Escolta RP",
-      status: "Offline",
       tag: "Roleplay",
       join: false,
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/escolta1024.png",
@@ -103,7 +112,6 @@ export default function ServersPage() {
     },
     {
       name: "Trinity Roleplay",
-      status: "Offline",
       tag: "Roleplay",
       join: false,
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/trinity1024.png",
@@ -113,7 +121,6 @@ export default function ServersPage() {
     },
     {
       name: "City of Hope Reunited",
-      status: "Offline",
       tag: "Roleplay",
       join: false,
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/COH_1024.png",
@@ -123,7 +130,6 @@ export default function ServersPage() {
     },
     {
       name: "Blackrose Roleplay",
-      status: "Offline",
       tag: "Roleplay",
       join: false,
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/br1024.png",
@@ -133,7 +139,6 @@ export default function ServersPage() {
     },
     {
       name: "Autonomy RP",
-      status: "Offline",
       tag: "Roleplay",
       join: false,
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/autonomy1024.png",
@@ -143,7 +148,6 @@ export default function ServersPage() {
     },
     {
       name: "New Horizon RP",
-      status: "Offline",
       tag: "Roleplay",
       join: false,
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/newhorizon1024.png",
@@ -153,7 +157,6 @@ export default function ServersPage() {
     },
     {
       name: "Haven City",
-      status: "Offline",
       tag: "Roleplay",
       join: false,
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/HAVEN_1024.png",
@@ -163,7 +166,6 @@ export default function ServersPage() {
     },
     {
       name: "Majesty City V2",
-      status: "Offline",
       tag: "Roleplay",
       join: false,
       logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/mjsty_1024.png",
@@ -172,6 +174,17 @@ export default function ServersPage() {
       keyFeatures: ["Gangs vs Police", "Advanced Cardealer System", "Custom Framework"],
     },
   ];
+
+  const servers: ServerItem[] = baseServers.map((server) => {
+    const live = liveStatuses.find((s: any) => s.name === server.name);
+
+    return {
+      ...server,
+      status: live?.status ?? "Offline",
+      players: live?.players,
+      maxPlayers: live?.maxPlayers,
+    };
+  });
 
   return (
     <div className="mxds-svPage">
@@ -186,137 +199,11 @@ export default function ServersPage() {
           to{ opacity: 1; transform: translateY(0); }
         }
 
-        /* Spotlight sweep background (pure CSS) */
-        .mxds-svPage::before{
-          content:"";
-          position:absolute;
-          inset:-80px -60px;
-          background:
-            radial-gradient(700px 380px at 20% 0%, rgba(249,161,1,0.14), rgba(0,0,0,0) 60%),
-            radial-gradient(700px 420px at 80% 10%, rgba(249,161,1,0.10), rgba(0,0,0,0) 60%),
-            radial-gradient(900px 520px at 50% 100%, rgba(0,0,0,0.04), rgba(0,0,0,0) 70%);
-          opacity: 0;
-          transform: translateY(14px);
-          animation: svSpotIn 900ms ease-out 120ms forwards;
-          pointer-events:none;
-          z-index: 0;
-          filter: blur(0px);
-        }
-        @keyframes svSpotIn{
-          to{ opacity: 1; transform: translateY(0); }
-        }
-
-        /* Keep content above spotlight */
-        .mxds-svStack{
-          position: relative;
-          z-index: 1;
-        }
-
-        /* Header reveal: fade + slight scale */
-        .mxds-svHeader{
-          opacity: 0;
-          transform: translateY(10px) scale(0.99);
-          animation: svHeaderIn 680ms cubic-bezier(.2,.9,.2,1) 120ms forwards;
-        }
-        @keyframes svHeaderIn{
-          to{ opacity:1; transform: translateY(0) scale(1); }
-        }
-
-        /* Title glow pulse (subtle, premium) */
-        .mxds-svTitleGlow{
-          display:inline-block;
-          position: relative;
-        }
-        .mxds-svTitleGlow::after{
-          content:"";
-          position:absolute;
-          left: 10%;
-          right: 10%;
-          top: 60%;
-          height: 12px;
-          background: radial-gradient(circle, rgba(249,161,1,0.28), rgba(0,0,0,0) 70%);
-          filter: blur(10px);
-          opacity: 0;
-          animation: svTitleGlow 1200ms ease-out 520ms forwards;
-          pointer-events:none;
-        }
-        @keyframes svTitleGlow{
-          0%{ opacity:0; transform: translateY(6px); }
-          35%{ opacity:1; transform: translateY(0); }
-          100%{ opacity:0; transform: translateY(-2px); }
-        }
-
-        /* Card entrance: spring-ish pop + tilt settle */
-        .mxds-svCardEnter{
-          opacity: 0;
-          transform: translateY(18px) scale(0.985) rotateX(2deg);
-          transform-origin: 50% 80%;
-          animation: svCardIn 720ms cubic-bezier(.18,.88,.2,1) forwards;
-          will-change: transform, opacity;
-        }
-        @keyframes svCardIn{
-          0%{ opacity: 0; transform: translateY(18px) scale(0.985) rotateX(2deg); }
-          55%{ opacity: 1; transform: translateY(-2px) scale(1.01) rotateX(0deg); }
-          100%{ opacity: 1; transform: translateY(0) scale(1) rotateX(0deg); }
-        }
-        .mxds-svLogoWrap{
-          position: relative;
-          width: 44px;
-          height: 44px;
-          margin: 2px auto 10px;
-          display: grid;
-          place-items: center;
-        }
-        .mxds-svLogoImg{
-          width: 44px;
-          height: 44px;
-          border-radius: 10px;
-          object-fit: cover;
-          display: block;
-          transform: scale(0.9);
-          opacity: 0;
-          animation: svLogoPop 520ms cubic-bezier(.2,.9,.2,1) forwards;
-        }
-        @keyframes svLogoPop{
-          0%{ transform: scale(0.88); opacity: 0; }
-          65%{ transform: scale(1.04); opacity: 1; }
-          100%{ transform: scale(1); opacity: 1; }
-        }
-        .mxds-svLogoWrap::after{
-          content:"";
-          position:absolute;
-          inset:-6px;
-          border-radius: 14px;
-          border: 2px solid rgba(249,161,1,0.28);
-          opacity: 0;
-          transform: scale(0.92);
-          animation: svRing 900ms ease-out 220ms forwards;
-          pointer-events:none;
-        }
-        @keyframes svRing{
-          0%{ opacity: 0; transform: scale(0.92); }
-          25%{ opacity: 1; }
-          100%{ opacity: 0; transform: scale(1.06); }
-        }
-
-        /* Hover: lift + shadow polish (keeps it “alive”) */
-        .mxds-serverCard{
-          transition: transform 180ms ease, box-shadow 180ms ease;
-        }
-        .mxds-serverCard:hover{
-          transform: translateY(-4px);
-          box-shadow: 0 22px 60px rgba(0,0,0,0.12);
-        }
-
-        /* Reduced motion */
-        @media (prefers-reduced-motion: reduce){
-          .mxds-svPage, .mxds-svPage::before, .mxds-svHeader, .mxds-svCardEnter,
-          .mxds-svLogoImg, .mxds-svLogoWrap::after, .mxds-svTitleGlow::after{
-            animation: none !important;
-            opacity: 1 !important;
-            transform: none !important;
-          }
-          .mxds-serverCard{ transition: none !important; }
+        .mxds-playerCount{
+          font-size: 12px;
+          margin-top: 4px;
+          font-weight: 600;
+          opacity: .85;
         }
       `}</style>
 
@@ -340,7 +227,6 @@ export default function ServersPage() {
 
 function ServerCard({ item, index }: { item: ServerItem; index: number }) {
   const isOnline = item.status === "Online";
-  const canJoin = Boolean(item.discordUrl);
 
   return (
     <article
@@ -348,17 +234,14 @@ function ServerCard({ item, index }: { item: ServerItem; index: number }) {
       style={{ animationDelay: `${220 + index * 70}ms` }}
     >
       <div className="mxds-svLogoWrap" aria-hidden="true">
-        {item.logoUrl ? (
+        {item.logoUrl && (
           <img
             src={item.logoUrl}
             alt=""
             loading="lazy"
             referrerPolicy="no-referrer"
             className="mxds-svLogoImg"
-            style={{ animationDelay: `${260 + index * 70}ms` }}
           />
-        ) : (
-          <div className="mxds-serverLogoInner" />
         )}
       </div>
 
@@ -374,6 +257,12 @@ function ServerCard({ item, index }: { item: ServerItem; index: number }) {
         </div>
       </div>
 
+      {isOnline && item.players !== undefined && (
+        <div className="mxds-playerCount">
+          {item.players} / {item.maxPlayers} Players
+        </div>
+      )}
+
       <p className="mxds-serverDesc">{item.serverDesc}</p>
 
       <div>
@@ -388,61 +277,6 @@ function ServerCard({ item, index }: { item: ServerItem; index: number }) {
           <div className="mxds-kfLast">{item.keyFeatures.slice(2).join(" • ")}</div>
         )}
       </div>
-
-      {item.join && (
-        <>
-          <hr className="mxds-hr" />
-
-          {canJoin ? (
-            <a
-              href={item.discordUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Join ${item.name} Discord`}
-              className="mxds-joinBtn"
-              style={{
-                display: "flex",
-                width: "100%",
-                height: 40,
-                alignItems: "center",
-                justifyContent: "center",
-                textDecoration: "none",
-                lineHeight: 1,
-                fontWeight: 900,
-                fontSize: 14,
-                borderRadius: 6,
-                background: "#00a53a",
-                color: "#ffffff",
-              }}
-            >
-              Join Server
-            </a>
-          ) : (
-            <div
-              className="mxds-joinBtn"
-              aria-disabled="true"
-              title="Discord link not configured"
-              style={{
-                display: "flex",
-                width: "100%",
-                height: 40,
-                alignItems: "center",
-                justifyContent: "center",
-                pointerEvents: "none",
-                opacity: 0.55,
-                lineHeight: 1,
-                fontWeight: 900,
-                fontSize: 14,
-                borderRadius: 6,
-                background: "#00a53a",
-                color: "#ffffff",
-              }}
-            >
-              Join Server
-            </div>
-          )}
-        </>
-      )}
     </article>
   );
 }
