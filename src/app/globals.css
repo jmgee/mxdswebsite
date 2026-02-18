@@ -653,3 +653,13 @@ button, input, textarea{ font-family: inherit; }
 .mxds-serverTitleRow .mxds-tag{
   margin-left: auto;
 }
+
+.mxds-serverMeta{
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mxds-statusChecking{ color: rgba(17, 17, 17, 0.60); }
+.mxds-statusChecking .mxds-dot{ background: rgba(17, 17, 17, 0.35); }

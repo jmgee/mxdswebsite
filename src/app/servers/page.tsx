@@ -25,8 +25,7 @@ const SERVERS: ServerItem[] = [
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/london1024.png",
     discordUrl: "https://discord.gg/GhDFMuVqUU",
-    serverDesc:
-      "QB Core Framework-based RP with custom scripts, optimized performance, and a welcoming community.",
+    serverDesc: "An immersive QB-Core London Based Roleplay Server with custom scripts and systems.",
     keyFeatures: ["50K Cash Starting", "Semi Serious RP"],
   },
   {
@@ -34,7 +33,7 @@ const SERVERS: ServerItem[] = [
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/rivals1024.png",
     discordUrl: "https://discord.gg/REPLACE_RIVALS",
-    serverDesc: "PVP RP based on Philippine Server with custom mechanics, balanced economy",
+    serverDesc: "An immersive PVP PH Based Roleplay Server with custom scripts and systems.",
     keyFeatures: ["Semi Serious RP", "Barilan Server", "Advanced Cardealer System"],
   },
   {
@@ -42,7 +41,7 @@ const SERVERS: ServerItem[] = [
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/highdays1024.png",
     discordUrl: "https://discord.gg/REPLACE_HIGHDAYS",
-    serverDesc: "Cali-inspired RP experience with smooth performance and curated gameplay loops.",
+    serverDesc: "An immersive PVP PH Based Roleplay Server with custom scripts and systems.",
     keyFeatures: ["Semi Serious RP", "Barilan Server", "Low Resources & Optimized"],
   },
   {
@@ -50,7 +49,7 @@ const SERVERS: ServerItem[] = [
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/bini1024.png",
     discordUrl: "https://discord.gg/REPLACE_HIGHDAYS",
-    serverDesc: "Inspired by the Nations Girl Group. A Semi Serious RP community",
+    serverDesc: "An immersive Semi-Serious RP Server with custom scripts and systems.",
     keyFeatures: ["Semi Serious RP", "Dear Blooms", "Low Resources"],
   },
   {
@@ -58,7 +57,7 @@ const SERVERS: ServerItem[] = [
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/district8.png",
     discordUrl: "https://discord.gg/REPLACE_HIGHDAYS",
-    serverDesc: "Built with Qbox Framework. Serious Roleplay with realistic scripts",
+    serverDesc: "An immersive Qbox Roleplay Server with custom scripts and systems.",
     keyFeatures: ["Serious RP", "Custom Scripts", "Qbox Framework"],
   },
   {
@@ -66,7 +65,7 @@ const SERVERS: ServerItem[] = [
     tag: "Zombie",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/thc.png",
     discordUrl: "https://discord.gg/REPLACE_HALLOWS",
-    serverDesc: "Zombie survival mode with blackout events, loot cycles, and high-risk zones.",
+    serverDesc: "An immersive Zombie Server with custom scripts and systems.",
     keyFeatures: ["Zombie Server", "Loot & crafting", "Realistic Zombie System"],
   },
   {
@@ -74,7 +73,7 @@ const SERVERS: ServerItem[] = [
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/ss1024.png",
     discordUrl: "https://discord.gg/REPLACE_SOUTHSIDE",
-    serverDesc: "Street RP ecosystem with gang systems, territory control, and balanced economy.",
+    serverDesc: "An immersive Semi-Serious RP Server with custom scripts and systems.",
     keyFeatures: ["Custom Gang System", "Custom Business", "Whitelisted Jobs"],
   },
   {
@@ -82,7 +81,7 @@ const SERVERS: ServerItem[] = [
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/cavite1024.png",
     discordUrl: "https://discord.gg/REPLACE_ESCOLTA",
-    serverDesc: "Built with Custom Scripts & Advanced Whitelisted Jobs.",
+    serverDesc: "An immersive Serious RP Server with custom scripts and systems.",
     keyFeatures: ["Serious RP", "Custom Scripts", "Realistic Life"],
   },
   {
@@ -90,7 +89,7 @@ const SERVERS: ServerItem[] = [
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/escolta1024.png",
     discordUrl: "https://discord.gg/REPLACE_ESCOLTA",
-    serverDesc: "Metro RP with polished interactions, streamlined UI, and stable server operations.",
+    serverDesc: "An immersive Semi-Serious RP Server with custom scripts and systems.",
     keyFeatures: ["Semi Serious RP", "Friendly Staffs", "Mid Economy"],
   },
   {
@@ -98,7 +97,7 @@ const SERVERS: ServerItem[] = [
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/trinity1024.png",
     discordUrl: "https://discord.gg/REPLACE_TRINITY",
-    serverDesc: "Community-first RP with deep role systems and long-term progression support.",
+    serverDesc: "An immersive Semi-Serious RP Server with custom scripts and systems.",
     keyFeatures: ["Custom jobs", "Progression systems", "Advanced Lua scripting"],
   },
   {
@@ -106,7 +105,7 @@ const SERVERS: ServerItem[] = [
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/COH_1024.png",
     discordUrl: "https://discord.gg/REPLACE_COH",
-    serverDesc: "Since 2023. A fresh start for City of Hope with improved performance and new features.",
+    serverDesc: "An immersive Semi-Serious RP Server with custom scripts and systems.",
     keyFeatures: ["Semi-Serious RP", "Custom Scripts", "Optimized Resources"],
   },
   {
@@ -114,7 +113,7 @@ const SERVERS: ServerItem[] = [
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/br1024.png",
     discordUrl: "https://discord.gg/REPLACE_BLACKROSE",
-    serverDesc: "High-fidelity RP with custom mechanics and stable, scalable infrastructure.",
+    serverDesc: "An immersive Semi-Serious RP Server with custom scripts and systems.",
     keyFeatures: ["Since 2021", "Custom Scripts", "Optimized resources"],
   },
   {
@@ -122,7 +121,7 @@ const SERVERS: ServerItem[] = [
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/autonomy1024.png",
     discordUrl: "https://discord.gg/REPLACE_AUTONOMY",
-    serverDesc: "Modern RP build with improved performance baselines and iterative feature delivery.",
+    serverDesc: "An immersive Semi-Serious RP Server with custom scripts and systems.",
     keyFeatures: ["Custom Business", "Serious RP", "Custom Scripts"],
   },
   {
@@ -130,7 +129,7 @@ const SERVERS: ServerItem[] = [
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/newhorizon1024.png",
     discordUrl: "https://discord.gg/REPLACE_NEWHORIZON",
-    serverDesc: "Fresh RP framework with clean UX patterns and maintainable server architecture.",
+    serverDesc: "An immersive Serious RP Server with custom scripts and systems.",
     keyFeatures: ["Serious RP", "Friendly Staffs", "Accepting Newbies"],
   },
   {
@@ -138,8 +137,7 @@ const SERVERS: ServerItem[] = [
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/HAVEN_1024.png",
     discordUrl: "https://discord.gg/REPLACE_HAVEN",
-    serverDesc:
-      "Serious RP with custom scripts, optimized performance, and a welcoming community for all player levels.",
+    serverDesc: "An immersive Serious RP Server with custom scripts and systems.",
     keyFeatures: ["Serious RP", "ESX Framework", "Accepting Newbies"],
   },
   {
@@ -147,7 +145,7 @@ const SERVERS: ServerItem[] = [
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/mjsty_1024.png",
     discordUrl: "https://discord.gg/REPLACE_MAJESTY",
-    serverDesc: "Premium RP experience with custom systems, refined UI, and reliable operations.",
+    serverDesc: "An immersive Semi-Serious RP Server with custom scripts and systems.",
     keyFeatures: ["Gangs vs Police", "Advanced Cardealer System", "Custom Framework"],
   },
 ];
@@ -203,69 +201,77 @@ export default function ServersPage() {
     fetchStatuses();
   }, []);
 
-return (
-  <div className="mxds-container mxds-svPage">
-    <div className="mxds-center mxds-svHeader">
-      <h2 className="mxds-pageTitle">Servers Showcase</h2>
-      <p className="mxds-pageLead">List of developed and maintained servers</p>
-    </div>
+  return (
+    <div className="mxds-container mxds-svPage">
+      <div className="mxds-center mxds-svHeader">
+        <h2 className="mxds-pageTitle">Servers I've Handled</h2>
+        <p className="mxds-pageLead">
+          Here are some of the successful FiveM servers I've developed, managed, and maintained.
+        </p>
+      </div>
 
-    <div className="mxds-serverGrid">
-      {SERVERS.map((server) => {
-        const live = liveData[server.name];
-        const status = live?.status ?? "Checking";
-        const isOnline = status === "Online";
+      <div className="mxds-serverGrid">
+        {SERVERS.map((server) => {
+          const live = liveData[server.name];
+          const status = live?.status ?? "Checking";
+          const isOnline = status === "Online";
 
-        return (
-          <article key={server.name} className="mxds-card mxds-serverCard">
-            {server.logoUrl ? (
-              <div className="mxds-svAvatar" aria-hidden="true">
-                <img
-                  src={server.logoUrl}
-                  alt={`${server.name} logo`}
-                  className="mxds-svAvatarImg"
-                  loading="lazy"
-                />
-              </div>
-            ) : null}
+          const statusClass =
+            status === "Online"
+              ? "mxds-statusOnline"
+              : status === "Offline"
+              ? "mxds-statusOffline"
+              : "mxds-statusChecking";
 
-            <div className="mxds-serverTitleRow">
-              <div className="mxds-serverName">{server.name}</div>
-
-              <div
-                className={`mxds-status ${
-                  status === "Online" ? "mxds-statusOnline" : "mxds-statusOffline"
-                }`}
-              >
-                <span className="mxds-dot" aria-hidden="true" />
-                {status}
-              </div>
-
-              <span className="mxds-tag">{server.tag}</span>
-            </div>
-
-            {isOnline && (
-              <div className="mxds-playerCount">
-                {live?.players} / {live?.maxPlayers} Players
-              </div>
-            )}
-
-            <p className="mxds-serverDesc">{server.serverDesc}</p>
-
-            {server.keyFeatures?.length ? (
-              <>
-                <div className="mxds-kfTitle">Key Features:</div>
-                <div className="mxds-kfRow">
-                  {server.keyFeatures.map((kf) => (
-                    <span key={kf}>{kf}</span>
-                  ))}
+          return (
+            <article key={server.name} className="mxds-card mxds-serverCard">
+              {server.logoUrl ? (
+                <div className="mxds-svAvatar" aria-hidden="true">
+                  <img
+                    src={server.logoUrl}
+                    alt={`${server.name} logo`}
+                    className="mxds-svAvatarImg"
+                    loading="lazy"
+                  />
                 </div>
-              </>
-            ) : null}
-          </article>
-        );
-      })}
+              ) : null}
+
+              {/* Name on the left, Status + Tag on the right (like your screenshot) */}
+              <div className="mxds-serverTitleRow">
+                <div className="mxds-serverName">{server.name}</div>
+
+                <div className="mxds-serverMeta">
+                  <div className={`mxds-status ${statusClass}`}>
+                    <span className="mxds-dot" aria-hidden="true" />
+                    {status}
+                  </div>
+
+                  <span className="mxds-tag">{server.tag}</span>
+                </div>
+              </div>
+
+              {isOnline && (
+                <div className="mxds-playerCount">
+                  {live?.players} / {live?.maxPlayers} Players
+                </div>
+              )}
+
+              <p className="mxds-serverDesc">{server.serverDesc}</p>
+
+              {server.keyFeatures?.length ? (
+                <>
+                  <div className="mxds-kfTitle">Key Features:</div>
+                  <div className="mxds-kfRow">
+                    {server.keyFeatures.map((kf) => (
+                      <span key={kf}>{kf}</span>
+                    ))}
+                  </div>
+                </>
+              ) : null}
+            </article>
+          );
+        })}
+      </div>
     </div>
-  </div>
-);
+  );
 }
