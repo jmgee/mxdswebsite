@@ -3,28 +3,27 @@
 import React, { useEffect, useState } from "react";
 
 type Props = {
-  show: boolean;          
-  iconSrc: string;        
-  holdMs?: number;        
-  outMs?: number;         
+  iconSrc: string;
+  holdMs?: number;
+  outMs?: number;
   children: React.ReactNode;
 };
 
-export default function SplashGate({
-  show,
-  iconSrc,
-  holdMs = 1100,
-  outMs = 650,
-  children,
-}: Props) {
-  const [phase, setPhase] = useState<"in" | "out" | "gone">(show ? "in" : "gone");
+export default function SplashGate({ iconSrc, holdMs = 1100, outMs = 650, children }: Props) {
+  const [phase, setPhase] = useState<"in" | "out" | "gone">("in");
 
   useEffect(() => {
-    if (!show) return;
+    const shouldShow = document.documentElement.classList.contains("mxds-splash");
+
+    if (!shouldShow) {
+      setPhase("gone");
+      return;
+    }
 
     const t1 = window.setTimeout(() => setPhase("out"), holdMs);
     const t2 = window.setTimeout(() => {
       document.cookie = "mxds_splash_seen=1; path=/";
+      document.documentElement.classList.remove("mxds-splash");
       setPhase("gone");
     }, holdMs + outMs);
 
@@ -32,11 +31,12 @@ export default function SplashGate({
       window.clearTimeout(t1);
       window.clearTimeout(t2);
     };
-  }, [show, holdMs, outMs]);
+  }, [holdMs, outMs]);
 
   return (
     <>
       <style>{`
+        /* Hidden by default (prevents showing on every load) */
         .mxds-intro{
           position: fixed;
           inset: 0;
@@ -46,7 +46,16 @@ export default function SplashGate({
           background: #0b0b0b;
           color: rgba(255,255,255,.9);
           will-change: transform, opacity;
+          opacity: 0;
+          pointer-events: none;
         }
+
+        /* Only visible if the init script adds .mxds-splash to <html> */
+        html.mxds-splash .mxds-intro{
+          opacity: 1;
+          pointer-events: auto;
+        }
+
         .mxds-introInner{
           display:flex;
           flex-direction:column;

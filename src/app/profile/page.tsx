@@ -194,7 +194,7 @@ export default function ProfilePage() {
               <div className="mxds-statIcon" aria-hidden="true">
                 <IconBrackets />
               </div>
-              <p className="mxds-statTop">100+ Scripts</p>
+              <p className="mxds-statTop">20+ Scripts</p>
               <p className="mxds-statBottom">Custom Developed</p>
             </div>
           </div>
@@ -211,12 +211,13 @@ export default function ProfilePage() {
             <div>
               <Skill name="Lua Scripting" pct={95} delayMs={760} />
               <Skill name="ESX" pct={95} delayMs={860} />
+              <Skill name="QBCore" pct={90} delayMs={860} />
               <Skill name="Qbox" pct={80} delayMs={860} />
             </div>
 
             <div>
-              <Skill name="Custom Script" pct={96} delayMs={760} />
-              <Skill name="Server Management" pct={97} delayMs={860} />
+              <Skill name="Custom Script" pct={97} delayMs={760} />
+              <Skill name="Server Management" pct={95} delayMs={860} />
             </div>
           </div>
         </section>
