@@ -1,8 +1,8 @@
 import "./globals.css";
-import TopNav from "@/components/mxds/TopNav";
 import type { Metadata } from "next";
 import Script from "next/script";
 import SplashGate from "@/components/mxds/SplashGate";
+import TopNav from "@/components/mxds/TopNav";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mdevelopments.xyz"),
@@ -25,7 +25,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
       <body>
         <SplashGate iconSrc="https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/m1024.png">
-          {children}
+          <TopNav /> 
+          <main className="pt-16">{children}</main>
         </SplashGate>
       </body>
     </html>
