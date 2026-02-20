@@ -1,4 +1,5 @@
 import "./globals.css";
+import TopNav from "@/components/mxds/TopNav";
 import type { Metadata } from "next";
 import Script from "next/script";
 import SplashGate from "@/components/mxds/SplashGate";
