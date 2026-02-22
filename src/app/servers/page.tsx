@@ -20,6 +20,15 @@ type ServerLiveState = {
 
 const SERVERS: ServerItem[] = [
   {
+    name: "Breakthrough Bay City",
+    serverId: "3myody",
+    tag: "Roleplay",
+    logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/BBC_NO_BG_Logo.png",
+    discordUrl: "https://discord.gg/NtfMAvJ8jG",
+    serverDesc: "An immersive PH roleplay server with custom scripts and systems.",
+    keyFeatures: ["Optimized Scripts", "Advanced Lua Scripting", "MySQL Database Integration"],
+  },
+  {
     name: "London Roleplay",
     serverId: "qlol3p",
     tag: "Roleplay",
