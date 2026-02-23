@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { fetchServerStatuses } from "@/lib/fetchServerStatuses";
 
-type ServerItem = {
+export type ServerItem = {
   name: string;
   serverId?: string;
   tag: "Roleplay" | "Zombie";
@@ -12,13 +13,13 @@ type ServerItem = {
   keyFeatures: string[];
 };
 
-type ServerLiveState = {
+export type ServerLiveState = {
   status: "Checking" | "Online" | "Offline";
   players?: number;
   maxPlayers?: number;
 };
 
-const SERVERS: ServerItem[] = [
+export const SERVERS: ServerItem[] = [
   {
     name: "Breakthrough Bay City",
     serverId: "3myody",
@@ -161,159 +162,43 @@ const SERVERS: ServerItem[] = [
 
 export default function ServersPage() {
   const [mounted, setMounted] = useState(false);
-  const [liveData, setLiveData] = useState<Record<string, ServerLiveState>>({});
+  const [liveData, setLiveData] = useState<
+    Record<string, ServerLiveState>
+  >({});
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
-    async function fetchStatuses() {
-      const results: Record<string, ServerLiveState> = {};
-
-      await Promise.all(
-        SERVERS.map(async (server) => {
-          if (!server.serverId) {
-            results[server.name] = { status: "Offline" };
-            return;
-          }
-
-          results[server.name] = { status: "Checking" };
-
-          try {
-            const res = await fetch(
-              `https://servers-frontend.fivem.net/api/servers/single/${server.serverId}`
-            );
-
-            if (!res.ok) {
-              results[server.name] = { status: "Offline" };
-              return;
-            }
-
-            const json = await res.json();
-            const data = json?.Data;
-
-            if (!data) {
-              results[server.name] = { status: "Offline" };
-              return;
-            }
-
-            results[server.name] = {
-              status: "Online",
-              players: typeof data.clients === "number" ? data.clients : 0,
-              maxPlayers: typeof data.sv_maxclients === "number" ? data.sv_maxclients : 0,
-            };
-          } catch {
-            results[server.name] = { status: "Offline" };
-          }
-        })
-      );
-
-      setLiveData(results);
+    async function loadStatuses() {
+      const data = await fetchServerStatuses(SERVERS);
+      setLiveData(data);
     }
 
-    fetchStatuses();
+    loadStatuses();
   }, []);
 
   return (
-    <div className={`mxds-container mxds-svPage ${mounted ? "mxds-svEnter" : ""}`}>
-      <div
-        className={`mxds-center mxds-svHeader ${mounted ? "mxds-reveal" : ""}`}
-        style={mounted ? ({ animationDelay: "60ms" } as React.CSSProperties) : undefined}
-      >
-        <h2 className="mxds-pageTitle">Servers I've Handled</h2>
-        <p className="mxds-pageLead">
-          Here are some of the successful FiveM servers I've developed, managed, and maintained.
-        </p>
-      </div>
+    <div>
+      {SERVERS.map((server) => {
+        const live = liveData[server.name];
 
-      <div className="mxds-serverGrid">
-        {SERVERS.map((server, idx) => {
-          const live = liveData[server.name];
-          const status = live?.status ?? "Checking";
-          const isOnline = status === "Online";
+        return (
+          <div key={server.name}>
+            <h3>{server.name}</h3>
 
-          const statusClass =
-            status === "Online"
-              ? "mxds-statusOnline"
-              : status === "Offline"
-              ? "mxds-statusOffline"
-              : "mxds-statusChecking";
+            {live?.status === "Online" && (
+              <p>
+                🟢 Online ({live.players}/{live.maxPlayers})
+              </p>
+            )}
 
-          const joinHref = server.discordUrl?.trim();
-          const canJoin = isOnline && !!joinHref;
-
-          return (
-            <article
-              key={server.name}
-              className={`mxds-card mxds-serverCard mxds-svCard ${mounted ? "mxds-reveal" : ""}`}
-              style={
-                mounted
-                  ? ({ animationDelay: `${140 + idx * 70}ms` } as React.CSSProperties)
-                  : undefined
-              }
-            >
-              {server.logoUrl ? (
-                <div className="mxds-svAvatar" aria-hidden="true">
-                  <img
-                    src={server.logoUrl}
-                    alt={`${server.name} logo`}
-                    className="mxds-svAvatarImg"
-                    loading="lazy"
-                  />
-                </div>
-              ) : null}
-
-              <div className="mxds-serverTitleRow">
-                <div className="mxds-serverName">{server.name}</div>
-
-                <div className="mxds-serverMeta">
-                  <div className={`mxds-status ${statusClass}`}>
-                    <span className="mxds-dot" aria-hidden="true" />
-                    {status}
-                  </div>
-
-                  <span className="mxds-tag">{server.tag}</span>
-                </div>
-              </div>
-
-              {isOnline && (
-                <div className="mxds-playerCount">
-                  {live?.players} / {live?.maxPlayers} Players
-                </div>
-              )}
-
-              <p className="mxds-serverDesc">{server.serverDesc}</p>
-
-              {server.keyFeatures?.length ? (
-                <>
-                  <div className="mxds-kfTitle">Key Features:</div>
-                  <div className="mxds-kfRow">
-                    {server.keyFeatures.map((kf) => (
-                      <span key={kf}>{kf}</span>
-                    ))}
-                  </div>
-                </>
-              ) : null}
-
-              {canJoin ? (
-                <div className={`mxds-svJoin ${mounted ? "mxds-svJoinEnter" : ""}`} style={{ marginTop: "auto" }}>
-                  <hr className="mxds-hr" />
-                  <a
-                    className="mxds-joinBtn"
-                    href={joinHref}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    aria-label={`Join ${server.name} Discord`}
-                  >
-                    Join Server
-                  </a>
-                </div>
-              ) : null}
-            </article>
-          );
-        })}
-      </div>
+            {live?.status === "Offline" && <p>🔴 Offline</p>}
+            {!live && <p>Checking...</p>}
+          </div>
+        );
+      })}
     </div>
   );
 }

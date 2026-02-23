@@ -1,5 +1,9 @@
+"use client";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import styles from "./pricing.module.css";
+import { fetchServerStatuses } from "@/lib/fetchServerStatuses"; 
+import { SERVERS } from "../servers/page"; 
 
 type Plan = {
   name: string;
@@ -69,19 +73,45 @@ const PLAN_NOTES = {
 };
 
 export default function PricingPage() {
+  const [activeCount, setActiveCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    async function loadActiveCount() {
+      const statuses = await fetchServerStatuses(SERVERS);
+
+      const onlineServers = Object.values(statuses).filter(
+        (server) => server.status === "Online"
+      ).length;
+
+      setActiveCount(onlineServers);
+    }
+
+    loadActiveCount();
+  }, []);
+
   return (
     <div className={`${styles.page} ${styles.pageEnter}`}>
       <header className={styles.header}>
-        <h1 className={`${styles.title} ${styles.reveal}`} style={{ animationDelay: "60ms" }}>
+        <h1
+          className={`${styles.title} ${styles.reveal}`}
+          style={{ animationDelay: "60ms" }}
+        >
           <span className={styles.titleAccent}>Pricing</span>{" "}
           <span className={styles.titleBase}>Plans</span>
         </h1>
 
-        <p className={`${styles.lead} ${styles.reveal}`} style={{ animationDelay: "140ms" }}>
-          Transparent packages designed for predictable delivery, stable operations, and performance-focused outcomes.
+        <p
+          className={`${styles.lead} ${styles.reveal}`}
+          style={{ animationDelay: "140ms" }}
+        >
+          Transparent packages designed for predictable delivery, stable
+          operations, and performance-focused outcomes.
         </p>
 
-        <div className={`${styles.pills} ${styles.reveal}`} style={{ animationDelay: "220ms" }}>
+        <div
+          className={`${styles.pills} ${styles.reveal}`}
+          style={{ animationDelay: "220ms" }}
+        >
           <span className={styles.pill}>FiveM Development Plans</span>
 
           <span className={styles.pillWide}>
@@ -90,7 +120,13 @@ export default function PricingPage() {
             </span>
             <span className={styles.pillWideText}>
               <span className={styles.pillMuted}>Current Workload</span>{" "}
-              <span className={styles.pillStrong}>1 Active Server</span>
+              <span className={styles.pillStrong}>
+                {activeCount === null
+                  ? "Checking..."
+                  : `${activeCount} Active Server${
+                      activeCount !== 1 ? "s" : ""
+                    }`}
+              </span>
             </span>
           </span>
         </div>
@@ -102,7 +138,6 @@ export default function PricingPage() {
         ))}
       </section>
 
-      {/* Notes box (centered, animated) */}
       <section
         className={`${styles.notesWrap} ${styles.notesEnter}`}
         aria-label="Important notes for plans"
