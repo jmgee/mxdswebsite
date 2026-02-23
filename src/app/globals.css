@@ -822,3 +822,76 @@ button, input, textarea{ font-family: inherit; }
     transition: none !important;
   }
 }
+
+.mxds-timeline {
+  position: relative;
+  margin-top: 40px;
+  display: grid;
+  gap: 50px;
+}
+
+.mxds-timeline::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(
+    180deg,
+    rgba(249,161,1,0.9),
+    rgba(249,161,1,0.4)
+  );
+  border-radius: 10px;
+}
+
+.mxds-timelineYear {
+  position: relative;
+  padding-left: 60px;
+}
+
+.mxds-yearMarker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+
+  font-weight: 900;
+  font-size: 13px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(249,161,1,0.95),
+    rgba(249,161,1,0.75)
+  );
+  color: white;
+
+  box-shadow: 0 8px 22px rgba(249,161,1,0.35);
+}
+
+.mxds-yearMarker::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  border: 2px solid rgba(249,161,1,0.35);
+}
+
+@media (max-width: 768px) {
+  .mxds-timeline::before {
+    display: none;
+  }
+
+  .mxds-timelineYear {
+    padding-left: 0;
+  }
+
+  .mxds-yearMarker {
+    position: relative;
+    margin-bottom: 16px;
+  }
+}

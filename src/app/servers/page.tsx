@@ -5,6 +5,7 @@ import { fetchServerStatuses } from "@/lib/fetchServerStatuses";
 
 export type ServerItem = {
   name: string;
+  year: string; 
   serverId?: string;
   tag: "Roleplay" | "Zombie"| "Barilan";
   logoUrl?: string;
@@ -22,6 +23,7 @@ export type ServerLiveState = {
 export const SERVERS: ServerItem[] = [
   {
     name: "Breakthrough Bay City",
+    year: "2026",
     serverId: "3myody",
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/BBC_NO_BG_Logo.png",
@@ -31,6 +33,7 @@ export const SERVERS: ServerItem[] = [
   },
   {
     name: "London Roleplay",
+    year: "2026",
     serverId: "qlol3p",
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/london1024.png",
@@ -40,6 +43,7 @@ export const SERVERS: ServerItem[] = [
   },
   {
     name: "Rivals City",
+    year: "2025",
     tag: "Barilan",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/rivals1024.png",
     discordUrl: "https://discord.gg/REPLACE_RIVALS",
@@ -48,6 +52,7 @@ export const SERVERS: ServerItem[] = [
   },
   {
     name: "Highdays Cali",
+    year: "2025",
     tag: "Barilan",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/highdays1024.png",
     discordUrl: "https://discord.gg/REPLACE_HIGHDAYS",
@@ -56,6 +61,7 @@ export const SERVERS: ServerItem[] = [
   },
   {
     name: "BINI City",
+    year: "2025",
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/bini1024.png",
     discordUrl: "https://discord.gg/REPLACE_HIGHDAYS",
@@ -64,6 +70,7 @@ export const SERVERS: ServerItem[] = [
   },
   {
     name: "District 8",
+    year: "2025",
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/district8.png",
     discordUrl: "https://discord.gg/REPLACE_HIGHDAYS",
@@ -72,6 +79,7 @@ export const SERVERS: ServerItem[] = [
   },
   {
     name: "The Hallows City: Blackout",
+    year: "2025",
     tag: "Zombie",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/thc.png",
     discordUrl: "https://discord.gg/REPLACE_HALLOWS",
@@ -80,6 +88,7 @@ export const SERVERS: ServerItem[] = [
   },
   {
     name: "SouthSide City",
+    year: "2025",
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/ss1024.png",
     discordUrl: "https://discord.gg/REPLACE_SOUTHSIDE",
@@ -88,6 +97,7 @@ export const SERVERS: ServerItem[] = [
   },
   {
     name: "Cavite City Reborn",
+    year: "2025",
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/cavite1024.png",
     discordUrl: "https://discord.gg/REPLACE_ESCOLTA",
@@ -96,6 +106,7 @@ export const SERVERS: ServerItem[] = [
   },
   {
     name: "Escolta RP",
+    year: "2024",
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/escolta1024.png",
     discordUrl: "https://discord.gg/REPLACE_ESCOLTA",
@@ -104,6 +115,7 @@ export const SERVERS: ServerItem[] = [
   },
   {
     name: "Trinity Roleplay",
+    year: "2024",
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/trinity1024.png",
     discordUrl: "https://discord.gg/REPLACE_TRINITY",
@@ -112,6 +124,7 @@ export const SERVERS: ServerItem[] = [
   },
   {
     name: "City of Hope Reunited",
+    year: "2024",
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/COH_1024.png",
     discordUrl: "https://discord.gg/REPLACE_COH",
@@ -120,6 +133,7 @@ export const SERVERS: ServerItem[] = [
   },
   {
     name: "Blackrose Roleplay",
+    year: "2024",
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/br1024.png",
     discordUrl: "https://discord.gg/REPLACE_BLACKROSE",
@@ -128,6 +142,7 @@ export const SERVERS: ServerItem[] = [
   },
   {
     name: "Autonomy RP",
+    year: "2024",
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/autonomy1024.png",
     discordUrl: "https://discord.gg/REPLACE_AUTONOMY",
@@ -136,6 +151,7 @@ export const SERVERS: ServerItem[] = [
   },
   {
     name: "New Horizon RP",
+    year: "2024",
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/newhorizon1024.png",
     discordUrl: "https://discord.gg/REPLACE_NEWHORIZON",
@@ -144,6 +160,7 @@ export const SERVERS: ServerItem[] = [
   },
   {
     name: "Haven City",
+    year: "2024",
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/HAVEN_1024.png",
     discordUrl: "https://discord.gg/REPLACE_HAVEN",
@@ -152,6 +169,7 @@ export const SERVERS: ServerItem[] = [
   },
   {
     name: "Majesty City V2",
+    year: "2023",
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/mjsty_1024.png",
     discordUrl: "https://discord.gg/REPLACE_MAJESTY",
@@ -173,11 +191,19 @@ export default function ServersPage() {
 
     loadStatuses();
   }, []);
+  const groupedByYear = SERVERS.reduce((acc, server) => {
+    if (!acc[server.year]) acc[server.year] = [];
+    acc[server.year].push(server);
+    return acc;
+  }, {} as Record<string, ServerItem[]>);
+
+  const sortedYears = Object.keys(groupedByYear).sort(
+    (a, b) => Number(b) - Number(a)
+  );
 
   return (
     <div className="mxds-svPage">
       <div className="mxds-container">
-
         <div className="mxds-center mxds-svHeader mxds-reveal">
           <h1 className="mxds-pageTitle">
             Servers I've Handled
@@ -188,105 +214,117 @@ export default function ServersPage() {
             managed, and maintained.
           </p>
         </div>
-
-        <div className="mxds-serverGrid">
-          {SERVERS.map((server, index) => {
-            const live = liveData[server.name];
-            const isOnline = live?.status === "Online";
-
-            return (
+        <div className="mxds-timeline">
+          {sortedYears.map((year, yearIndex) => (
+            <div key={year} className="mxds-timelineYear">
               <div
-                key={server.name}
-                className="mxds-card mxds-serverCard mxds-svCard mxds-reveal"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="mxds-yearMarker mxds-reveal"
+                style={{ animationDelay: `${yearIndex * 150}ms` }}
               >
-                <div className="mxds-svAvatar">
-                  {server.logoUrl ? (
-                    <img
-                      src={server.logoUrl}
-                      alt={server.name}
-                      className="mxds-svAvatarImg"
-                    />
-                  ) : (
-                    <div className="mxds-serverLogoInner" />
-                  )}
-                </div>
-
-                <div className="mxds-serverTitleRow">
-                  <div className="mxds-serverName">
-                    {server.name}
-                  </div>
-
-                  <div className="mxds-serverMeta">
-                    <span className="mxds-tag">
-                      {server.tag}
-                    </span>
-
-                    {isOnline && (
-                      <span className="mxds-status mxds-statusOnline">
-                        <span className="mxds-dot" />
-                        Online
-                      </span>
-                    )}
-
-                    {live?.status === "Offline" && (
-                      <span className="mxds-status mxds-statusOffline">
-                        <span className="mxds-dot" />
-                        Offline
-                      </span>
-                    )}
-
-                    {!live && (
-                      <span className="mxds-status mxds-statusChecking">
-                        <span className="mxds-dot" />
-                        Checking
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {isOnline && (
-                  <div className="mxds-playerCount">
-                    {live?.players}/{live?.maxPlayers} Players
-                  </div>
-                )}
-
-                <p className="mxds-serverDesc">
-                  {server.serverDesc}
-                </p>
-
-                <div className="mxds-kfTitle">
-                  Key Features
-                </div>
-
-                <div className="mxds-kfRow">
-                  {server.keyFeatures.slice(0, 2).map((f) => (
-                    <span key={f}>{f}</span>
-                  ))}
-                </div>
-
-                {server.keyFeatures.length > 2 && (
-                  <div className="mxds-kfLast">
-                    {server.keyFeatures.slice(2).join(" • ")}
-                  </div>
-                )}
-
-                <hr className="mxds-hr" />
-
-                {isOnline && server.discordUrl && (
-                  <a
-                    href={server.discordUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mxds-joinBtn mxds-svJoinEnter"
-                    style={{ animationDelay: `${index * 100 + 200}ms` }}
-                  >
-                    Join Server
-                  </a>
-                )}
+                {year}
               </div>
-            );
-          })}
+              <div className="mxds-serverGrid">
+                {groupedByYear[year].map((server, index) => {
+                  const live = liveData[server.name];
+                  const isOnline = live?.status === "Online";
+
+                  return (
+                    <div
+                      key={server.name}
+                      className="mxds-card mxds-serverCard mxds-svCard mxds-reveal"
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      <div className="mxds-svAvatar">
+                        {server.logoUrl ? (
+                          <img
+                            src={server.logoUrl}
+                            alt={server.name}
+                            className="mxds-svAvatarImg"
+                          />
+                        ) : (
+                          <div className="mxds-serverLogoInner" />
+                        )}
+                      </div>
+
+                      <div className="mxds-serverTitleRow">
+                        <div className="mxds-serverName">
+                          {server.name}
+                        </div>
+
+                        <div className="mxds-serverMeta">
+                          <span className="mxds-tag">
+                            {server.tag}
+                          </span>
+
+                          {isOnline && (
+                            <span className="mxds-status mxds-statusOnline">
+                              <span className="mxds-dot" />
+                              Online
+                            </span>
+                          )}
+
+                          {live?.status === "Offline" && (
+                            <span className="mxds-status mxds-statusOffline">
+                              <span className="mxds-dot" />
+                              Offline
+                            </span>
+                          )}
+
+                          {!live && (
+                            <span className="mxds-status mxds-statusChecking">
+                              <span className="mxds-dot" />
+                              Checking
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      {isOnline && (
+                        <div className="mxds-playerCount">
+                          {live?.players}/{live?.maxPlayers} Players
+                        </div>
+                      )}
+
+                      <p className="mxds-serverDesc">
+                        {server.serverDesc}
+                      </p>
+
+                      <div className="mxds-kfTitle">
+                        Key Features
+                      </div>
+
+                      <div className="mxds-kfRow">
+                        {server.keyFeatures.slice(0, 2).map((f) => (
+                          <span key={f}>{f}</span>
+                        ))}
+                      </div>
+
+                      {server.keyFeatures.length > 2 && (
+                        <div className="mxds-kfLast">
+                          {server.keyFeatures.slice(2).join(" • ")}
+                        </div>
+                      )}
+
+                      <hr className="mxds-hr" />
+
+                      {isOnline && server.discordUrl && (
+                        <a
+                          href={server.discordUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mxds-joinBtn mxds-svJoinEnter"
+                          style={{ animationDelay: `${index * 100 + 200}ms` }}
+                        >
+                          Join Server
+                        </a>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+            </div>
+          ))}
         </div>
 
       </div>
