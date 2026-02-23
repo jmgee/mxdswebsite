@@ -176,105 +176,119 @@ export default function ServersPage() {
 
   return (
     <div className="mxds-svPage">
-      <div className="mxds-serverGrid">
-        {SERVERS.map((server, index) => {
-          const live = liveData[server.name];
+      <div className="mxds-container">
 
-          const isOnline = live?.status === "Online";
+        <div className="mxds-center mxds-svHeader mxds-reveal">
+          <h1 className="mxds-pageTitle">
+            Servers I've Handled
+          </h1>
 
-          return (
-            <div
-              key={server.name}
-              className="mxds-card mxds-serverCard mxds-svCard mxds-reveal"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="mxds-svAvatar">
-                {server.logoUrl ? (
-                  <img
-                    src={server.logoUrl}
-                    alt={server.name}
-                    className="mxds-svAvatarImg"
-                  />
-                ) : (
-                  <div className="mxds-serverLogoInner" />
+          <p className="mxds-pageLead">
+            Here are some of the successful FiveM servers I've developed,
+            managed, and maintained.
+          </p>
+        </div>
+
+        <div className="mxds-serverGrid">
+          {SERVERS.map((server, index) => {
+            const live = liveData[server.name];
+            const isOnline = live?.status === "Online";
+
+            return (
+              <div
+                key={server.name}
+                className="mxds-card mxds-serverCard mxds-svCard mxds-reveal"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="mxds-svAvatar">
+                  {server.logoUrl ? (
+                    <img
+                      src={server.logoUrl}
+                      alt={server.name}
+                      className="mxds-svAvatarImg"
+                    />
+                  ) : (
+                    <div className="mxds-serverLogoInner" />
+                  )}
+                </div>
+
+                <div className="mxds-serverTitleRow">
+                  <div className="mxds-serverName">
+                    {server.name}
+                  </div>
+
+                  <div className="mxds-serverMeta">
+                    <span className="mxds-tag">
+                      {server.tag}
+                    </span>
+
+                    {isOnline && (
+                      <span className="mxds-status mxds-statusOnline">
+                        <span className="mxds-dot" />
+                        Online
+                      </span>
+                    )}
+
+                    {live?.status === "Offline" && (
+                      <span className="mxds-status mxds-statusOffline">
+                        <span className="mxds-dot" />
+                        Offline
+                      </span>
+                    )}
+
+                    {!live && (
+                      <span className="mxds-status mxds-statusChecking">
+                        <span className="mxds-dot" />
+                        Checking
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {isOnline && (
+                  <div className="mxds-playerCount">
+                    {live?.players}/{live?.maxPlayers} Players
+                  </div>
+                )}
+
+                <p className="mxds-serverDesc">
+                  {server.serverDesc}
+                </p>
+
+                <div className="mxds-kfTitle">
+                  Key Features
+                </div>
+
+                <div className="mxds-kfRow">
+                  {server.keyFeatures.slice(0, 2).map((f) => (
+                    <span key={f}>{f}</span>
+                  ))}
+                </div>
+
+                {server.keyFeatures.length > 2 && (
+                  <div className="mxds-kfLast">
+                    {server.keyFeatures.slice(2).join(" • ")}
+                  </div>
+                )}
+
+                <hr className="mxds-hr" />
+
+                {isOnline && server.discordUrl && (
+                  <a
+                    href={server.discordUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mxds-joinBtn mxds-svJoinEnter"
+                    style={{ animationDelay: `${index * 100 + 200}ms` }}
+                  >
+                    Join Server
+                  </a>
                 )}
               </div>
+            );
+          })}
+        </div>
 
-              <div className="mxds-serverTitleRow">
-                <div className="mxds-serverName">
-                  {server.name}
-                </div>
-
-                <div className="mxds-serverMeta">
-                  <span className="mxds-tag">
-                    {server.tag}
-                  </span>
-
-                  {isOnline && (
-                    <span className="mxds-status mxds-statusOnline">
-                      <span className="mxds-dot" />
-                      Online
-                    </span>
-                  )}
-
-                  {live?.status === "Offline" && (
-                    <span className="mxds-status mxds-statusOffline">
-                      <span className="mxds-dot" />
-                      Offline
-                    </span>
-                  )}
-
-                  {!live && (
-                    <span className="mxds-status mxds-statusChecking">
-                      <span className="mxds-dot" />
-                      Checking
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              {isOnline && (
-                <div className="mxds-playerCount">
-                  {live?.players}/{live?.maxPlayers} Players
-                </div>
-              )}
-
-              <p className="mxds-serverDesc">
-                {server.serverDesc}
-              </p>
-
-              <div className="mxds-kfTitle">
-                Key Features
-              </div>
-
-              <div className="mxds-kfRow">
-                {server.keyFeatures.slice(0, 2).map((f) => (
-                  <span key={f}>{f}</span>
-                ))}
-              </div>
-
-              {server.keyFeatures.length > 2 && (
-                <div className="mxds-kfLast">
-                  {server.keyFeatures.slice(2).join(" • ")}
-                </div>
-              )}
-
-              <hr className="mxds-hr" />
-
-              {isOnline && server.discordUrl && (
-                <a
-                  href={server.discordUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mxds-joinBtn mxds-svJoinEnter"
-                  style={{ animationDelay: `${index * 100 + 200}ms` }}
-                >
-                  Join Server
-                </a>
-              )}
-            </div>
-          );
-        })}
       </div>
     </div>
   );
