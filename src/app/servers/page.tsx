@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import styles from "./servers.module.css";
 import { fetchServerStatuses } from "@/lib/fetchServerStatuses";
 
 export type ServerItem = {
@@ -19,6 +18,7 @@ export type ServerLiveState = {
   players?: number;
   maxPlayers?: number;
 };
+
 
 export const SERVERS: ServerItem[] = [
   {
@@ -176,77 +176,102 @@ export default function ServersPage() {
   }, []);
 
   return (
-    <div className={styles.page}>
-      <div className={styles.grid}>
+    <div className="mxds-svPage">
+      <div className="mxds-serverGrid">
         {SERVERS.map((server, index) => {
           const live = liveData[server.name];
 
           return (
-            <article
+            <div
               key={server.name}
-              className={`${styles.card} ${styles.cardEnter}`}
-              style={{ animationDelay: `${index * 120}ms` }}
+              className="mxds-card mxds-serverCard mxds-svCard mxds-reveal"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className={styles.logoWrap}>
-                {server.logoUrl && (
+              <div className="mxds-svAvatar">
+                {server.logoUrl ? (
                   <img
                     src={server.logoUrl}
                     alt={server.name}
-                    className={styles.logo}
+                    className="mxds-svAvatarImg"
                   />
+                ) : (
+                  <div className="mxds-serverLogoInner" />
                 )}
               </div>
 
-              <div className={styles.cardHeader}>
-                <h2 className={styles.title}>{server.name}</h2>
+              <div className="mxds-serverTitleRow">
+                <div className="mxds-serverName">
+                  {server.name}
+                </div>
 
-                <div className={styles.status}>
+                <div className="mxds-serverMeta">
+                  <span className="mxds-tag">
+                    {server.tag}
+                  </span>
+
                   {live?.status === "Online" && (
-                    <span className={styles.online}>
-                      ● Online ({live.players}/{live.maxPlayers})
+                    <span className="mxds-status mxds-statusOnline">
+                      <span className="mxds-dot" />
+                      Online
                     </span>
                   )}
 
                   {live?.status === "Offline" && (
-                    <span className={styles.offline}>
-                      ● Offline
+                    <span className="mxds-status mxds-statusOffline">
+                      <span className="mxds-dot" />
+                      Offline
                     </span>
                   )}
 
                   {!live && (
-                    <span className={styles.checking}>
-                      ● Checking...
+                    <span className="mxds-status mxds-statusChecking">
+                      <span className="mxds-dot" />
+                      Checking
                     </span>
                   )}
                 </div>
               </div>
-              <p className={styles.description}>
+
+              {live?.status === "Online" && (
+                <div className="mxds-playerCount">
+                  {live.players}/{live.maxPlayers} Players
+                </div>
+              )}
+
+              <p className="mxds-serverDesc">
                 {server.serverDesc}
               </p>
-              <ul className={styles.features}>
-                {server.keyFeatures.map((feature, i) => (
-                  <li
-                    key={feature}
-                    className={styles.feature}
-                    style={{ animationDelay: `${index * 120 + i * 60}ms` }}
-                  >
-                    ✓ {feature}
-                  </li>
-                ))}
-              </ul>
-              <div className={styles.cardFooter}>
-                {server.discordUrl && (
-                  <a
-                    href={server.discordUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.discordBtn}
-                  >
-                    Join Discord →
-                  </a>
-                )}
+
+              <div className="mxds-kfTitle">
+                Key Features
               </div>
-            </article>
+
+              <div className="mxds-kfRow">
+                {server.keyFeatures.slice(0, 2).map((f) => (
+                  <span key={f}>{f}</span>
+                ))}
+              </div>
+
+              {server.keyFeatures.length > 2 && (
+                <div className="mxds-kfLast">
+                  {server.keyFeatures.slice(2).join(" • ")}
+                </div>
+              )}
+
+              <hr className="mxds-hr" />
+
+              {server.discordUrl && (
+                <a
+                  href={server.discordUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mxds-joinBtn mxds-svJoinEnter"
+                  style={{ animationDelay: `${index * 100 + 200}ms` }}
+                >
+                  Join Server
+                </a>
+              )}
+            </div>
           );
         })}
       </div>
