@@ -19,7 +19,6 @@ export type ServerLiveState = {
   maxPlayers?: number;
 };
 
-
 export const SERVERS: ServerItem[] = [
   {
     name: "Breakthrough Bay City",
@@ -181,6 +180,8 @@ export default function ServersPage() {
         {SERVERS.map((server, index) => {
           const live = liveData[server.name];
 
+          const isOnline = live?.status === "Online";
+
           return (
             <div
               key={server.name}
@@ -209,7 +210,7 @@ export default function ServersPage() {
                     {server.tag}
                   </span>
 
-                  {live?.status === "Online" && (
+                  {isOnline && (
                     <span className="mxds-status mxds-statusOnline">
                       <span className="mxds-dot" />
                       Online
@@ -232,9 +233,9 @@ export default function ServersPage() {
                 </div>
               </div>
 
-              {live?.status === "Online" && (
+              {isOnline && (
                 <div className="mxds-playerCount">
-                  {live.players}/{live.maxPlayers} Players
+                  {live?.players}/{live?.maxPlayers} Players
                 </div>
               )}
 
@@ -260,7 +261,7 @@ export default function ServersPage() {
 
               <hr className="mxds-hr" />
 
-              {server.discordUrl && (
+              {isOnline && server.discordUrl && (
                 <a
                   href={server.discordUrl}
                   target="_blank"
