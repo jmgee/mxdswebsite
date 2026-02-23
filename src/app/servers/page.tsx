@@ -32,16 +32,6 @@ export const SERVERS: ServerItem[] = [
     keyFeatures: ["Optimized Scripts", "Advanced Lua Scripting", "MySQL Database Integration"],
   },
   {
-    name: "London Roleplay",
-    year: "2026",
-    serverId: "qlol3p",
-    tag: "Roleplay",
-    logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/london1024.png",
-    discordUrl: "https://discord.gg/GhDFMuVqUU",
-    serverDesc: "An immersive QB-Core London Based Roleplay Server with custom scripts and systems.",
-    keyFeatures: ["Optimized Scripts", "Advanced Lua Scripting", "MySQL Database Integration"],
-  },
-  {
     name: "Rivals City",
     year: "2025",
     tag: "Barilan",
