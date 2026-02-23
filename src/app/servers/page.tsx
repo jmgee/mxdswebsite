@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import styles from "./servers.module.css";
 import { fetchServerStatuses } from "@/lib/fetchServerStatuses";
 
 export type ServerItem = {
@@ -161,14 +162,9 @@ export const SERVERS: ServerItem[] = [
 ];
 
 export default function ServersPage() {
-  const [mounted, setMounted] = useState(false);
   const [liveData, setLiveData] = useState<
     Record<string, ServerLiveState>
   >({});
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     async function loadStatuses() {
@@ -180,25 +176,80 @@ export default function ServersPage() {
   }, []);
 
   return (
-    <div>
-      {SERVERS.map((server) => {
-        const live = liveData[server.name];
+    <div className={styles.page}>
+      <div className={styles.grid}>
+        {SERVERS.map((server, index) => {
+          const live = liveData[server.name];
 
-        return (
-          <div key={server.name}>
-            <h3>{server.name}</h3>
+          return (
+            <article
+              key={server.name}
+              className={`${styles.card} ${styles.cardEnter}`}
+              style={{ animationDelay: `${index * 120}ms` }}
+            >
+              <div className={styles.logoWrap}>
+                {server.logoUrl && (
+                  <img
+                    src={server.logoUrl}
+                    alt={server.name}
+                    className={styles.logo}
+                  />
+                )}
+              </div>
 
-            {live?.status === "Online" && (
-              <p>
-                🟢 Online ({live.players}/{live.maxPlayers})
+              <div className={styles.cardHeader}>
+                <h2 className={styles.title}>{server.name}</h2>
+
+                <div className={styles.status}>
+                  {live?.status === "Online" && (
+                    <span className={styles.online}>
+                      ● Online ({live.players}/{live.maxPlayers})
+                    </span>
+                  )}
+
+                  {live?.status === "Offline" && (
+                    <span className={styles.offline}>
+                      ● Offline
+                    </span>
+                  )}
+
+                  {!live && (
+                    <span className={styles.checking}>
+                      ● Checking...
+                    </span>
+                  )}
+                </div>
+              </div>
+              <p className={styles.description}>
+                {server.serverDesc}
               </p>
-            )}
-
-            {live?.status === "Offline" && <p>🔴 Offline</p>}
-            {!live && <p>Checking...</p>}
-          </div>
-        );
-      })}
+              <ul className={styles.features}>
+                {server.keyFeatures.map((feature, i) => (
+                  <li
+                    key={feature}
+                    className={styles.feature}
+                    style={{ animationDelay: `${index * 120 + i * 60}ms` }}
+                  >
+                    ✓ {feature}
+                  </li>
+                ))}
+              </ul>
+              <div className={styles.cardFooter}>
+                {server.discordUrl && (
+                  <a
+                    href={server.discordUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.discordBtn}
+                  >
+                    Join Discord →
+                  </a>
+                )}
+              </div>
+            </article>
+          );
+        })}
+      </div>
     </div>
   );
 }
