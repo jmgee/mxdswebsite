@@ -6,7 +6,7 @@ import { fetchServerStatuses } from "@/lib/fetchServerStatuses";
 export type ServerItem = {
   name: string;
   serverId?: string;
-  tag: "Roleplay" | "Zombie";
+  tag: "Roleplay" | "Zombie"| "Barilan";
   logoUrl?: string;
   discordUrl?: string;
   serverDesc: string;
@@ -36,23 +36,23 @@ export const SERVERS: ServerItem[] = [
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/london1024.png",
     discordUrl: "https://discord.gg/GhDFMuVqUU",
     serverDesc: "An immersive QB-Core London Based Roleplay Server with custom scripts and systems.",
-    keyFeatures: ["50K Cash Starting", "Semi Serious RP"],
+    keyFeatures: ["Optimized Scripts", "Advanced Lua Scripting", "MySQL Database Integration"],
   },
   {
     name: "Rivals City",
-    tag: "Roleplay",
+    tag: "Barilan",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/rivals1024.png",
     discordUrl: "https://discord.gg/REPLACE_RIVALS",
     serverDesc: "An immersive PVP PH Based Roleplay Server with custom scripts and systems.",
-    keyFeatures: ["Barilan Server", "Advanced Cardealer System"],
+    keyFeatures: ["Optimized Scripts", "Advanced Lua Scripting", "MySQL Database Integration"],
   },
   {
     name: "Highdays Cali",
-    tag: "Roleplay",
+    tag: "Barilan",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/highdays1024.png",
     discordUrl: "https://discord.gg/REPLACE_HIGHDAYS",
     serverDesc: "An immersive PVP PH Based Roleplay Server with custom scripts and systems.",
-    keyFeatures: ["Barilan Server", "Low Resources & Optimized"],
+    keyFeatures: ["Optimized Scripts", "Advanced Lua Scripting", "MySQL Database Integration"],
   },
   {
     name: "BINI City",
@@ -67,8 +67,8 @@ export const SERVERS: ServerItem[] = [
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/district8.png",
     discordUrl: "https://discord.gg/REPLACE_HIGHDAYS",
-    serverDesc: "An immersive Qbox Roleplay Server with custom scripts and systems.",
-    keyFeatures: ["Serious RP", "Qbox Framework"],
+    serverDesc: "An immersive US Roleplay Server with custom scripts and systems.",
+    keyFeatures: ["Optimized Scripts", "Advanced Lua Scripting", "MySQL Database Integration"],
   },
   {
     name: "The Hallows City: Blackout",
