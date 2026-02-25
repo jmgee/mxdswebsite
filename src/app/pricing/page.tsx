@@ -31,9 +31,6 @@ const PLANS: Plan[] = [
       "Minor Script Bug/Exploit Fixes",
       "Fully Managed Server",
       "Live Chat Support thru Discord",
-      "Scheduled Development Support (Weekdays & Weekends Only)",
-      "Weekday Availability: Mon & Wed: 6PM until 9PM | Tue & Fri: 8AM until 9PM | Thu: 4PM until 9PM",
-      "Weekend Availability: Sat & Sun: 12PM until 12AM",
     ],
     note: "Excludes major custom script creations",
     variant: "standard",
@@ -69,13 +66,12 @@ const PLAN_NOTES = {
     `Please review the Terms & Agreement in the “Store Terms” channel on our Discord server before purchasing.`,
   ],
   basic: [
-    `A 50% down payment is required before work begins (via the available payment options).`,
-    `This plan does not include a Server Pack or a Clothing Pack.`,
+    `Weekday Availability: Mon & Wed: 6PM until 9PM | Tue & Fri: 8AM until 9PM | Thu: 4PM until 9PM.`,
+    `Weekend Availability: Sat & Sun: 12PM until 12AM`,
   ],
   premium: [
-    `Full payment (100%) is required upon opening the ticket.`,
-    `A Server Pack is included and will be tailored to your server’s needs.`,
-    `A Clothing Pack is not included.`,
+    `Weekday Availability: Mon & Wed: 6PM onwards | Tue & Fri: 7AM onwards | Thu: 4PM onwards`,
+    `Weekend Availability: Open Schedule (Available Throughout the Day)`,
   ],
 };
 
@@ -174,7 +170,7 @@ export default function PricingPage() {
             <div className={styles.notesGroup}>
               <div className={styles.notesGroupTitle}>
                 <span>Basic Setup Plan</span>
-                <span className={styles.notesTag}>50% DOWN</span>
+                <span className={styles.notesTag}>Schedule</span>
               </div>
               <ul className={styles.notesList}>
                 {PLAN_NOTES.basic.map((n) => (
@@ -186,7 +182,7 @@ export default function PricingPage() {
             <div className={styles.notesGroup}>
               <div className={styles.notesGroupTitle}>
                 <span>Premium Setup Plan</span>
-                <span className={styles.notesTag}>100% UPON TICKET</span>
+                <span className={styles.notesTag}>Schedule</span>
               </div>
               <ul className={styles.notesList}>
                 {PLAN_NOTES.premium.map((n) => (
