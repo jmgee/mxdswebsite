@@ -335,10 +335,10 @@
 }
 
 .cardFeatured {
-  grid-column: 1 / -1;      /* span full row (both columns) */
-  justify-self: center;     /* center within the grid row */
+  grid-column: 1 / -1;      
+  justify-self: center;     
   width: 100%;
-  max-width: 520px;         /* adjust to taste (matches screenshot feel) */
+  max-width: 520px;         
   z-index: 2;
 }
 
