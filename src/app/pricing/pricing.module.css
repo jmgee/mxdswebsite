@@ -335,9 +335,32 @@
 }
 
 .cardFeatured {
-  position: relative;
-  overflow: hidden;
+  grid-column: 1 / -1;      /* span full row (both columns) */
+  justify-self: center;     /* center within the grid row */
+  width: 100%;
+  max-width: 520px;         /* adjust to taste (matches screenshot feel) */
+  z-index: 2;
 }
+
+.cardFeatured {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.14);
+}
+
+.cardFeatured:hover {
+  transform: translateY(-8px);
+}
+
+@media (max-width: 920px) {
+  .cardFeatured {
+    max-width: none;
+    transform: none;
+  }
+  .cardFeatured:hover {
+    transform: translateY(-4px);
+  }
+}
+
 .cardFeatured::after {
   content: "";
   position: absolute;
