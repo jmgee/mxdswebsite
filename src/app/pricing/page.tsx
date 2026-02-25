@@ -22,14 +22,34 @@ const PLANS: Plan[] = [
     name: "Basic Setup Plan",
     subtitle: "Perfect for growing RP communities.",
     setupLabel: "Initial hiring fee",
-    setupPrice: "₱5,000",
-    monthlyPrice: "₱3,000 /month",
+    setupPrice: "₱3,000",
+    monthlyPrice: "₱2,500 /month",
     features: [
       "Full Resources/Scripts Configuration",
       "Server Configuration",
       "Resources/Assets Installation",
       "Minor Script Bug/Exploit Fixes",
-      "Fully Managed Server",
+      "Managed Server - monitoring, hosting setup/maintenance and database management",
+      "Turn around changes estimates: with in a day or up to 10 working days",
+      "Live Chat Support thru Discord",
+    ],
+    note: "Excludes major custom script creations",
+    variant: "standard",
+  },
+  {
+    name: "Advanced Setup Plan",
+    subtitle: "Perfect for growing RP communities.",
+    setupLabel: "Initial hiring fee",
+    setupPrice: "₱6,000",
+    monthlyPrice: "₱5,000 /month",
+    features: [
+      "Full Resources/Scripts Configuration",
+      "Server Configuration",
+      "Resources/Assets Installation",
+      "Minor & Major Script Bug/Exploit Fixes",
+      "Full Managed Server",
+      "Turn around changes estimates: with in a day or up to 5 working days",
+      "Emergency Script Fix Included",
       "Live Chat Support thru Discord",
     ],
     note: "Excludes major custom script creations",
@@ -39,8 +59,8 @@ const PLANS: Plan[] = [
     name: "Premium Setup Plan",
     subtitle: "Suitable for users who require comprehensive development.",
     setupLabel: "Initial hiring fee",
-    setupPrice: "₱10,000",
-    monthlyPrice: "₱5,000 /month",
+    setupPrice: "₱12,000",
+    monthlyPrice: "₱10,000 /month",
     features: [
       "Unique scripts development",
       "Full Resources/Scripts Configuration",
@@ -49,7 +69,7 @@ const PLANS: Plan[] = [
       "Minor & Major Script Bug/Exploit Fixes",
       "Custom Script Creations Included",
       "Full Script Optimize",
-      "Fully Managed Server (24/7 Support)",
+      "Full Managed Server (24/7 Support)",
       "Live Chat Support thru Discord (24/7 Support)",
     ],
     note: "Best for servers that want 24/7 developer support.",
@@ -166,7 +186,7 @@ export default function PricingPage() {
 
             <div className={styles.notesGroup}>
               <div className={styles.notesGroupTitle}>
-                <span>Basic Setup Plan</span>
+                <span>Basic & Advanced Setup Plan</span>
                 <span className={styles.notesTag}>Schedule</span>
               </div>
               <ul className={styles.notesList}>
