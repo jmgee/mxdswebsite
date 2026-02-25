@@ -335,32 +335,9 @@
 }
 
 .cardFeatured {
-  grid-column: 1 / -1;      
-  justify-self: center;     
-  width: 100%;
-  max-width: 520px;         
-  z-index: 2;
+  position: relative;
+  overflow: hidden;
 }
-
-.cardFeatured {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.14);
-}
-
-.cardFeatured:hover {
-  transform: translateY(-8px);
-}
-
-@media (max-width: 920px) {
-  .cardFeatured {
-    max-width: none;
-    transform: none;
-  }
-  .cardFeatured:hover {
-    transform: translateY(-4px);
-  }
-}
-
 .cardFeatured::after {
   content: "";
   position: absolute;
