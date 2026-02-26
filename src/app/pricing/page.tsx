@@ -65,9 +65,9 @@ const ALL_PLANS: Record<PlanCategory, Plan[]> = {
     {
       name: "SSRP Server Pack",
       subtitle: "Normal RP server pack perfect for grindings and casual RP.",
-      setupLabel: "One-time fee",
+      setupLabel: "Starting at",
       setupPrice: "₱10,000",
-      monthlyPrice: "No monthly",
+      monthlyPrice: "One-time fee",
       features: [
         "Latest ESX Core (Modified)",
         "Latest OX Scripts",
@@ -84,9 +84,9 @@ const ALL_PLANS: Record<PlanCategory, Plan[]> = {
     {
       name: "Barilan Server Pack",
       subtitle: "PVP focused server pack with custom scripts and features.",
-      setupLabel: "One-time fee",
+      setupLabel: "Starting at",
       setupPrice: "₱15,000",
-      monthlyPrice: "No monthly",
+      monthlyPrice: "One-time fee",
       features: [
         "Complete Server Resources & Scripts",
         "Open Source Scripts",
@@ -107,9 +107,9 @@ const ALL_PLANS: Record<PlanCategory, Plan[]> = {
     {
       name: "Clothing Pack",
       subtitle: "Thailand Clothing System",
-      setupLabel: "One-time fee",
+      setupLabel: "Starting at",
       setupPrice: "₱5,000",
-      monthlyPrice: "No monthly",
+      monthlyPrice: "One-time fee",
       features: [
         "Optimized Cloth Pack",
         "300+ Clothing Items",
@@ -122,7 +122,7 @@ const ALL_PLANS: Record<PlanCategory, Plan[]> = {
       subtitle: "Unique script development for your server.",
       setupLabel: "Starting at",
       setupPrice: "₱1,500",
-      monthlyPrice: "One-time",
+      monthlyPrice: "One-time fee",
       features: [
         "Fully Custom Script",
         "Optimized Performance",
