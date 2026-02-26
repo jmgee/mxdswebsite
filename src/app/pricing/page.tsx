@@ -64,7 +64,7 @@ const ALL_PLANS: Record<PlanCategory, Plan[]> = {
   server: [
     {
       name: "SSRP Server Pack",
-      subtitle: "Optimized server pack with modified scripts",
+      subtitle: "Normal RP server pack perfect for grindings and casual RP.",
       setupLabel: "One-time fee",
       setupPrice: "₱10,000",
       monthlyPrice: "No monthly",
@@ -83,13 +83,18 @@ const ALL_PLANS: Record<PlanCategory, Plan[]> = {
     },
     {
       name: "Barilan Server Pack",
-      subtitle: "Full open source server scripts with low resources",
+      subtitle: "PVP focused server pack with custom scripts and features.",
       setupLabel: "One-time fee",
       setupPrice: "₱15,000",
       monthlyPrice: "No monthly",
       features: [
         "Complete Server Resources & Scripts",
         "Open Source Scripts",
+        "Advanced Robbery System",
+        "Advanced Traphouse System (Unli)",
+        "Advanced Whitelisted Jobs System (Includes Custom Ambulance System)",
+        "Modified Gang System (Includes Unli Gang Car)",
+        "All in one resource Sidejobs System",
         "7 days of Free Support for Bug Fixes & Exploits",
       ],
       note: "Custom modifications require additional support",
