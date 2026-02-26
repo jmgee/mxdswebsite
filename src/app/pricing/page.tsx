@@ -100,17 +100,15 @@ const ALL_PLANS: Record<PlanCategory, Plan[]> = {
   others: [
     {
       name: "Clothing Pack",
-      subtitle: "Complete Thailand Clothing system with 300+ items.",
+      subtitle: "Thailand Clothing System",
       setupLabel: "One-time fee",
       setupPrice: "₱5,000",
       monthlyPrice: "No monthly",
       features: [
-        "Server Audit",
-        "Resource Optimization",
-        "Database Review",
-        "Performance Report",
+        "Optimized Cloth Pack",
+        "300+ Clothing Items",
       ],
-      note: "Ideal for struggling servers.",
+      note: "Includes installation and configuration.",
       variant: "standard",
     },
     {
@@ -170,18 +168,6 @@ export default function PricingPage() {
     others: "Other Services",
   };
 
-  const CATEGORY_NOTES = {
-    fivem: PLAN_NOTES.basic.concat(PLAN_NOTES.premium),
-    server: [
-      "Server Packs are pre-built configurations.",
-      "One-time payment. No recurring fee.",
-    ],
-    others: [
-      "Custom work pricing depends on complexity.",
-      "Turnaround time varies per request.",
-    ],
-  };
-
   return (
     <div className={`${styles.page} ${styles.pageEnter}`}>
       <header className={styles.header}>
@@ -218,7 +204,6 @@ export default function PricingPage() {
               </button>
             ))}
           </div>
-
           <span className={styles.pillWide}>
             <span className={styles.pillIcon} aria-hidden="true">
               <BriefcaseIcon />
@@ -236,54 +221,65 @@ export default function PricingPage() {
           </span>
         </div>
       </header>
-
       <section className={styles.grid} aria-label="Pricing plans">
         {ALL_PLANS[activeCategory].map((plan, idx) => (
           <PlanCard key={plan.name} plan={plan} index={idx} />
         ))}
       </section>
-
-
-      <section
-        className={`${styles.notesWrap} ${styles.notesEnter}`}
-        aria-label="Important notes for plans"
-        style={{ animationDelay: "780ms" }}
-      >
-        <div className={styles.notesCard}>
-          <div className={styles.notesHeader}>
-            <h3 className={styles.notesTitle}>Important Notes</h3>
-            <p className={styles.notesSub}>
-              Please read these before opening a ticket or sending payment.
-            </p>
-          </div>
-
-          <div className={styles.notesGrid}>
-            <div className={styles.notesGroup}>
-              <div className={styles.notesGroupTitle}>
-                <span>General</span>
-                <span className={styles.notesTag}>READ FIRST</span>
-              </div>
-              <ul className={styles.notesList}>
-                {PLAN_NOTES.general.map((n) => (
-                  <li key={n}>{n}</li>
-                ))}
-              </ul>
+      {activeCategory === "fivem" && (
+        <section
+          className={`${styles.notesWrap} ${styles.notesEnter}`}
+          aria-label="Important notes for plans"
+          style={{ animationDelay: "780ms" }}
+        >
+          <div className={styles.notesCard}>
+            <div className={styles.notesHeader}>
+              <h3 className={styles.notesTitle}>Important Notes</h3>
+              <p className={styles.notesSub}>
+                Please read these before opening a ticket or sending payment.
+              </p>
             </div>
 
-            <div className={styles.notesGroup}>
-              <div className={styles.notesGroupTitle}>
-                <span>{CATEGORY_LABELS[activeCategory]}</span>
-                <span className={styles.notesTag}>Details</span>
+            <div className={styles.notesGrid}>
+              <div className={styles.notesGroup}>
+                <div className={styles.notesGroupTitle}>
+                  <span>General</span>
+                  <span className={styles.notesTag}>READ FIRST</span>
+                </div>
+                <ul className={styles.notesList}>
+                  {PLAN_NOTES.general.map((n) => (
+                    <li key={n}>{n}</li>
+                  ))}
+                </ul>
               </div>
-              <ul className={styles.notesList}>
-                {CATEGORY_NOTES[activeCategory].map((n) => (
-                  <li key={n}>{n}</li>
-                ))}
-              </ul>
+
+              <div className={styles.notesGroup}>
+                <div className={styles.notesGroupTitle}>
+                  <span>Basic Setup Plan</span>
+                  <span className={styles.notesTag}>Schedule</span>
+                </div>
+                <ul className={styles.notesList}>
+                  {PLAN_NOTES.basic.map((n) => (
+                    <li key={n}>{n}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className={styles.notesGroup}>
+                <div className={styles.notesGroupTitle}>
+                  <span>Premium Setup Plan</span>
+                  <span className={styles.notesTag}>Schedule</span>
+                </div>
+                <ul className={styles.notesList}>
+                  {PLAN_NOTES.premium.map((n) => (
+                    <li key={n}>{n}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </div>
   );
 }
