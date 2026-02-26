@@ -17,47 +17,119 @@ type Plan = {
   variant: "standard" | "featured";
 };
 
-const PLANS: Plan[] = [
-  {
-    name: "Basic Setup Plan",
-    subtitle: "Perfect for growing RP communities.",
-    setupLabel: "Initial hiring fee",
-    setupPrice: "₱6,000",
-    monthlyPrice: "₱5,000 /month",
-    features: [
-      "Full Resources/Scripts Configuration",
-      "Server Configuration",
-      "Resources/Assets Installation",
-      "Minor & Major Script Bug/Exploit Fixes",
-      "Full Managed Server",
-      "Live Chat Support thru Discord",
-    ],
-    note: "Excludes major custom script creations",
-    variant: "standard",
-  },
-  {
-    name: "Premium Setup Plan",
-    subtitle: "Suitable for users who require comprehensive development.",
-    setupLabel: "Initial hiring fee",
-    setupPrice: "₱10,000",
-    monthlyPrice: "₱8,000 /month",
-    features: [
-      "Unique scripts development",
-      "Full Resources/Scripts Configuration",
-      "Server Configuration",
-      "Resources/Assets Installation",
-      "Minor & Major Script Bug/Exploit Fixes",
-      "Custom Script Creations Included",
-      "Full Script Optimize",
-      "Full Managed Server (24/7 Support)",
-      "Live Chat Support thru Discord (24/7 Support)",
-    ],
-    note: "Best for servers that want 24/7 developer support.",
-    popular: true,
-    variant: "featured",
-  },
-];
+type PlanCategory = "fivem" | "server" | "others";
 
+const ALL_PLANS: Record<PlanCategory, Plan[]> = {
+  fivem: [
+    {
+      name: "Basic Setup Plan",
+      subtitle: "Perfect for growing RP communities.",
+      setupLabel: "Initial hiring fee",
+      setupPrice: "₱6,000",
+      monthlyPrice: "₱5,000 /month",
+      features: [
+        "Full Resources/Scripts Configuration",
+        "Server Configuration",
+        "Resources/Assets Installation",
+        "Minor & Major Script Bug/Exploit Fixes",
+        "Full Managed Server",
+        "Live Chat Support thru Discord",
+      ],
+      note: "Excludes major custom script creations",
+      variant: "standard",
+    },
+    {
+      name: "Premium Setup Plan",
+      subtitle: "Suitable for users who require comprehensive development.",
+      setupLabel: "Initial hiring fee",
+      setupPrice: "₱10,000",
+      monthlyPrice: "₱8,000 /month",
+      features: [
+        "Unique scripts development",
+        "Full Resources/Scripts Configuration",
+        "Server Configuration",
+        "Resources/Assets Installation",
+        "Minor & Major Script Bug/Exploit Fixes",
+        "Custom Script Creations Included",
+        "Full Script Optimize",
+        "Full Managed Server (24/7 Support)",
+        "Live Chat Support thru Discord (24/7 Support)",
+      ],
+      note: "Best for servers that want 24/7 developer support.",
+      popular: true,
+      variant: "featured",
+    },
+  ],
+
+  server: [
+    {
+      name: "SSRP Server Pack",
+      subtitle: "Pre-configured optimized server template.",
+      setupLabel: "One-time fee",
+      setupPrice: "₱10,000",
+      monthlyPrice: "No monthly",
+      features: [
+        "Optimized Base Framework",
+        "Essential RP Scripts",
+        "Pre-configured Permissions",
+        "Performance Optimized",
+        "Installation Guide Included",
+      ],
+      note: "Best for new servers launching quickly.",
+      variant: "standard",
+    },
+    {
+      name: "Barilan Server Pack",
+      subtitle: "High-performance complete package.",
+      setupLabel: "One-time fee",
+      setupPrice: "₱15,000",
+      monthlyPrice: "No monthly",
+      features: [
+        "Premium Framework Setup",
+        "Advanced Economy System",
+        "Police & EMS Complete Setup",
+        "Optimized Database Structure",
+        "Security & Anti-Exploit Setup",
+      ],
+      note: "Complete ready-to-launch ecosystem.",
+      popular: true,
+      variant: "featured",
+    },
+  ],
+
+  others: [
+    {
+      name: "Clothing Pack",
+      subtitle: "Complete Thailand Clothing system with 300+ items.",
+      setupLabel: "One-time fee",
+      setupPrice: "₱5,000",
+      monthlyPrice: "No monthly",
+      features: [
+        "Server Audit",
+        "Resource Optimization",
+        "Database Review",
+        "Performance Report",
+      ],
+      note: "Ideal for struggling servers.",
+      variant: "standard",
+    },
+    {
+      name: "Custom Script Development",
+      subtitle: "Unique script development for your server.",
+      setupLabel: "Starting at",
+      setupPrice: "₱1,500",
+      monthlyPrice: "One-time",
+      features: [
+        "Fully Custom Script",
+        "Optimized Performance",
+        "Source Code Included",
+        "Bug Fix Warranty (7 Days)",
+      ],
+      note: "Pricing depends on complexity.",
+      variant: "standard",
+    },
+  ],
+};
 const PLAN_NOTES = {
   general: [
     `Please review the Terms & Agreement in the “Store Terms” channel on our Discord server before purchasing.`,
@@ -74,6 +146,9 @@ const PLAN_NOTES = {
 
 export default function PricingPage() {
   const [activeCount, setActiveCount] = useState<number | null>(null);
+  const [activeCategory, setActiveCategory] = useState<
+    "fivem" | "server" | "others"
+  >("fivem");
 
   useEffect(() => {
     async function loadActiveCount() {
@@ -88,6 +163,24 @@ export default function PricingPage() {
 
     loadActiveCount();
   }, []);
+
+  const CATEGORY_LABELS = {
+    fivem: "FiveM Development Plans",
+    server: "Server Packs",
+    others: "Other Services",
+  };
+
+  const CATEGORY_NOTES = {
+    fivem: PLAN_NOTES.basic.concat(PLAN_NOTES.premium),
+    server: [
+      "Server Packs are pre-built configurations.",
+      "One-time payment. No recurring fee.",
+    ],
+    others: [
+      "Custom work pricing depends on complexity.",
+      "Turnaround time varies per request.",
+    ],
+  };
 
   return (
     <div className={`${styles.page} ${styles.pageEnter}`}>
@@ -112,7 +205,19 @@ export default function PricingPage() {
           className={`${styles.pills} ${styles.reveal}`}
           style={{ animationDelay: "220ms" }}
         >
-          <span className={styles.pill}>FiveM Development Plans</span>
+          <div className={styles.tabSwitcher}>
+            {(["fivem", "server", "others"] as const).map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`${styles.tabBtn} ${
+                  activeCategory === cat ? styles.tabActive : ""
+                }`}
+              >
+                {CATEGORY_LABELS[cat]}
+              </button>
+            ))}
+          </div>
 
           <span className={styles.pillWide}>
             <span className={styles.pillIcon} aria-hidden="true">
@@ -133,10 +238,11 @@ export default function PricingPage() {
       </header>
 
       <section className={styles.grid} aria-label="Pricing plans">
-        {PLANS.map((plan, idx) => (
+        {ALL_PLANS[activeCategory].map((plan, idx) => (
           <PlanCard key={plan.name} plan={plan} index={idx} />
         ))}
       </section>
+
 
       <section
         className={`${styles.notesWrap} ${styles.notesEnter}`}
@@ -166,23 +272,11 @@ export default function PricingPage() {
 
             <div className={styles.notesGroup}>
               <div className={styles.notesGroupTitle}>
-                <span>Basic Setup Plan</span>
-                <span className={styles.notesTag}>Schedule</span>
+                <span>{CATEGORY_LABELS[activeCategory]}</span>
+                <span className={styles.notesTag}>Details</span>
               </div>
               <ul className={styles.notesList}>
-                {PLAN_NOTES.basic.map((n) => (
-                  <li key={n}>{n}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div className={styles.notesGroup}>
-              <div className={styles.notesGroupTitle}>
-                <span>Premium Setup Plan</span>
-                <span className={styles.notesTag}>Schedule</span>
-              </div>
-              <ul className={styles.notesList}>
-                {PLAN_NOTES.premium.map((n) => (
+                {CATEGORY_NOTES[activeCategory].map((n) => (
                   <li key={n}>{n}</li>
                 ))}
               </ul>
