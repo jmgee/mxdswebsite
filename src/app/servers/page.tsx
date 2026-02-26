@@ -21,6 +21,16 @@ export type ServerLiveState = {
 };
 
 export const SERVERS: ServerItem[] = [
+    {
+    name: "Hybrid City",
+    year: "2026",
+    serverId: "z57py9",
+    tag: "Barilan",
+    logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/hybrid1024.png",
+    discordUrl: "https://discord.gg/mcF9FS3ZJN",
+    serverDesc: "An immersive PVP & Car Community PH roleplay server with custom scripts and systems.",
+    keyFeatures: ["Optimized Scripts", "Advanced Lua Scripting", "MySQL Database Integration"],
+  },
   {
     name: "Breakthrough Bay City",
     year: "2026",
