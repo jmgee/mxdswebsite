@@ -32,11 +32,11 @@ export const SERVERS: ServerItem[] = [
     keyFeatures: ["Optimized Scripts", "Advanced Lua Scripting", "MySQL Database Integration"],
   },
   {
-    name: "Breakthrough Bay City",
+    name: "Ohana City V2",
     year: "2026",
     serverId: "3myody",
     tag: "Roleplay",
-    logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/BBC_NO_BG_Logo.png",
+    logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/Ohana1024.png",
     discordUrl: "https://discord.gg/NtfMAvJ8jG",
     serverDesc: "An immersive PH roleplay server with custom scripts and systems.",
     keyFeatures: ["Optimized Scripts", "Advanced Lua Scripting", "MySQL Database Integration"],
