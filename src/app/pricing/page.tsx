@@ -92,9 +92,8 @@ const ALL_PLANS: Record<PlanCategory, Plan[]> = {
         "Open Source Scripts",
         "Advanced Robbery System",
         "Advanced Traphouse System (Unli)",
-        "Advanced Whitelisted Jobs System (Includes Custom Ambulance System)",
+        "Custom Death System (Includes Death Screen)",
         "Modified Gang System (Includes Unli Gang Car)",
-        "All in one resource Sidejobs System",
         "7 days of Free Support for Bug Fixes & Exploits",
       ],
       note: "Custom modifications require additional support",
@@ -106,7 +105,7 @@ const ALL_PLANS: Record<PlanCategory, Plan[]> = {
   others: [
     {
       name: "Clothing Pack",
-      subtitle: "Thailand Clothing System",
+      subtitle: "Clothing System",
       setupLabel: "Starting at",
       setupPrice: "₱5,000",
       monthlyPrice: "One-time fee",
