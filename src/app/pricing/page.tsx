@@ -25,8 +25,8 @@ const ALL_PLANS: Record<PlanCategory, Plan[]> = {
       name: "Basic Setup Plan",
       subtitle: "Perfect for growing RP communities.",
       setupLabel: "Initial hiring fee",
-      setupPrice: "₱6,000",
-      monthlyPrice: "₱5,000 /month",
+      setupPrice: "₱5,000",
+      monthlyPrice: "₱3,000 /month",
       features: [
         "Full Resources/Scripts Configuration",
         "Server Configuration",
@@ -43,7 +43,7 @@ const ALL_PLANS: Record<PlanCategory, Plan[]> = {
       subtitle: "Suitable for users who require comprehensive development.",
       setupLabel: "Initial hiring fee",
       setupPrice: "₱10,000",
-      monthlyPrice: "₱8,000 /month",
+      monthlyPrice: "₱5,000 /month",
       features: [
         "Unique scripts development",
         "Full Resources/Scripts Configuration",
