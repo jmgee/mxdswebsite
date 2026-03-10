@@ -85,7 +85,7 @@ const ALL_PLANS: Record<PlanCategory, Plan[]> = {
       name: "Barilan Server Pack",
       subtitle: "PVP focused server pack with custom scripts and features.",
       setupLabel: "Starting at",
-      setupPrice: "₱15,000",
+      setupPrice: "₱10,000",
       monthlyPrice: "One-time fee",
       features: [
         "Complete Server Resources & Scripts",
