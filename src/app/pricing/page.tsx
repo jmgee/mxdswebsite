@@ -66,7 +66,7 @@ const ALL_PLANS: Record<PlanCategory, Plan[]> = {
       name: "SSRP Server Pack",
       subtitle: "Normal RP server pack perfect for grindings and casual RP.",
       setupLabel: "Starting at",
-      setupPrice: "₱10,000",
+      setupPrice: "₱8,000",
       monthlyPrice: "One-time fee",
       features: [
         "Latest ESX Core (Modified)",
