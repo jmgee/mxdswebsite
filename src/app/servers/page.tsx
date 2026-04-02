@@ -61,7 +61,7 @@ export const SERVERS: ServerItem[] = [
   },
   {
     name: "BINI City",
-    year: "2026",
+    year: "2025",
     serverId: "kr7g9r",
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/bini1024.png",
