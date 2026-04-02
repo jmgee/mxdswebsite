@@ -21,11 +21,11 @@ export type ServerLiveState = {
 };
 
 export const SERVERS: ServerItem[] = [
-    {
+  {
     name: "Hybrid City",
     year: "2026",
-    serverId: "z57py9",
-    tag: "Barilan",
+    serverId: "899ddm",
+    tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/hybrid1024.png",
     discordUrl: "https://discord.gg/mcF9FS3ZJN",
     serverDesc: "An immersive PVP & Car Community PH roleplay server with custom scripts and systems.",
@@ -61,12 +61,13 @@ export const SERVERS: ServerItem[] = [
   },
   {
     name: "BINI City",
-    year: "2025",
+    year: "2026",
+    serverId: "kr7g9r",
     tag: "Roleplay",
     logoUrl: "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/bini1024.png",
-    discordUrl: "https://discord.gg/REPLACE_HIGHDAYS",
-    serverDesc: "An immersive Semi-Serious RP Server with custom scripts and systems.",
-    keyFeatures: ["Semi Serious RP", "Low Resources"],
+    discordUrl: "https://discord.gg/nyXBkduAJb",
+    serverDesc: "An immersive roleplay server with custom scripts and systems.",
+    keyFeatures: ["Optimized Scripts", "Advanced Lua Scripting", "MySQL Database Integration"],
   },
   {
     name: "District 8",
