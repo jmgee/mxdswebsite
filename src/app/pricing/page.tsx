@@ -35,7 +35,7 @@ const ALL_PLANS: Record<PlanCategory, Plan[]> = {
         "Full Managed Server",
         "Live Chat Support thru Discord",
       ],
-      note: "Excludes major custom script creations",
+      note: "Includes standard server pack resources and scripts",
       variant: "standard",
     },
     {
@@ -55,7 +55,7 @@ const ALL_PLANS: Record<PlanCategory, Plan[]> = {
         "Full Managed Server (24/7 Support)",
         "Live Chat Support thru Discord (24/7 Support)",
       ],
-      note: "Best for servers that want 24/7 developer support.",
+      note: "Includes standard server pack resources and scripts",
       popular: true,
       variant: "featured",
     },
@@ -66,7 +66,7 @@ const ALL_PLANS: Record<PlanCategory, Plan[]> = {
       name: "SSRP Server Pack",
       subtitle: "Normal RP server pack perfect for grindings and casual RP.",
       setupLabel: "Starting at",
-      setupPrice: "₱8,000",
+      setupPrice: "₱5,000",
       monthlyPrice: "One-time fee",
       features: [
         "Latest ESX Core (Modified)",
