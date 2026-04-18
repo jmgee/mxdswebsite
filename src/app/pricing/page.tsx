@@ -107,7 +107,7 @@ const ALL_PLANS: Record<PlanCategory, Plan[]> = {
       name: "Clothing Pack",
       subtitle: "Clothing System",
       setupLabel: "Starting at",
-      setupPrice: "₱5,000",
+      setupPrice: "₱2,500",
       monthlyPrice: "One-time fee",
       features: [
         "Optimized Cloth Pack",
@@ -120,7 +120,7 @@ const ALL_PLANS: Record<PlanCategory, Plan[]> = {
       name: "Custom Script Development",
       subtitle: "Unique script development for your server.",
       setupLabel: "Starting at",
-      setupPrice: "₱1,500",
+      setupPrice: "₱1,000",
       monthlyPrice: "One-time fee",
       features: [
         "Fully Custom Script",
