@@ -23,21 +23,6 @@ const aboutStats = [
   },
 ] as const;
 
-const highlightStats = [
-  {
-    top: "ESX",
-    bottom: "Advanced Framework Work",
-  },
-  {
-    top: "QBCore",
-    bottom: "Modern Roleplay Systems",
-  },
-  {
-    top: "Qbox",
-    bottom: "Optimized Custom Setups",
-  },
-] as const;
-
 const leftSkills = [
   { name: "Lua Scripting", pct: 95, delayMs: 1030 },
   { name: "ESX", pct: 95, delayMs: 1110 },
@@ -119,7 +104,7 @@ export function ProfileView() {
         </section>
 
         <div className={styles.grid}>
-          <section className={styles.card} style={{ animationDelay: "720ms" }}>
+          <section className={`${styles.card} ${styles.gridFull}`} style={{ animationDelay: "720ms" }}>
             <h3 className={styles.cardTitle}>About Me</h3>
 
             <p className={styles.cardText}>
@@ -134,25 +119,6 @@ export function ProfileView() {
                   <div className={styles.statIcon} aria-hidden="true">
                     {item.icon}
                   </div>
-                  <p className={styles.statTop}>{item.top}</p>
-                  <p className={styles.statBottom}>{item.bottom}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className={styles.card} style={{ animationDelay: "820ms" }}>
-            <h3 className={styles.cardTitle}>Highlights</h3>
-
-            <p className={styles.cardText}>
-              I specialize in framework-based server development, performance-first scripting, and roleplay systems
-              built for long-term maintenance. My workflow focuses on reliability, scalability, and polished player
-              experience.
-            </p>
-
-            <div className={styles.stats} style={{ marginTop: 22 }}>
-              {highlightStats.map((item) => (
-                <div key={item.top} className={styles.stat}>
                   <p className={styles.statTop}>{item.top}</p>
                   <p className={styles.statBottom}>{item.bottom}</p>
                 </div>
