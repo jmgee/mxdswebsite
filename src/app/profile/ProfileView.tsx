@@ -78,6 +78,11 @@ export function ProfileView() {
               <span className={styles.type}>FiveM Developer</span>
             </div>
 
+            <p className={`${styles.heroLead} ${styles.reveal}`} style={{ animationDelay: "340ms" }}>
+              Building polished FiveM experiences with clean architecture, reliable performance, and custom systems
+              made to scale for roleplay communities.
+            </p>
+
             <div className={styles.chips}>
               {heroChips.map((chip, index) => (
                 <span
