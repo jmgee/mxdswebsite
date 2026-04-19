@@ -196,7 +196,7 @@ export function ContactView() {
                   target="_blank"
                   rel="noreferrer"
                   className={styles.discordBtn}
-                  aria-label="Join M Developments Discord (opens in a new tab)"
+                  aria-label="Join M Developments Discord"
                 >
                   Join Discord
                 </a>
