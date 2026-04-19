@@ -104,8 +104,7 @@ export function ServersView() {
           <h1 className={styles.heroTitle}>Servers I’ve Handled</h1>
 
           <p className={styles.heroLead}>
-            A curated timeline of FiveM communities I’ve developed, maintained, optimized, and supported —
-            from roleplay ecosystems to PvP and zombie experiences.
+            A curated timeline of FiveM communities I’ve developed, maintained, optimized, and supported.
           </p>
 
           <div className={styles.heroStats}>
