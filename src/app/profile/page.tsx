@@ -129,7 +129,7 @@ export default function ProfilePage() {
         <div className="mxds-heroIcon mxds-reveal" aria-hidden="true" style={{ animationDelay: "80ms" }}>
           <span className="mxds-heroGlow" />
           <img
-            src="https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/m1024.png"
+            src="https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/mxds1024.png"
             alt=""
             loading="eager"
             referrerPolicy="no-referrer"
