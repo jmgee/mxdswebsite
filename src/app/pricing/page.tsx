@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./pricing.module.css";
 import { fetchServerStatuses } from "@/lib/fetchServerStatuses"; 
-import { SERVERS } from "../servers/page"; 
+import { SERVERS } from "../servers/servers.data";
 
 type Plan = {
   name: string;
