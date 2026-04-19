@@ -3,7 +3,7 @@
 import styles from "./ContactView.module.css";
 
 const DISCORD_INVITE = "https://discord.gg/8z5pDsqGS5";
-const CONTACT_ICON = "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/mxds1024.png";
+const CONTACT_ICON = "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/mdevs1024.png";
 
 export function ContactView() {
   return (
@@ -25,8 +25,7 @@ export function ContactView() {
           <h1 className={styles.title}>Join M Developments Discord</h1>
 
           <p className={styles.description}>
-            For support, commissions, and purchase questions, please join the
-            Discord server.
+            For support and purchase questions, please join the Discord server.
           </p>
 
           <a
