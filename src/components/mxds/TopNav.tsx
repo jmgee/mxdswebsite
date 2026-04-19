@@ -21,8 +21,13 @@ export default function TopNav() {
         style={{
           display: "inline-flex",
           alignItems: "center",
+          justifyContent: "flex-start",
           textDecoration: "none",
           lineHeight: 0,
+          minWidth: 0,
+          flexShrink: 0,
+          height: 56,
+          overflow: "hidden",
         }}
       >
         <img
@@ -30,12 +35,14 @@ export default function TopNav() {
           alt="M Developments"
           loading="eager"
           referrerPolicy="no-referrer"
+          draggable={false}
           style={{
             display: "block",
-            width: "170px",
-            maxWidth: "100%",
-            height: "auto",
+            height: 48,
+            width: "auto",
+            maxWidth: 180,
             objectFit: "contain",
+            objectPosition: "left center",
             userSelect: "none",
           }}
         />
