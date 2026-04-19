@@ -1,9 +1,9 @@
 "use client";
 
-import { IconChat } from "@/components/mxds/icons";
 import styles from "./ContactView.module.css";
 
 const DISCORD_INVITE = "https://discord.gg/8z5pDsqGS5";
+const CONTACT_ICON = "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/mxds1024.png";
 
 export function ContactView() {
   return (
@@ -11,7 +11,13 @@ export function ContactView() {
       <div className={styles.shell}>
         <section className={styles.card}>
           <div className={styles.iconWrap} aria-hidden="true">
-            <IconChat />
+            <img
+              src={CONTACT_ICON}
+              alt=""
+              className={styles.iconImage}
+              loading="eager"
+              decoding="async"
+            />
           </div>
 
           <p className={styles.eyebrow}>Discord Contact</p>
