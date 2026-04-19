@@ -25,16 +25,16 @@ const aboutStats = [
 
 const leftSkills = [
   { name: "Lua Scripting", pct: 95, delayMs: 1030 },
-  { name: "ESX", pct: 95, delayMs: 1110 },
-  { name: "QBCore", pct: 90, delayMs: 1190 },
-  { name: "Qbox", pct: 80, delayMs: 1270 },
+  { name: "ESX", pct: 100, delayMs: 1110 },
+  { name: "QBCore", pct: 80, delayMs: 1190 },
+  { name: "Qbox", pct: 82, delayMs: 1270 },
 ] as const;
 
 const rightSkills = [
-  { name: "Custom Script", pct: 97, delayMs: 1030 },
+  { name: "Custom Script", pct: 95, delayMs: 1030 },
   { name: "Server Management", pct: 95, delayMs: 1110 },
-  { name: "Optimization & Debugging", pct: 92, delayMs: 1190 },
-  { name: "UI/UX Integration", pct: 88, delayMs: 1270 },
+  { name: "Optimization & Debugging", pct: 97, delayMs: 1190 },
+  { name: "UI/UX Integration", pct: 92, delayMs: 1270 },
 ] as const;
 
 export function ProfileView() {
