@@ -24,18 +24,22 @@ export default function ProfilePage() {
           --mxds-shadow: 0 18px 50px rgba(0,0,0,0.08);
           --mxds-radius-xl: 24px;
           --mxds-radius-lg: 18px;
-          --mxds-max: 1920px;
+          --mxds-max: 1480px;
         }
 
         *{
           box-sizing: border-box;
         }
 
+        html, body{
+          overflow-x: hidden;
+        }
+
         .mxds-page{
           min-height: 100%;
           color: var(--mxds-text);
           position: relative;
-          overflow: hidden;
+          overflow-x: clip;
           opacity: 0;
           transform: translateY(10px);
           animation: mxdsPageIn 700ms cubic-bezier(.2,.8,.2,1) forwards;
@@ -48,22 +52,22 @@ export default function ProfilePage() {
           pointer-events: none;
           z-index: 0;
           filter: blur(68px);
-          opacity: .5;
+          opacity: .48;
         }
 
         .mxds-page::before{
-          top: 90px;
-          left: -50px;
-          width: 300px;
-          height: 300px;
-          background: radial-gradient(circle, rgba(245,158,11,.16), transparent 68%);
+          top: 80px;
+          left: -70px;
+          width: 280px;
+          height: 280px;
+          background: radial-gradient(circle, rgba(245,158,11,.15), transparent 70%);
         }
 
         .mxds-page::after{
-          top: 160px;
-          right: -60px;
-          width: 340px;
-          height: 340px;
+          top: 140px;
+          right: -80px;
+          width: 320px;
+          height: 320px;
           background: radial-gradient(circle, rgba(245,158,11,.10), transparent 72%);
         }
 
@@ -77,9 +81,9 @@ export default function ProfilePage() {
         .mxds-shell{
           position: relative;
           z-index: 1;
-          width: min(calc(100% - 12px), var(--mxds-max));
+          width: min(calc(100% - 32px), var(--mxds-max));
           margin: 0 auto;
-          padding: 20px 0 72px;
+          padding: 28px 0 72px;
         }
 
         .mxds-reveal{
@@ -99,55 +103,54 @@ export default function ProfilePage() {
         /* ===== HERO ===== */
         .mxds-hero{
           display: grid;
-          grid-template-columns: minmax(520px, 1fr) minmax(720px, 1.25fr);
+          grid-template-columns: minmax(320px, .92fr) minmax(0, 1.08fr);
           align-items: center;
-          gap: 36px;
-          min-height: 520px;
-          padding: 24px 6px 10px;
+          gap: clamp(28px, 4vw, 64px);
+          min-height: 500px;
+          padding: 24px 8px 10px;
         }
 
         .mxds-heroVisual{
           display: flex;
           align-items: center;
           justify-content: center;
-          min-height: 100%;
-          position: relative;
+          min-width: 0;
         }
 
         .mxds-heroVisualStage{
           position: relative;
-          width: min(100%, 620px);
-          min-height: 430px;
+          width: min(100%, 560px);
+          min-height: 390px;
           display: flex;
           align-items: center;
           justify-content: center;
-          border-radius: 36px;
+          border-radius: 34px;
           background:
-            radial-gradient(circle at 50% 42%, rgba(245,158,11,.10), rgba(245,158,11,.04) 26%, rgba(245,158,11,0) 68%),
-            linear-gradient(180deg, rgba(255,255,255,.20), rgba(255,255,255,0));
+            radial-gradient(circle at 50% 42%, rgba(245,158,11,.10), rgba(245,158,11,.04) 26%, rgba(245,158,11,0) 70%),
+            linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,0));
         }
 
         .mxds-heroVisualStage::before{
           content:"";
           position: absolute;
-          inset: 34px;
-          border-radius: 34px;
+          inset: 28px;
+          border-radius: 30px;
           background:
-            radial-gradient(circle at 50% 50%, rgba(255,255,255,.46), rgba(255,255,255,.10) 44%, rgba(255,255,255,0) 72%);
+            radial-gradient(circle at 50% 50%, rgba(255,255,255,.42), rgba(255,255,255,.10) 44%, rgba(255,255,255,0) 72%);
           pointer-events: none;
         }
 
         .mxds-portraitWrap{
           position: relative;
-          width: 360px;
-          height: 360px;
+          width: 320px;
+          height: 320px;
           display: grid;
           place-items: center;
         }
 
         .mxds-portraitAura{
           position: absolute;
-          inset: -28px;
+          inset: -24px;
           border-radius: 999px;
           background:
             radial-gradient(circle at 50% 50%, rgba(245,158,11,.22) 0%, rgba(245,158,11,.10) 38%, rgba(245,158,11,0) 74%);
@@ -175,17 +178,17 @@ export default function ProfilePage() {
         }
 
         .mxds-portraitOrbit::before{
-          width: 14px;
-          height: 14px;
-          top: 26px;
-          left: 72px;
+          width: 13px;
+          height: 13px;
+          top: 24px;
+          left: 62px;
         }
 
         .mxds-portraitOrbit::after{
-          width: 11px;
-          height: 11px;
-          right: 54px;
-          bottom: 42px;
+          width: 10px;
+          height: 10px;
+          right: 48px;
+          bottom: 38px;
         }
 
         @keyframes mxdsSpin{
@@ -205,10 +208,10 @@ export default function ProfilePage() {
 
         .mxds-portraitFrame{
           position: relative;
-          width: 286px;
-          height: 286px;
+          width: 258px;
+          height: 258px;
           border-radius: 999px;
-          padding: 10px;
+          padding: 9px;
           background:
             linear-gradient(145deg, rgba(255,255,255,.92), rgba(255,255,255,.42)),
             linear-gradient(145deg, rgba(245,158,11,.42), rgba(255,255,255,.12));
@@ -244,7 +247,7 @@ export default function ProfilePage() {
         .mxds-portraitFrame::after{
           content:"";
           position: absolute;
-          inset: 14px;
+          inset: 13px;
           border-radius: 999px;
           border: 1px solid rgba(255,255,255,.55);
           z-index: 2;
@@ -314,7 +317,7 @@ export default function ProfilePage() {
 
         .mxds-portraitBadge{
           position: absolute;
-          right: 18px;
+          right: 20px;
           bottom: 48px;
           z-index: 4;
           padding: 10px 14px;
@@ -333,16 +336,18 @@ export default function ProfilePage() {
         .mxds-heroContent{
           text-align: left;
           min-width: 0;
-          max-width: 860px;
+          max-width: 100%;
+          overflow: hidden;
         }
 
         .mxds-title{
           margin: 0;
-          font-size: clamp(4rem, 6vw, 6.4rem);
-          line-height: .9;
+          font-size: clamp(3.5rem, 5.8vw, 5.9rem);
+          line-height: .92;
           letter-spacing: -0.06em;
           font-weight: 900;
           text-wrap: balance;
+          word-break: break-word;
         }
 
         .mxds-titleAccent{
@@ -354,9 +359,9 @@ export default function ProfilePage() {
         }
 
         .mxds-subtitle{
-          margin-top: 16px;
-          min-height: 54px;
-          font-size: clamp(1.35rem, 2vw, 2rem);
+          margin-top: 14px;
+          min-height: 50px;
+          font-size: clamp(1.25rem, 1.95vw, 1.85rem);
           color: #2d2d2d;
         }
 
@@ -366,6 +371,7 @@ export default function ProfilePage() {
           white-space: nowrap;
           overflow: hidden;
           width: 0;
+          max-width: 100%;
           border-right: 2px solid rgba(245,158,11,.95);
           animation:
             mxdsTyping 1.65s steps(22, end) 200ms forwards,
@@ -382,18 +388,19 @@ export default function ProfilePage() {
 
         .mxds-heroLead{
           max-width: 760px;
-          margin: 20px 0 0;
+          margin: 18px 0 0;
           color: var(--mxds-muted);
-          font-size: 1.12rem;
-          line-height: 1.95;
+          font-size: 1.08rem;
+          line-height: 1.9;
         }
 
         .mxds-chips{
-          margin-top: 28px;
+          margin-top: 24px;
           display: flex;
           flex-wrap: wrap;
           justify-content: flex-start;
           gap: 12px;
+          max-width: 100%;
         }
 
         .mxds-chip{
@@ -420,7 +427,7 @@ export default function ProfilePage() {
         }
 
         .mxds-heroActions{
-          margin-top: 30px;
+          margin-top: 28px;
           display: flex;
           flex-wrap: wrap;
           gap: 14px;
@@ -431,7 +438,7 @@ export default function ProfilePage() {
           align-items: center;
           justify-content: center;
           gap: 10px;
-          min-width: 230px;
+          min-width: 220px;
           padding: 15px 20px;
           border-radius: 999px;
           font-weight: 900;
@@ -459,11 +466,11 @@ export default function ProfilePage() {
         /* ===== CONTENT GRID ===== */
         .mxds-grid{
           display: grid;
-          grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+          grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
           gap: 24px;
           margin-top: 34px;
           align-items: start;
-          padding: 0 6px;
+          padding: 0 8px;
         }
 
         .mxds-card{
@@ -516,8 +523,8 @@ export default function ProfilePage() {
         .mxds-cardText{
           margin: 0;
           color: var(--mxds-muted);
-          line-height: 1.95;
-          font-size: 1.06rem;
+          line-height: 1.9;
+          font-size: 1.04rem;
           max-width: none;
         }
 
@@ -530,11 +537,12 @@ export default function ProfilePage() {
 
         .mxds-stat{
           border-radius: var(--mxds-radius-lg);
-          padding: 22px 16px;
+          padding: 22px 14px;
           text-align: center;
           background: rgba(255,255,255,.44);
           border: 1px solid rgba(245,158,11,.12);
           box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+          min-width: 0;
         }
 
         .mxds-statIcon{
@@ -547,10 +555,11 @@ export default function ProfilePage() {
 
         .mxds-statTop{
           margin: 0;
-          font-size: 1.9rem;
+          font-size: clamp(1.8rem, 2.1vw, 2.1rem);
           line-height: 1.1;
           font-weight: 900;
           letter-spacing: -0.03em;
+          word-break: break-word;
         }
 
         .mxds-statBottom{
@@ -558,6 +567,7 @@ export default function ProfilePage() {
           color: #666;
           font-size: .98rem;
           line-height: 1.5;
+          word-break: break-word;
         }
 
         .mxds-gridFull{
@@ -598,6 +608,7 @@ export default function ProfilePage() {
           font-size: 1rem;
           font-weight: 900;
           color: #2f2f2f;
+          flex-shrink: 0;
         }
 
         .mxds-barTrack{
@@ -652,23 +663,27 @@ export default function ProfilePage() {
           100%{ transform: translateX(130%); opacity: 0; }
         }
 
-@media (max-width: 1360px){
-  .mxds-shell{
-    width: min(calc(100% - 16px), var(--mxds-max));
-  }
+        @media (max-width: 1360px){
+          .mxds-shell{
+            width: min(calc(100% - 28px), var(--mxds-max));
+          }
 
-  .mxds-hero{
-    grid-template-columns: minmax(360px, .95fr) minmax(0, 1.05fr);
-    gap: 32px;
-    padding-left: 4px;
-    padding-right: 4px;
-  }
-
-        .mxds-grid{
+          .mxds-hero{
+            grid-template-columns: minmax(280px, .88fr) minmax(0, 1fr);
+            gap: 28px;
             padding-left: 4px;
             padding-right: 4px;
+          }
+
+          .mxds-grid{
+            padding-left: 4px;
+            padding-right: 4px;
+          }
+
+          .mxds-title{
+            font-size: clamp(3.2rem, 5.4vw, 5.2rem);
+          }
         }
-      }
 
         @media (max-width: 1180px){
           .mxds-hero{
@@ -703,16 +718,17 @@ export default function ProfilePage() {
           }
         }
 
-@media (max-width: 900px){
-  .mxds-shell{
-    width: min(calc(100% - 20px), var(--mxds-max));
-    padding-top: 18px;
-  }
+        @media (max-width: 900px){
+          .mxds-shell{
+            width: min(calc(100% - 20px), var(--mxds-max));
+            padding-top: 18px;
+          }
 
           .mxds-hero{
             gap: 18px;
             padding-left: 0;
             padding-right: 0;
+            min-height: auto;
           }
 
           .mxds-grid{
@@ -743,6 +759,7 @@ export default function ProfilePage() {
 
           .mxds-title{
             font-size: clamp(2.5rem, 11vw, 3.8rem);
+            line-height: .95;
           }
 
           .mxds-subtitle{
