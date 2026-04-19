@@ -5,7 +5,7 @@ import { fetchServerStatuses } from "@/lib/fetchServerStatuses";
 import styles from "./ServersView.module.css";
 import { SERVERS, type ServerItem, type ServerLiveState, type ServerTag } from "./servers.data";
 
-type CardState = "checking" | "online" | "offline" | "portfolio";
+type CardState = "checking" | "online" | "offline";
 
 const tagClassMap: Record<ServerTag, string> = {
   Roleplay: styles.tagRoleplay,
@@ -17,15 +17,14 @@ const statusClassMap: Record<CardState, string> = {
   checking: styles.statusChecking,
   online: styles.statusOnline,
   offline: styles.statusOffline,
-  portfolio: styles.statusPortfolio,
 };
 
 function isValidDiscordUrl(url?: string) {
   return Boolean(url && /^https:\/\/discord\.gg\//.test(url) && !url.includes("REPLACE_"));
 }
 
-function getCardState(server: ServerItem, live?: ServerLiveState): CardState {
-  if (!server.serverId) return "portfolio";
+function getCardState(server: ServerItem, live?: ServerLiveState): CardState | null {
+  if (!server.serverId) return null;
   if (!live) return "checking";
   if (live.status === "Online") return "online";
   if (live.status === "Offline") return "offline";
@@ -38,8 +37,6 @@ function getStatusLabel(state: CardState) {
       return "Online";
     case "offline":
       return "Offline";
-    case "portfolio":
-      return "Portfolio";
     default:
       return "Checking";
   }
@@ -54,11 +51,15 @@ function getPlayersLabel(live?: ServerLiveState) {
 export function ServersView() {
   const [liveData, setLiveData] = useState<Record<string, ServerLiveState>>({});
 
+  const liveTrackedServers = useMemo(() => {
+    return SERVERS.filter((server) => Boolean(server.serverId));
+  }, []);
+
   useEffect(() => {
     let mounted = true;
 
     async function loadStatuses() {
-      const data = await fetchServerStatuses(SERVERS);
+      const data = await fetchServerStatuses(liveTrackedServers);
       if (mounted) setLiveData(data);
     }
 
@@ -67,7 +68,7 @@ export function ServersView() {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [liveTrackedServers]);
 
   const groupedByYear = useMemo(() => {
     return SERVERS.reduce<Record<string, ServerItem[]>>((acc, server) => {
@@ -83,13 +84,16 @@ export function ServersView() {
 
   const heroStats = useMemo(() => {
     const years = new Set(SERVERS.map((server) => server.year)).size;
-    const tracked = SERVERS.filter((server) => Boolean(server.serverId)).length;
+    const activeLive = liveTrackedServers.filter(
+      (server) => liveData[server.name]?.status === "Online"
+    ).length;
+
     return [
       { label: "Projects", value: String(SERVERS.length) },
       { label: "Years", value: String(years) },
-      { label: "Live Tracked", value: String(tracked) },
+      { label: "Active Live", value: String(activeLive) },
     ];
-  }, []);
+  }, [liveData, liveTrackedServers]);
 
   return (
     <div className={styles.page}>
@@ -131,10 +135,6 @@ export function ServersView() {
                 </div>
 
                 <div className={styles.yearRule} />
-
-                <div className={styles.yearCount}>
-                  {groupedByYear[year].length} server{groupedByYear[year].length > 1 ? "s" : ""}
-                </div>
               </div>
 
               <div className={styles.serverGrid}>
@@ -143,6 +143,7 @@ export function ServersView() {
                   const state = getCardState(server, live);
                   const playersLabel = getPlayersLabel(live);
                   const hasDiscord = isValidDiscordUrl(server.discordUrl);
+                  const showDiscordButton = state === "online" && hasDiscord;
 
                   return (
                     <article
@@ -172,10 +173,13 @@ export function ServersView() {
 
                           <div className={styles.badgeRow}>
                             <span className={`${styles.tag} ${tagClassMap[server.tag]}`}>{server.tag}</span>
-                            <span className={`${styles.status} ${statusClassMap[state]}`}>
-                              <span className={styles.statusDot} />
-                              {getStatusLabel(state)}
-                            </span>
+
+                            {state && (
+                              <span className={`${styles.status} ${statusClassMap[state]}`}>
+                                <span className={styles.statusDot} />
+                                {getStatusLabel(state)}
+                              </span>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -195,24 +199,18 @@ export function ServersView() {
                         </div>
                       </div>
 
-                      <div className={styles.cardFooter}>
-                        <div className={styles.footerMeta}>
-                          <span className={styles.footerMetaLabel}>Built in {server.year}</span>
-                        </div>
-
-                        {hasDiscord ? (
+                      {showDiscordButton && (
+                        <div className={styles.cardFooter}>
                           <a
                             href={server.discordUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={styles.ctaBtn}
                           >
-                            {state === "online" ? "Join Community" : "Open Discord"}
+                            Open Discord
                           </a>
-                        ) : (
-                          <span className={styles.archiveLabel}>Archived / private</span>
-                        )}
-                      </div>
+                        </div>
+                      )}
                     </article>
                   );
                 })}
