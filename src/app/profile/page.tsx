@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ProfileView } from "@/components/mxds/profile/ProfileView";
+import { ProfileView } from "./ProfileView";
 
 export const metadata: Metadata = {
   alternates: {
