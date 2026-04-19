@@ -91,7 +91,7 @@ export function ServersView() {
     return [
       { label: "Projects", value: String(SERVERS.length) },
       { label: "Years", value: String(years) },
-      { label: "Active Live", value: String(activeLive) },
+      { label: "Live", value: String(activeLive) },
     ];
   }, [liveData, liveTrackedServers]);
 
