@@ -24,7 +24,7 @@ export default function ProfilePage() {
           --mxds-shadow: 0 18px 50px rgba(0,0,0,0.08);
           --mxds-radius-xl: 24px;
           --mxds-radius-lg: 18px;
-          --mxds-max: 1620px;
+          --mxds-max: 1920px;
         }
 
         *{
@@ -77,9 +77,9 @@ export default function ProfilePage() {
         .mxds-shell{
           position: relative;
           z-index: 1;
-          width: min(calc(100% - 48px), var(--mxds-max));
+          width: min(calc(100% - 12px), var(--mxds-max));
           margin: 0 auto;
-          padding: 26px 0 72px;
+          padding: 20px 0 72px;
         }
 
         .mxds-reveal{
@@ -99,11 +99,11 @@ export default function ProfilePage() {
         /* ===== HERO ===== */
         .mxds-hero{
           display: grid;
-          grid-template-columns: minmax(420px, 1.05fr) minmax(620px, 1.2fr);
+          grid-template-columns: minmax(520px, 1fr) minmax(720px, 1.25fr);
           align-items: center;
-          gap: 72px;
+          gap: 36px;
           min-height: 520px;
-          padding: 34px 24px 10px;
+          padding: 24px 6px 10px;
         }
 
         .mxds-heroVisual{
@@ -463,7 +463,7 @@ export default function ProfilePage() {
           gap: 24px;
           margin-top: 34px;
           align-items: start;
-          padding: 0 24px;
+          padding: 0 6px;
         }
 
         .mxds-card{
@@ -652,23 +652,23 @@ export default function ProfilePage() {
           100%{ transform: translateX(130%); opacity: 0; }
         }
 
-        @media (max-width: 1360px){
-          .mxds-shell{
-            width: min(calc(100% - 36px), var(--mxds-max));
-          }
+@media (max-width: 1360px){
+  .mxds-shell{
+    width: min(calc(100% - 16px), var(--mxds-max));
+  }
 
-          .mxds-hero{
-            grid-template-columns: minmax(360px, .95fr) minmax(0, 1.05fr);
-            gap: 48px;
-            padding-left: 12px;
-            padding-right: 12px;
-          }
+  .mxds-hero{
+    grid-template-columns: minmax(360px, .95fr) minmax(0, 1.05fr);
+    gap: 32px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
 
-          .mxds-grid{
-            padding-left: 12px;
-            padding-right: 12px;
-          }
+        .mxds-grid{
+            padding-left: 4px;
+            padding-right: 4px;
         }
+      }
 
         @media (max-width: 1180px){
           .mxds-hero{
@@ -703,11 +703,11 @@ export default function ProfilePage() {
           }
         }
 
-        @media (max-width: 900px){
-          .mxds-shell{
-            width: min(calc(100% - 20px), var(--mxds-max));
-            padding-top: 18px;
-          }
+@media (max-width: 900px){
+  .mxds-shell{
+    width: min(calc(100% - 20px), var(--mxds-max));
+    padding-top: 18px;
+  }
 
           .mxds-hero{
             gap: 18px;
