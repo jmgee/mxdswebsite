@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+const BRAND_LOGO =
+  "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/mdevs1024.png";
+
 export default function TopNav() {
   const pathname = usePathname();
 
@@ -11,7 +14,32 @@ export default function TopNav() {
 
   return (
     <header className="mxds-nav">
-      <div className="mxds-brand">M Developments</div>
+      <Link
+        href="/profile"
+        aria-label="Go to profile"
+        className="mxds-brand"
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          textDecoration: "none",
+          lineHeight: 0,
+        }}
+      >
+        <img
+          src={BRAND_LOGO}
+          alt="M Developments"
+          loading="eager"
+          referrerPolicy="no-referrer"
+          style={{
+            display: "block",
+            width: "170px",
+            maxWidth: "100%",
+            height: "auto",
+            objectFit: "contain",
+            userSelect: "none",
+          }}
+        />
+      </Link>
 
       <nav className="mxds-navLinks" aria-label="Primary">
         <Link

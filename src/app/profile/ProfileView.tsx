@@ -8,7 +8,7 @@ const heroChips = ["Lua Scripting", "Custom Script", "Server Management"] as con
 const aboutStats = [
   {
     icon: <IconServer />,
-    top: "10+",
+    top: "15+",
     bottom: "Servers Successfully Managed",
   },
   {
@@ -18,7 +18,7 @@ const aboutStats = [
   },
   {
     icon: <IconBrackets />,
-    top: "20+",
+    top: "10+",
     bottom: "Custom Scripts Delivered",
   },
 ] as const;
