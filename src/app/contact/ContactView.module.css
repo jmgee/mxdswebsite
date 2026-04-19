@@ -1,13 +1,14 @@
 :global(:root){
-  --contact-bg: #0b0d12;
-  --contact-surface: rgba(17, 20, 28, 0.82);
-  --contact-surface-border: rgba(255, 255, 255, 0.08);
-  --contact-text: #f5f7fb;
-  --contact-muted: #9ca3af;
-  --contact-accent: #5865f2;
-  --contact-accent-hover: #4752c4;
-  --contact-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-  --contact-radius: 28px;
+  --contact-bg: #f5f3ee;
+  --contact-surface: linear-gradient(180deg, rgba(255,255,255,.68), rgba(255,255,255,.5));
+  --contact-surface-border: rgba(245, 158, 11, 0.42);
+  --contact-text: #171717;
+  --contact-muted: #5a5a5a;
+  --contact-accent: #f59e0b;
+  --contact-accent-hover: #e69008;
+  --contact-accent-2: #ffb020;
+  --contact-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+  --contact-radius: 24px;
   --contact-max: 760px;
 }
 
@@ -22,8 +23,8 @@
   overflow-x: clip;
   color: var(--contact-text);
   opacity: 0;
-  transform: translateY(8px);
-  animation: contactFadeIn 500ms ease forwards;
+  transform: translateY(10px);
+  animation: contactFadeIn 700ms cubic-bezier(.2,.8,.2,1) forwards;
 }
 
 .page::before,
@@ -32,25 +33,24 @@
   position: fixed;
   pointer-events: none;
   z-index: 0;
-  border-radius: 999px;
-  filter: blur(90px);
-  opacity: 0.45;
+  filter: blur(68px);
+  opacity: .48;
 }
 
 .page::before{
   top: 80px;
-  left: -40px;
-  width: 240px;
-  height: 240px;
-  background: rgba(88, 101, 242, 0.16);
+  left: -70px;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(245,158,11,.15), transparent 70%);
 }
 
 .page::after{
-  right: -40px;
-  bottom: 80px;
-  width: 260px;
-  height: 260px;
-  background: rgba(88, 101, 242, 0.12);
+  top: 140px;
+  right: -80px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(245,158,11,.10), transparent 72%);
 }
 
 @keyframes contactFadeIn{
@@ -79,8 +79,9 @@
   background: var(--contact-surface);
   border: 1px solid var(--contact-surface-border);
   box-shadow: var(--contact-shadow);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  overflow: hidden;
 }
 
 .card::before{
@@ -90,8 +91,8 @@
   border-radius: inherit;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0)),
-    radial-gradient(circle at top, rgba(88,101,242,.12), transparent 42%);
+    linear-gradient(135deg, rgba(255,255,255,.24), rgba(255,255,255,0) 36%),
+    radial-gradient(circle at top right, rgba(245,158,11,.10), transparent 26%);
 }
 
 .iconWrap{
@@ -102,18 +103,20 @@
   justify-content: center;
   border-radius: 20px;
   color: #ffffff;
-  background: linear-gradient(180deg, #5865f2 0%, #4752c4 100%);
-  box-shadow: 0 16px 32px rgba(88, 101, 242, 0.28);
+  background: linear-gradient(180deg, var(--contact-accent-2) 0%, var(--contact-accent) 100%);
+  box-shadow:
+    0 14px 28px rgba(245,158,11,.28),
+    inset 0 1px 0 rgba(255,255,255,.28);
   margin-bottom: 20px;
 }
 
 .eyebrow{
   margin: 0 0 10px;
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #aab2ff;
+  color: #8b5c00;
 }
 
 .title{
@@ -122,7 +125,7 @@
   font-size: clamp(2rem, 4vw, 3.1rem);
   line-height: 1.02;
   letter-spacing: -0.05em;
-  font-weight: 800;
+  font-weight: 900;
   font-family:
     Inter,
     ui-sans-serif,
@@ -138,7 +141,7 @@
   max-width: 520px;
   color: var(--contact-muted);
   font-size: 1rem;
-  line-height: 1.75;
+  line-height: 1.8;
   font-weight: 400;
   font-family:
     Inter,
@@ -160,10 +163,10 @@
   padding: 0 22px;
   border-radius: 999px;
   text-decoration: none;
-  background: var(--contact-accent);
+  background: linear-gradient(180deg, var(--contact-accent-2) 0%, var(--contact-accent) 100%);
   color: #ffffff;
   font-size: 0.98rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.01em;
   font-family:
     Inter,
@@ -173,24 +176,34 @@
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
+  box-shadow:
+    0 14px 28px rgba(245,158,11,.28),
+    inset 0 1px 0 rgba(255,255,255,.28);
   transition:
-    background-color .18s ease,
-    transform .18s ease,
-    box-shadow .18s ease;
-  box-shadow: 0 14px 30px rgba(88, 101, 242, 0.28);
+    transform .16s ease,
+    box-shadow .16s ease,
+    filter .16s ease,
+    background .16s ease;
 }
 
 .button:hover{
-  background: var(--contact-accent-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 18px 34px rgba(88, 101, 242, 0.34);
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #ffbb34 0%, var(--contact-accent-hover) 100%);
+  box-shadow:
+    0 18px 34px rgba(245,158,11,.34),
+    inset 0 1px 0 rgba(255,255,255,.28);
+  filter: saturate(1.04);
+}
+
+.button:active{
+  transform: translateY(0);
 }
 
 .note{
   margin: 12px 0 0;
   font-size: 0.84rem;
-  color: #7f8796;
-  font-weight: 500;
+  color: #7a7a7a;
+  font-weight: 600;
 }
 
 @media (max-width: 900px){
@@ -201,7 +214,7 @@
 
   .card{
     padding: 32px 20px;
-    border-radius: 24px;
+    border-radius: 20px;
   }
 
   .iconWrap{
@@ -213,7 +226,7 @@
 
   .description{
     font-size: 0.96rem;
-    line-height: 1.7;
+    line-height: 1.75;
   }
 
   .button{
