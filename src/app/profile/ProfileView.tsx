@@ -56,7 +56,7 @@ export function ProfileView() {
                   <div className={styles.portraitInner}>
                     <img
                       src="https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/mxds1024.png"
-                      alt="Mxds Kuzma profile portrait"
+                      alt="Mxds Siway profile portrait"
                       loading="eager"
                       referrerPolicy="no-referrer"
                       className={styles.portraitImg}
@@ -71,7 +71,7 @@ export function ProfileView() {
 
           <div className={styles.heroContent}>
             <h1 className={`${styles.title} ${styles.reveal}`} style={{ animationDelay: "180ms" }}>
-              <span className={styles.titleAccent}>Mxds Kuzma</span>
+              <span className={styles.titleAccent}>Mxds Siway</span>
             </h1>
 
             <div className={`${styles.subtitle} ${styles.reveal}`} style={{ animationDelay: "260ms" }}>

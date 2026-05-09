@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </main>
 
           <footer className="mxds-footer">
-            © 2026 Mxds Atakashi Kuzma - FiveM Developer. All rights reserved.
+            © 2026 Mxds Siway - FiveM Developer. All rights reserved.
           </footer>
         </div>
       </body>
