@@ -25,6 +25,7 @@ export const ALL_PLANS: Record<PlanCategory, Plan[]> = {
         "Server Configuration",
         "Resources/Assets Installation",
         "Minor & Major Script Bug/Exploit Fixes",
+        "Script Customization (Minor Changes)",
         "Full Managed Server",
         "Live Chat Support thru Discord",
       ],
