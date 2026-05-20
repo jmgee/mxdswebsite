@@ -18,7 +18,7 @@ export const ALL_PLANS: Record<PlanCategory, Plan[]> = {
       name: "Basic Setup Plan",
       subtitle: "Perfect for growing RP communities.",
       setupLabel: "Initial hiring fee",
-      setupPrice: "₱5,000",
+      setupPrice: "₱3,000",
       monthlyPrice: "₱2,500 /month",
       features: [
         "Full Resources/Scripts Configuration",
@@ -44,7 +44,7 @@ export const ALL_PLANS: Record<PlanCategory, Plan[]> = {
         "Server Configuration",
         "Resources/Assets Installation",
         "Minor & Major Script Bug/Exploit Fixes",
-        "Custom Script Creations Included",
+        "Script Customization (Major Changes)",
         "Full Script Optimize",
         "Full Managed Server (24/7 Support)",
         "Live Chat Support thru Discord (24/7 Support)",
