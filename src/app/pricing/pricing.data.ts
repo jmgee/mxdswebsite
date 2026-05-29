@@ -36,7 +36,7 @@ export const ALL_PLANS: Record<PlanCategory, Plan[]> = {
       name: "Premium Setup Plan",
       subtitle: "Suitable for users who require comprehensive development.",
       setupLabel: "Initial hiring fee",
-      setupPrice: "₱10,000",
+      setupPrice: "₱6,000",
       monthlyPrice: "₱5,000 /month",
       features: [
         "Unique scripts development",
