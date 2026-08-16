@@ -99,7 +99,6 @@ export function ServersView() {
     <div className={styles.page}>
       <div className={styles.shell}>
         <section className={styles.hero}>
-          <div className={styles.heroBadge}>Portfolio timeline</div>
 
           <h1 className={styles.heroTitle}>My Projects</h1>
 

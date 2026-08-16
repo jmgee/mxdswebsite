@@ -79,22 +79,6 @@
   text-align: center;
 }
 
-.heroBadge{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 38px;
-  padding: 8px 15px;
-  border-radius: 999px;
-  color: #925f00;
-  font-size: .9rem;
-  font-weight: 800;
-  letter-spacing: .03em;
-  background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.62));
-  border: 1px solid rgba(245,158,11,.22);
-  box-shadow: 0 10px 24px rgba(0,0,0,.04);
-}
-
 .heroTitle{
   margin: 16px 0 10px;
   font-size: clamp(2.8rem, 5vw, 4.8rem);
