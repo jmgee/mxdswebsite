@@ -280,8 +280,7 @@
 
 .cardTop,
 .priceBlock,
-.featureList,
-.ctaRow {
+.featureList {
   position: relative;
 }
 
@@ -441,64 +440,6 @@
   background: rgba(255, 191, 63, 0.1);
   border: 1px solid rgba(245, 158, 11, 0.28);
   color: #5b4c39;
-}
-
-.ctaRow {
-  margin-top: 22px;
-  display: flex;
-  justify-content: center;
-}
-
-.cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  min-height: 46px;
-  padding: 0 18px;
-  border-radius: 999px;
-  text-decoration: none;
-  font-size: 0.94rem;
-  font-weight: 900;
-  transition:
-    transform 0.16s ease,
-    box-shadow 0.16s ease,
-    filter 0.16s ease,
-    background 0.16s ease,
-    border-color 0.16s ease;
-}
-
-.cta:hover {
-  transform: translateY(-2px);
-}
-
-.cta:focus-visible {
-  outline: 2px solid var(--mxds-accent);
-  outline-offset: 3px;
-}
-
-.ctaStandard {
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(245, 158, 11, 0.2);
-  color: #7e5300;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.05);
-}
-
-.ctaFeatured {
-  color: #fff;
-  background: linear-gradient(
-    180deg,
-    var(--mxds-accent-2) 0%,
-    var(--mxds-accent) 100%
-  );
-  box-shadow:
-    0 14px 28px rgba(245, 158, 11, 0.26),
-    inset 0 1px 0 rgba(255, 255, 255, 0.28);
-}
-
-.arrow {
-  display: inline-block;
-  transform: translateY(-1px);
 }
 
 .notesSection {
@@ -687,7 +628,6 @@
   }
 
   .card,
-  .cta,
   .tabBtn,
   .notesGroup {
     transition: none !important;

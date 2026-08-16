@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import styles from "./PricingView.module.css";
 import {
@@ -202,9 +201,7 @@ function PlanCard({
             className={`${styles.featureItem} ${styles.reveal}`}
             style={{
               animationDelay: `${
-                260 +
-                index * 100 +
-                featureIndex * 50
+                260 + index * 100 + featureIndex * 50
               }ms`,
             }}
           >
@@ -234,31 +231,6 @@ function PlanCard({
       >
         {plan.note}
       </div>
-
-      <div
-        className={`${styles.ctaRow} ${styles.reveal}`}
-        style={{
-          animationDelay: `${540 + index * 120}ms`,
-        }}
-      >
-        <Link
-          href="/contact"
-          className={
-            plan.variant === "featured"
-              ? `${styles.cta} ${styles.ctaFeatured}`
-              : `${styles.cta} ${styles.ctaStandard}`
-          }
-        >
-          Get started
-
-          <span
-            className={styles.arrow}
-            aria-hidden="true"
-          >
-            →
-          </span>
-        </Link>
-      </div>
     </article>
   );
 }
@@ -276,7 +248,9 @@ function NotesGroup({
     <div className={styles.notesGroup}>
       <div className={styles.notesGroupTitle}>
         <span>{title}</span>
-        <span className={styles.notesTag}>{tag}</span>
+        <span className={styles.notesTag}>
+          {tag}
+        </span>
       </div>
 
       <ul className={styles.notesList}>
