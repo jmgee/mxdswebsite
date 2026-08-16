@@ -16,11 +16,6 @@
   --mxds-max: 1480px;
 }
 
-:global(html),
-:global(body) {
-  overflow-x: hidden;
-}
-
 .page {
   min-height: 100%;
   position: relative;

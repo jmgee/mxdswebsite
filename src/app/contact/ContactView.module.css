@@ -11,10 +11,6 @@
   --contact-max: 1180px;
 }
 
-:global(html),
-:global(body) {
-  overflow-x: hidden;
-}
 
 .page {
   position: relative;

@@ -50,6 +50,11 @@
   --radius: 12px;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 
 *{ box-sizing: border-box; }
 html,body{ height: 100%; }
