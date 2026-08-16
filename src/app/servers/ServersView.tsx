@@ -101,7 +101,7 @@ export function ServersView() {
         <section className={styles.hero}>
           <div className={styles.heroBadge}>Portfolio timeline</div>
 
-          <h1 className={styles.heroTitle}>Servers I’ve Handled</h1>
+          <h1 className={styles.heroTitle}>My Projects</h1>
 
           <p className={styles.heroLead}>
             A curated timeline of FiveM communities I’ve developed, maintained, optimized, and supported.
