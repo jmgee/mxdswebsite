@@ -30,7 +30,8 @@
   overflow-x: clip;
   opacity: 0;
   transform: translateY(10px);
-  animation: mxdsPageIn 700ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: mxdsPageIn 700ms cubic-bezier(0.2, 0.8, 0.2, 1)
+    forwards;
 }
 
 .page::before,
@@ -48,6 +49,7 @@
   left: -60px;
   width: 280px;
   height: 280px;
+
   background: radial-gradient(
     circle,
     rgba(245, 158, 11, 0.15),
@@ -60,6 +62,7 @@
   right: -90px;
   width: 340px;
   height: 340px;
+
   background: radial-gradient(
     circle,
     rgba(245, 158, 11, 0.1),
@@ -77,7 +80,12 @@
 .shell {
   position: relative;
   z-index: 1;
-  width: min(calc(100% - 32px), var(--mxds-max));
+
+  width: min(
+    calc(100% - 32px),
+    var(--mxds-max)
+  );
+
   margin: 0 auto;
   padding: 42px 0 72px;
 }
@@ -85,13 +93,19 @@
 .reveal {
   opacity: 0;
   transform: translateY(12px);
-  animation: mxdsReveal 620ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+
+  animation: mxdsReveal 620ms
+    cubic-bezier(0.2, 0.8, 0.2, 1)
+    forwards;
 }
 
 .cardEnter {
   opacity: 0;
   transform: translateY(18px) scale(0.99);
-  animation: mxdsCardIn 700ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+
+  animation: mxdsCardIn 700ms
+    cubic-bezier(0.2, 0.8, 0.2, 1)
+    forwards;
 }
 
 @keyframes mxdsReveal {
@@ -116,24 +130,35 @@
 
 .heroTitle {
   margin: 16px 0 10px;
-  font-size: clamp(2.8rem, 5.2vw, 5rem);
+
+  font-size: clamp(
+    2.8rem,
+    5.2vw,
+    5rem
+  );
+
   line-height: 0.95;
   letter-spacing: -0.055em;
   font-weight: 900;
+
   text-wrap: balance;
+
   background: linear-gradient(
     180deg,
     #201409 0%,
     #5f3d04 56%,
     #a96d00 100%
   );
+
   -webkit-background-clip: text;
   background-clip: text;
+
   color: transparent;
 }
 
 .switcherWrap {
   margin-top: 24px;
+
   display: flex;
   justify-content: center;
 }
@@ -142,24 +167,42 @@
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
+
   gap: 8px;
   padding: 7px;
+
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.62);
-  border: 1px solid rgba(245, 158, 11, 0.14);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+
+  background:
+    rgba(255, 255, 255, 0.62);
+
+  border: 1px solid
+    rgba(245, 158, 11, 0.14);
+
+  box-shadow:
+    0 10px 24px
+    rgba(0, 0, 0, 0.04);
 }
 
 .tabBtn {
   position: relative;
+
   border: 0;
-  background: transparent;
+
   padding: 11px 18px;
+
   border-radius: 12px;
+
+  background: transparent;
+
+  color:
+    rgba(32, 23, 13, 0.66);
+
   font-size: 0.92rem;
   font-weight: 800;
-  color: rgba(32, 23, 13, 0.66);
+
   cursor: pointer;
+
   transition:
     transform 0.16s ease,
     background 0.16s ease,
@@ -168,30 +211,47 @@
 }
 
 .tabBtn:hover {
-  background: rgba(255, 255, 255, 0.58);
-  color: rgba(32, 23, 13, 0.88);
+  background:
+    rgba(255, 255, 255, 0.58);
+
+  color:
+    rgba(32, 23, 13, 0.88);
 }
 
 .tabBtn:focus-visible {
-  outline: 2px solid var(--mxds-accent);
+  outline: 2px solid
+    var(--mxds-accent);
+
   outline-offset: 3px;
 }
 
 .tabActive {
   color: #9c6800;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+
+  background:
+    rgba(255, 255, 255, 0.96);
+
+  box-shadow:
+    0 8px 18px
+    rgba(0, 0, 0, 0.08);
 }
 
 .tabActive::after {
   content: "";
+
   position: absolute;
+
   left: 50%;
   bottom: 5px;
-  transform: translateX(-50%);
+
+  transform:
+    translateX(-50%);
+
   width: 42%;
   height: 3px;
+
   border-radius: 999px;
+
   background: linear-gradient(
     90deg,
     var(--mxds-accent),
@@ -201,20 +261,34 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
   gap: 24px;
 }
 
 .card {
   position: relative;
+
   min-width: 0;
+
   padding: 28px;
-  border-radius: var(--mxds-radius-xl);
-  border: 1px solid var(--mxds-card-border);
-  box-shadow: var(--mxds-shadow);
+
+  border-radius:
+    var(--mxds-radius-xl);
+
+  border: 1px solid
+    var(--mxds-card-border);
+
+  box-shadow:
+    var(--mxds-shadow);
+
   overflow: hidden;
+
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+
   transition:
     transform 0.18s ease,
     box-shadow 0.18s ease,
@@ -223,9 +297,12 @@
 
 .card::before {
   content: "";
+
   position: absolute;
   inset: 0;
+
   pointer-events: none;
+
   background:
     linear-gradient(
       135deg,
@@ -241,7 +318,10 @@
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.11);
+
+  box-shadow:
+    0 24px 56px
+    rgba(0, 0, 0, 0.11);
 }
 
 .cardStandard {
@@ -258,12 +338,15 @@
     rgba(255, 248, 235, 0.92),
     rgba(255, 255, 255, 0.72)
   );
-  border-color: var(--mxds-card-border-strong);
+
+  border-color:
+    var(--mxds-card-border-strong);
 }
 
 .cardGlow {
   position: absolute;
   inset: -60px;
+
   background:
     radial-gradient(
       circle at 18% 0%,
@@ -275,6 +358,7 @@
       rgba(245, 158, 11, 0.06),
       transparent 28%
     );
+
   pointer-events: none;
 }
 
@@ -287,109 +371,139 @@
 .cardMeta {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-}
+  justify-content: flex-end;
 
-.planChip {
-  display: inline-flex;
-  align-items: center;
-  min-height: 32px;
-  padding: 0 11px;
-  border-radius: 999px;
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.18);
-  color: #8d5b00;
-  font-size: 0.8rem;
-  font-weight: 900;
+  gap: 12px;
+
+  flex-wrap: wrap;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
+
   min-height: 32px;
+
   padding: 0 11px;
+
   border-radius: 999px;
+
   background: linear-gradient(
     180deg,
     var(--mxds-accent-2) 0%,
     var(--mxds-accent) 100%
   );
+
   color: #fff;
+
   font-size: 0.76rem;
   font-weight: 900;
   letter-spacing: 0.03em;
+
   box-shadow:
-    0 10px 20px rgba(245, 158, 11, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+    0 10px 20px
+      rgba(245, 158, 11, 0.22),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.28);
 }
 
 .cardTitle {
   margin: 16px 0 8px;
-  font-size: clamp(1.55rem, 2vw, 2rem);
+
+  font-size: clamp(
+    1.55rem,
+    2vw,
+    2rem
+  );
+
   line-height: 1.04;
   letter-spacing: -0.04em;
   font-weight: 900;
+
   background: linear-gradient(
     180deg,
     #24170a 0%,
     #6a4304 100%
   );
+
   -webkit-background-clip: text;
   background-clip: text;
+
   color: transparent;
 }
 
 .cardSubtitle {
   margin: 0;
+
   color: var(--mxds-muted);
+
   font-size: 0.98rem;
   line-height: 1.75;
 }
 
 .priceBlock {
   margin-top: 24px;
+
   padding: 20px 18px;
+
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.62);
-  border: 1px solid rgba(245, 158, 11, 0.14);
+
+  background:
+    rgba(255, 255, 255, 0.62);
+
+  border: 1px solid
+    rgba(245, 158, 11, 0.14);
 }
 
 .setupLabel {
   color: #8b7860;
+
   font-size: 0.84rem;
   font-weight: 800;
   letter-spacing: 0.03em;
+
   text-transform: uppercase;
 }
 
 .setupPrice {
   margin-top: 8px;
-  font-size: clamp(2rem, 3.2vw, 2.7rem);
+
+  font-size: clamp(
+    2rem,
+    3.2vw,
+    2.7rem
+  );
+
   line-height: 1;
   font-weight: 900;
+
   background: linear-gradient(
     180deg,
     #6e4700 0%,
     var(--mxds-accent) 100%
   );
+
   -webkit-background-clip: text;
   background-clip: text;
+
   color: transparent;
 }
 
 .monthlyPrice {
   margin-top: 10px;
+
+  color: #9c6700;
+
   font-size: 1rem;
   font-weight: 900;
-  color: #9c6700;
 }
 
 .featureList {
   margin: 22px 0 0;
   padding: 0;
+
   list-style: none;
+
   display: grid;
   gap: 13px;
 }
@@ -397,24 +511,35 @@
 .featureItem {
   display: flex;
   align-items: flex-start;
+
   gap: 12px;
 }
 
 .featureIcon {
   width: 28px;
   height: 28px;
-  border-radius: 9px;
+
+  flex: 0 0 auto;
+
+  margin-top: 1px;
+
   display: grid;
   place-items: center;
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.18);
+
+  border-radius: 9px;
+
+  background:
+    rgba(245, 158, 11, 0.1);
+
+  border: 1px solid
+    rgba(245, 158, 11, 0.18);
+
   color: #a76d00;
-  flex: 0 0 auto;
-  margin-top: 1px;
 }
 
 .featureText {
   color: #4f4539;
+
   font-size: 0.96rem;
   line-height: 1.7;
   font-weight: 700;
@@ -422,23 +547,35 @@
 
 .note {
   margin-top: 22px;
+
   padding: 14px 15px;
+
   border-radius: 16px;
+
   font-size: 0.88rem;
   line-height: 1.65;
-  text-align: center;
   font-weight: 700;
+
+  text-align: center;
 }
 
 .noteStandard {
-  background: rgba(245, 158, 11, 0.08);
-  border: 1px solid rgba(245, 158, 11, 0.18);
+  background:
+    rgba(245, 158, 11, 0.08);
+
+  border: 1px solid
+    rgba(245, 158, 11, 0.18);
+
   color: #665847;
 }
 
 .noteFeatured {
-  background: rgba(255, 191, 63, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.28);
+  background:
+    rgba(255, 191, 63, 0.1);
+
+  border: 1px solid
+    rgba(245, 158, 11, 0.28);
+
   color: #5b4c39;
 }
 
@@ -447,77 +584,112 @@
 }
 
 .notesCard {
-  border-radius: var(--mxds-radius-xl);
-  border: 1px solid var(--mxds-card-border-strong);
+  padding: 24px;
+
+  border-radius:
+    var(--mxds-radius-xl);
+
+  border: 1px solid
+    var(--mxds-card-border-strong);
+
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.78),
     rgba(255, 248, 235, 0.74)
   );
-  box-shadow: var(--mxds-shadow);
-  padding: 24px;
+
+  box-shadow:
+    var(--mxds-shadow);
 }
 
 .notesHeader {
   display: flex;
   align-items: flex-start;
+
   gap: 14px;
+
   margin-bottom: 18px;
 }
 
 .notesIconWrap {
   width: 52px;
   height: 52px;
-  border-radius: 16px;
+
+  flex: 0 0 auto;
+
   display: grid;
   place-items: center;
+
+  border-radius: 16px;
+
   background: linear-gradient(
     180deg,
     var(--mxds-accent-2) 0%,
     var(--mxds-accent) 100%
   );
+
   color: #fff;
+
   box-shadow:
-    0 14px 24px rgba(245, 158, 11, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.28);
-  flex: 0 0 auto;
+    0 14px 24px
+      rgba(245, 158, 11, 0.22),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.28);
 }
 
 .notesTitle {
   margin: 0;
+
   font-size: 1.45rem;
   line-height: 1.1;
   letter-spacing: -0.03em;
   font-weight: 900;
+
   background: linear-gradient(
     180deg,
     #24170a 0%,
     #7a4d00 100%
   );
+
   -webkit-background-clip: text;
   background-clip: text;
+
   color: transparent;
 }
 
 .notesSub {
   margin: 6px 0 0;
+
   color: var(--mxds-muted);
+
   font-size: 0.95rem;
   line-height: 1.7;
 }
 
 .notesGrid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
   gap: 16px;
 }
 
 .notesGroup {
-  border-radius: 18px;
   padding: 18px;
-  border: 1px solid rgba(245, 158, 11, 0.22);
-  background: rgba(255, 255, 255, 0.78);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+
+  border-radius: 18px;
+
+  border: 1px solid
+    rgba(245, 158, 11, 0.22);
+
+  background:
+    rgba(255, 255, 255, 0.78);
+
+  box-shadow:
+    0 10px 24px
+    rgba(0, 0, 0, 0.04);
+
   transition:
     transform 0.18s ease,
     box-shadow 0.18s ease,
@@ -526,41 +698,63 @@
 
 .notesGroup:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.06);
-  border-color: rgba(245, 158, 11, 0.34);
+
+  box-shadow:
+    0 16px 30px
+    rgba(0, 0, 0, 0.06);
+
+  border-color:
+    rgba(245, 158, 11, 0.34);
 }
 
 .notesGroupTitle {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   gap: 10px;
+
   margin-bottom: 12px;
+
+  color: #3d2b16;
+
   font-size: 0.98rem;
   font-weight: 900;
-  color: #3d2b16;
 }
 
 .notesTag {
   display: inline-flex;
   align-items: center;
+
   min-height: 28px;
+
   padding: 0 10px;
+
   border-radius: 999px;
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.18);
+
+  background:
+    rgba(245, 158, 11, 0.1);
+
+  border: 1px solid
+    rgba(245, 158, 11, 0.18);
+
   color: #8b5a00;
+
   font-size: 0.74rem;
   font-weight: 900;
+
   white-space: nowrap;
 }
 
 .notesList {
   margin: 0;
   padding-left: 18px;
+
   display: grid;
   gap: 8px;
+
   color: #5c5145;
+
   font-size: 0.92rem;
   line-height: 1.65;
 }
@@ -581,13 +775,21 @@
 
 @media (max-width: 900px) {
   .shell {
-    width: min(calc(100% - 20px), var(--mxds-max));
+    width: min(
+      calc(100% - 20px),
+      var(--mxds-max)
+    );
+
     padding-top: 28px;
     padding-bottom: 54px;
   }
 
   .heroTitle {
-    font-size: clamp(2.3rem, 10vw, 3.8rem);
+    font-size: clamp(
+      2.3rem,
+      10vw,
+      3.8rem
+    );
   }
 
   .tabSwitcher {
@@ -596,6 +798,7 @@
 
   .tabBtn {
     flex: 1 1 auto;
+
     padding-left: 12px;
     padding-right: 12px;
   }
@@ -623,7 +826,9 @@
   .reveal,
   .cardEnter {
     animation: none !important;
+
     opacity: 1 !important;
+
     transform: none !important;
   }
 

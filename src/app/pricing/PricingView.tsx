@@ -73,7 +73,6 @@ export function PricingView() {
               key={plan.name}
               plan={plan}
               index={index}
-              category={activeCategory}
             />
           ))}
         </section>
@@ -135,11 +134,9 @@ export function PricingView() {
 function PlanCard({
   plan,
   index,
-  category,
 }: {
   plan: Plan;
   index: number;
-  category: PlanCategory;
 }) {
   const cardClass =
     plan.variant === "featured"
@@ -159,17 +156,13 @@ function PlanCard({
       />
 
       <div className={styles.cardTop}>
-        <div className={styles.cardMeta}>
-          <span className={styles.planChip}>
-            {CATEGORY_LABELS[category]}
-          </span>
-
-          {plan.popular && (
+        {plan.popular && (
+          <div className={styles.cardMeta}>
             <span className={styles.badge}>
               Most Popular
             </span>
-          )}
-        </div>
+          </div>
+        )}
 
         <h2 className={styles.cardTitle}>
           {plan.name}
@@ -201,7 +194,9 @@ function PlanCard({
             className={`${styles.featureItem} ${styles.reveal}`}
             style={{
               animationDelay: `${
-                260 + index * 100 + featureIndex * 50
+                260 +
+                index * 100 +
+                featureIndex * 50
               }ms`,
             }}
           >
@@ -248,6 +243,7 @@ function NotesGroup({
     <div className={styles.notesGroup}>
       <div className={styles.notesGroupTitle}>
         <span>{title}</span>
+
         <span className={styles.notesTag}>
           {tag}
         </span>
