@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { CSSProperties } from "react";
 import {
   IconBrackets,
@@ -7,196 +6,185 @@ import {
 } from "@/components/mxds/icons";
 import styles from "./ProfileView.module.css";
 
-const heroChips = [
-  "Lua Scripting",
-  "Custom Script",
-  "Server Management",
-] as const;
-
-const aboutStats = [
+const stats = [
   {
     icon: <IconServer />,
-    top: "15+",
-    bottom: "Servers Successfully Managed",
+    value: "15+",
+    label: "Servers Managed",
   },
   {
     icon: <IconUsers />,
-    top: "10K+",
-    bottom: "Players Across Communities",
+    value: "10K+",
+    label: "Community Players",
   },
   {
     icon: <IconBrackets />,
-    top: "10+",
-    bottom: "Custom Scripts Delivered",
+    value: "10+",
+    label: "Custom Scripts",
   },
 ] as const;
 
-const leftSkills = [
-  { name: "Lua Scripting", pct: 90, delayMs: 1030 },
-  { name: "ESX", pct: 95, delayMs: 1110 },
-  { name: "QBCore", pct: 80, delayMs: 1190 },
-  { name: "Qbox", pct: 82, delayMs: 1270 },
-] as const;
-
-const rightSkills = [
-  { name: "Custom Script", pct: 90, delayMs: 1030 },
-  { name: "Server Management", pct: 92, delayMs: 1110 },
-  {
-    name: "Optimization & Debugging",
-    pct: 94,
-    delayMs: 1190,
-  },
-  {
-    name: "UI/UX Integration",
-    pct: 85,
-    delayMs: 1270,
-  },
+const skills = [
+  { name: "Lua Scripting", pct: 90, delayMs: 650 },
+  { name: "ESX", pct: 95, delayMs: 720 },
+  { name: "QBCore", pct: 80, delayMs: 790 },
+  { name: "Qbox", pct: 82, delayMs: 860 },
+  { name: "Custom Script", pct: 90, delayMs: 930 },
+  { name: "Server Management", pct: 92, delayMs: 1000 },
+  { name: "Optimization & Debugging", pct: 94, delayMs: 1070 },
+  { name: "UI/UX Integration", pct: 85, delayMs: 1140 },
 ] as const;
 
 export function ProfileView() {
   return (
-    <div className={styles.page}>
+    <main className={styles.page}>
       <div className={styles.shell}>
         <section className={styles.hero}>
           <div className={styles.heroContent}>
-            <h1
-              className={`${styles.title} ${styles.reveal}`}
-              style={{ animationDelay: "180ms" }}
+            <div
+              className={`${styles.availability} ${styles.reveal}`}
+              style={{ animationDelay: "80ms" }}
             >
-              <span className={styles.titleAccent}>mxds</span>
+              <span
+                className={styles.availabilityDot}
+                aria-hidden="true"
+              />
+              Available for work
+            </div>
+
+            <h1
+              className={`${styles.heroTitle} ${styles.reveal}`}
+              style={{ animationDelay: "150ms" }}
+            >
+              Hi, I&apos;m{" "}
+              <span className={styles.heroName}>
+                mxds
+              </span>
             </h1>
 
-            <div className={styles.chips}>
-              {heroChips.map((chip, index) => (
-                <span
-                  key={chip}
-                  className={styles.chip}
-                  style={{
-                    animationDelay: `${430 + index * 70}ms`,
-                  }}
-                >
-                  {chip}
-                </span>
-              ))}
-            </div>
-
-            <div
-              className={`${styles.heroActions} ${styles.reveal}`}
-              style={{ animationDelay: "650ms" }}
+            <p
+              className={`${styles.heroLead} ${styles.reveal}`}
+              style={{ animationDelay: "220ms" }}
             >
-              <Link
-                className={styles.primaryBtn}
-                href="/servers"
-              >
-                View My Servers
-              </Link>
-            </div>
+              A 🇵🇭 Filipino developer studying Computer
+              Science with a major in Software Engineering,
+              specializing in FiveM development and scalable
+              server systems. I build high-performance
+              experiences with clean code and reliable
+              architecture.
+            </p>
           </div>
 
-          <div className={styles.heroVisual}>
-            <div className={styles.heroVisualStage}>
+          <div
+            className={`${styles.heroVisual} ${styles.reveal}`}
+            style={{ animationDelay: "180ms" }}
+          >
+            <div className={styles.portraitCard}>
               <div
-                className={`${styles.portraitWrap} ${styles.reveal}`}
+                className={styles.portraitGlow}
                 aria-hidden="true"
-                style={{ animationDelay: "100ms" }}
-              >
-                <span className={styles.portraitAura} />
-                <span className={styles.portraitOrbit} />
+              />
 
-                <div className={styles.portraitFrame}>
-                  <div className={styles.portraitInner}>
-                    <img
-                      src="https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/mxds1024.png"
-                      alt="Mxds Siway profile portrait"
-                      loading="eager"
-                      referrerPolicy="no-referrer"
-                      className={styles.portraitImg}
-                    />
-                  </div>
-                </div>
-
-                <div className={styles.portraitBadge}>
-                  Available
-                </div>
-              </div>
+              <img
+                src="https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/mxds1024.png"
+                alt="Mxds profile portrait"
+                loading="eager"
+                referrerPolicy="no-referrer"
+                className={styles.portraitImg}
+              />
             </div>
           </div>
         </section>
 
-        <div className={styles.grid}>
-          <section
-            className={`${styles.card} ${styles.gridFull}`}
-            style={{ animationDelay: "720ms" }}
-          >
-            <h3 className={styles.cardTitle}>
-              About Me
-            </h3>
+        <section
+          className={`${styles.statsSection} ${styles.reveal}`}
+          style={{ animationDelay: "360ms" }}
+          aria-label="Development statistics"
+        >
+          {stats.map((stat) => (
+            <article
+              key={stat.label}
+              className={styles.stat}
+            >
+              <div
+                className={styles.statIcon}
+                aria-hidden="true"
+              >
+                {stat.icon}
+              </div>
 
-            <p className={styles.cardText}>
-              A 🇵🇭 Filipino developer studying Computer
-              Science with a major in Software Engineering,
-              focused on developing and maintaining GTA V
-              roleplay servers. I build high-performance
-              systems for FiveM with clean code, scalable
-              structure, and refined user experiences.
+              <div className={styles.statContent}>
+                <strong className={styles.statValue}>
+                  {stat.value}
+                </strong>
+
+                <span className={styles.statLabel}>
+                  {stat.label}
+                </span>
+              </div>
+            </article>
+          ))}
+        </section>
+
+        <section className={styles.profileGrid}>
+          <article
+            className={`${styles.aboutCard} ${styles.reveal}`}
+            style={{ animationDelay: "460ms" }}
+          >
+            <span className={styles.sectionEyebrow}>
+              About
+            </span>
+
+            <h2 className={styles.sectionTitle}>
+              Building reliable FiveM experiences.
+            </h2>
+
+            <p className={styles.aboutText}>
+              My focus is developing and maintaining GTA V
+              roleplay servers with scalable systems,
+              optimized resources, clean implementation, and
+              polished player experiences.
             </p>
 
-            <div className={styles.stats}>
-              {aboutStats.map((item) => (
-                <div
-                  key={item.top}
-                  className={styles.stat}
-                >
-                  <div
-                    className={styles.statIcon}
-                    aria-hidden="true"
-                  >
-                    {item.icon}
-                  </div>
+            <p className={styles.aboutText}>
+              I work across frameworks, custom scripting,
+              server management, debugging, optimization,
+              and interface integration.
+            </p>
+          </article>
 
-                  <p className={styles.statTop}>
-                    {item.top}
-                  </p>
-
-                  <p className={styles.statBottom}>
-                    {item.bottom}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section
-            className={`${styles.card} ${styles.gridFull}`}
-            style={{ animationDelay: "920ms" }}
+          <article
+            className={`${styles.skillsCard} ${styles.reveal}`}
+            style={{ animationDelay: "540ms" }}
           >
-            <h3 className={styles.cardTitle}>
-              Technical Skills
-            </h3>
+            <div className={styles.skillsHeader}>
+              <div>
+                <span className={styles.sectionEyebrow}>
+                  Expertise
+                </span>
+
+                <h2 className={styles.sectionTitle}>
+                  Technical skills
+                </h2>
+              </div>
+
+              <span className={styles.skillsCount}>
+                {skills.length} skills
+              </span>
+            </div>
 
             <div className={styles.skillGrid}>
-              <div className={styles.skillCol}>
-                {leftSkills.map((skill) => (
-                  <Skill
-                    key={skill.name}
-                    {...skill}
-                  />
-                ))}
-              </div>
-
-              <div className={styles.skillCol}>
-                {rightSkills.map((skill) => (
-                  <Skill
-                    key={skill.name}
-                    {...skill}
-                  />
-                ))}
-              </div>
+              {skills.map((skill) => (
+                <Skill
+                  key={skill.name}
+                  {...skill}
+                />
+              ))}
             </div>
-          </section>
-        </div>
+          </article>
+        </section>
       </div>
-    </div>
+    </main>
   );
 }
 
@@ -215,24 +203,24 @@ function Skill({
   );
 
   return (
-    <div className={styles.skillRow}>
+    <div className={styles.skill}>
       <div className={styles.skillTop}>
-        <div className={styles.skillName}>
+        <span className={styles.skillName}>
           {name}
-        </div>
+        </span>
 
-        <div className={styles.skillPct}>
+        <span className={styles.skillPct}>
           {pct}%
-        </div>
+        </span>
       </div>
 
-      <div className={styles.barTrack}>
+      <div className={styles.skillTrack}>
         <div
-          className={styles.barFill}
+          className={styles.skillFill}
           style={
             {
               animationDelay: `${delayMs}ms`,
-              ["--mxds-fill" as string]:
+              ["--skill-fill" as string]:
                 String(fill),
             } as CSSProperties
           }
