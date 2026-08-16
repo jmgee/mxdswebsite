@@ -1,4 +1,4 @@
-:global(:root) {
+.page {
   --contact-text: #171717;
   --contact-muted: #68645e;
   --contact-soft: #8d877e;

@@ -1,4 +1,4 @@
-:global(:root) {
+.page {
   --mxds-bg: #f5f3ee;
   --mxds-text: #171717;
   --mxds-muted: #5a5a5a;
