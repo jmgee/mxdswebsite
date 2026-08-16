@@ -5,24 +5,21 @@ import styles from "./ContactView.module.css";
 
 const EMAIL = "defnotmxds@gmail.com";
 
-const EMAIL_SUBJECT = "Project inquiry — M Developments";
+const MAILTO_URL = `mailto:${EMAIL}?subject=${encodeURIComponent(
+  "Project inquiry",
+)}&body=${encodeURIComponent(
+  `Hi,
 
-const EMAIL_BODY = `Hi M Developments,
-
-I found you through your website and would like to discuss a project.
+I'd like to discuss a project.
 
 Project details:
-
-`;
-
-const MAILTO_URL = `mailto:${EMAIL}?subject=${encodeURIComponent(
-  EMAIL_SUBJECT,
-)}&body=${encodeURIComponent(EMAIL_BODY)}`;
+`,
+)}`;
 
 export function ContactView() {
   const [copied, setCopied] = useState(false);
 
-  async function handleCopyEmail() {
+  async function copyEmail() {
     try {
       await navigator.clipboard.writeText(EMAIL);
       setCopied(true);
@@ -45,56 +42,47 @@ export function ContactView() {
                 className={styles.statusDot}
                 aria-hidden="true"
               />
-
               Available for inquiries
             </div>
 
-            <p className={styles.eyebrow}>
-              Contact
-            </p>
-
             <h1 className={styles.title}>
-              Let&apos;s build something
-              <span className={styles.titleAccent}>
-                {" "}
-                great.
-              </span>
+              Let&apos;s work
+              <span> together.</span>
             </h1>
 
             <p className={styles.description}>
-              Have a project, FiveM server, custom
-              script, or development inquiry? Send me
-              an email with the details and I&apos;ll
-              get back to you as soon as I can.
+              Have a project or FiveM inquiry?
+              Send me an email and I&apos;ll get back
+              to you as soon as possible.
             </p>
 
-            <div className={styles.quickInfo}>
-              <div className={styles.infoItem}>
+            <div className={styles.details}>
+              <div className={styles.detail}>
                 <MailIcon />
 
                 <div>
-                  <span className={styles.infoLabel}>
+                  <span className={styles.detailLabel}>
                     Email
                   </span>
 
                   <a
                     href={`mailto:${EMAIL}`}
-                    className={styles.infoValue}
+                    className={styles.detailValue}
                   >
                     {EMAIL}
                   </a>
                 </div>
               </div>
 
-              <div className={styles.infoItem}>
+              <div className={styles.detail}>
                 <ClockIcon />
 
                 <div>
-                  <span className={styles.infoLabel}>
+                  <span className={styles.detailLabel}>
                     Response
                   </span>
 
-                  <span className={styles.infoValue}>
+                  <span className={styles.detailValue}>
                     Usually within 24–48 hours
                   </span>
                 </div>
@@ -102,40 +90,21 @@ export function ContactView() {
             </div>
           </div>
 
-          <aside className={styles.emailCard}>
-            <div className={styles.iconWrap}>
+          <aside className={styles.card}>
+            <div className={styles.icon}>
               <MailIcon />
             </div>
 
-            <div className={styles.cardContent}>
-              <p className={styles.cardEyebrow}>
-                Direct email
-              </p>
+            <h2 className={styles.cardTitle}>
+              Contact me
+            </h2>
 
-              <h2 className={styles.cardTitle}>
-                Send me a message
-              </h2>
-
-              <p className={styles.cardDescription}>
-                The fastest way to reach me is by email.
-                Include your project requirements,
-                budget, timeline, and any references
-                that may help.
-              </p>
-            </div>
-
-            <div className={styles.emailBox}>
-              <span className={styles.emailLabel}>
-                Email address
-              </span>
-
-              <a
-                href={`mailto:${EMAIL}`}
-                className={styles.emailAddress}
-              >
-                {EMAIL}
-              </a>
-            </div>
+            <a
+              href={`mailto:${EMAIL}`}
+              className={styles.email}
+            >
+              {EMAIL}
+            </a>
 
             <div className={styles.actions}>
               <a
@@ -150,21 +119,12 @@ export function ContactView() {
               <button
                 type="button"
                 className={styles.secondaryButton}
-                onClick={handleCopyEmail}
-                aria-live="polite"
+                onClick={copyEmail}
               >
                 <CopyIcon />
-
-                {copied
-                  ? "Email copied"
-                  : "Copy email"}
+                {copied ? "Copied" : "Copy"}
               </button>
             </div>
-
-            <p className={styles.note}>
-              Your email app will open with a project
-              inquiry already prepared.
-            </p>
           </aside>
         </section>
       </div>
@@ -175,8 +135,8 @@ export function ContactView() {
 function MailIcon() {
   return (
     <svg
-      width="20"
-      height="20"
+      width="19"
+      height="19"
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
@@ -202,8 +162,8 @@ function MailIcon() {
 function ClockIcon() {
   return (
     <svg
-      width="20"
-      height="20"
+      width="19"
+      height="19"
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
@@ -230,8 +190,8 @@ function ClockIcon() {
 function CopyIcon() {
   return (
     <svg
-      width="18"
-      height="18"
+      width="17"
+      height="17"
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
@@ -259,8 +219,8 @@ function CopyIcon() {
 function ArrowIcon() {
   return (
     <svg
-      width="18"
-      height="18"
+      width="17"
+      height="17"
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
