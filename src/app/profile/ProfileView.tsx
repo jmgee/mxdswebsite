@@ -71,7 +71,7 @@ export function ProfileView() {
 
           <div className={styles.heroContent}>
             <h1 className={`${styles.title} ${styles.reveal}`} style={{ animationDelay: "180ms" }}>
-              <span className={styles.titleAccent}>Mxds Siway</span>
+              <span className={styles.titleAccent}>mxds</span>
             </h1>
 
             <div className={`${styles.subtitle} ${styles.reveal}`} style={{ animationDelay: "260ms" }}>
