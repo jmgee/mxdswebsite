@@ -31,8 +31,16 @@ const skills = [
   { name: "Qbox", pct: 82, delayMs: 860 },
   { name: "Custom Script", pct: 90, delayMs: 930 },
   { name: "Server Management", pct: 92, delayMs: 1000 },
-  { name: "Optimization & Debugging", pct: 94, delayMs: 1070 },
-  { name: "UI/UX Integration", pct: 85, delayMs: 1140 },
+  {
+    name: "Optimization & Debugging",
+    pct: 94,
+    delayMs: 1070,
+  },
+  {
+    name: "UI/UX Integration",
+    pct: 85,
+    delayMs: 1140,
+  },
 ] as const;
 
 export function ProfileView() {
@@ -128,34 +136,8 @@ export function ProfileView() {
 
         <section className={styles.profileGrid}>
           <article
-            className={`${styles.aboutCard} ${styles.reveal}`}
-            style={{ animationDelay: "460ms" }}
-          >
-            <span className={styles.sectionEyebrow}>
-              About
-            </span>
-
-            <h2 className={styles.sectionTitle}>
-              Building reliable FiveM experiences.
-            </h2>
-
-            <p className={styles.aboutText}>
-              My focus is developing and maintaining GTA V
-              roleplay servers with scalable systems,
-              optimized resources, clean implementation, and
-              polished player experiences.
-            </p>
-
-            <p className={styles.aboutText}>
-              I work across frameworks, custom scripting,
-              server management, debugging, optimization,
-              and interface integration.
-            </p>
-          </article>
-
-          <article
             className={`${styles.skillsCard} ${styles.reveal}`}
-            style={{ animationDelay: "540ms" }}
+            style={{ animationDelay: "460ms" }}
           >
             <div className={styles.skillsHeader}>
               <div>
