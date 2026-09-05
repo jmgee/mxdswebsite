@@ -336,28 +336,14 @@ export function ProjectsView() {
             </span>
 
             <h2>
-              No projects added yet.
+              Coming Soon: No projects found in this category.
             </h2>
-
-            <p>
-              Add a project to{" "}
-              <code>
-                projects.data.ts
-              </code>{" "}
-              and it will automatically
-              appear here.
-            </p>
           </section>
         )}
       </div>
     </main>
   );
 }
-
-/* ===========================================================
-   FIVEM CARD
-   Logo + name only
-   =========================================================== */
 
 function FiveMProjectCard({
   project,
@@ -411,11 +397,6 @@ function FiveMProjectCard({
   );
 }
 
-/* ===========================================================
-   WEBSITE CARD
-   Manual banner + manual logo
-   =========================================================== */
-
 function WebsiteProjectCard({
   project,
   delay,
@@ -423,9 +404,6 @@ function WebsiteProjectCard({
   project: ProjectItem;
   delay: number;
 }) {
-  const hasWebsite =
-    Boolean(project.projectUrl);
-
   return (
     <article
       className={styles.websiteCard}
@@ -436,91 +414,37 @@ function WebsiteProjectCard({
       }
     >
       {/* WEBSITE BANNER */}
-      {project.bannerUrl ? (
-        hasWebsite ? (
-          <a
-            href={project.projectUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={
-              styles.websiteBanner
-            }
-            aria-label={`Visit ${project.name}`}
-          >
-            <img
-              src={project.bannerUrl}
-              alt={`${project.name} website`}
-              className={
-                styles.websiteBannerImage
-              }
-              loading="lazy"
-              referrerPolicy="no-referrer"
-            />
+      {project.bannerUrl && (
+        <div className={styles.websiteBanner}>
+          <img
+            src={project.bannerUrl}
+            alt={`${project.name} website preview`}
+            className={styles.websiteBannerImage}
+            loading="lazy"
+            referrerPolicy="no-referrer"
+          />
 
-            <div
-              className={
-                styles.websiteBannerOverlay
-              }
-              aria-hidden="true"
-            />
-
-            <span
-              className={
-                styles.websiteBannerAction
-              }
-            >
-              Visit website ↗
-            </span>
-          </a>
-        ) : (
           <div
-            className={
-              styles.websiteBanner
-            }
-          >
-            <img
-              src={project.bannerUrl}
-              alt={`${project.name} website`}
-              className={
-                styles.websiteBannerImage
-              }
-              loading="lazy"
-              referrerPolicy="no-referrer"
-            />
-          </div>
-        )
-      ) : null}
+            className={styles.websiteBannerOverlay}
+            aria-hidden="true"
+          />
+        </div>
+      )}
 
       {/* WEBSITE INFO */}
-      <div
-        className={styles.websiteBody}
-      >
-        <div
-          className={
-            styles.websiteHeader
-          }
-        >
-          <div
-            className={
-              styles.websiteLogoWrap
-            }
-          >
+      <div className={styles.websiteBody}>
+        <div className={styles.websiteHeader}>
+          <div className={styles.websiteLogoWrap}>
             {project.logoUrl ? (
               <img
                 src={project.logoUrl}
                 alt={`${project.name} logo`}
-                className={
-                  styles.websiteLogo
-                }
+                className={styles.websiteLogo}
                 loading="lazy"
                 referrerPolicy="no-referrer"
               />
             ) : (
-              <div
-                className={
-                  styles.websiteLogoFallback
-                }
-              >
+              <div className={styles.websiteLogoFallback}>
                 {project.name
                   .slice(0, 1)
                   .toUpperCase()}
@@ -528,40 +452,33 @@ function WebsiteProjectCard({
             )}
           </div>
 
-          <h2
-            className={
-              styles.websiteName
-            }
-          >
+          <h2 className={styles.websiteName}>
             {project.name}
           </h2>
         </div>
 
         {project.description && (
-          <p
-            className={
-              styles.websiteDescription
-            }
-          >
+          <p className={styles.websiteDescription}>
             {project.description}
           </p>
         )}
 
         {project.projectUrl && (
-          <div
-            className={
-              styles.websiteFooter
-            }
-          >
+          <div className={styles.websiteFooter}>
             <a
               href={project.projectUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={
-                styles.primaryButton
-              }
+              className={styles.primaryButton}
+              aria-label={`Visit ${project.name} website`}
             >
               Visit Website
+              <span
+                className={styles.buttonArrow}
+                aria-hidden="true"
+              >
+                ↗
+              </span>
             </a>
           </div>
         )}
