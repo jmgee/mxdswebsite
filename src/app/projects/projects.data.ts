@@ -11,41 +11,19 @@ export type ProjectItem = {
   name: string;
   year: string;
   category: ProjectCategory;
-
-  /*
-   * FiveM only
-   */
-  serverId?: string;
-  discordUrl?: string;
-
-  /*
-   * Website / external project
-   */
-  projectUrl?: string;
-
-  /*
-   * Shared
-   */
   logoUrl?: string;
+  bannerUrl?: string;
+  projectUrl?: string;
+  discordUrl?: string;
   description?: string;
 };
 
-export type ProjectLiveState = {
-  status: "Checking" | "Online" | "Offline";
-  players?: number;
-  maxPlayers?: number;
-};
-
 export const PROJECTS: ProjectItem[] = [
-  /* =========================================================
-     FIVEM PROJECTS — 2026
-     ========================================================= */
 
   {
     name: "Hybrid City",
     year: "2026",
     category: "FiveM",
-    serverId: "899ddm",
     logoUrl:
       "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/hybrid1024.png",
     discordUrl:
@@ -56,16 +34,11 @@ export const PROJECTS: ProjectItem[] = [
     name: "Ohana City V2",
     year: "2026",
     category: "FiveM",
-    serverId: "3myody",
     logoUrl:
       "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/Ohana1024.png",
     discordUrl:
       "https://discord.gg/NtfMAvJ8jG",
   },
-
-  /* =========================================================
-     FIVEM PROJECTS — 2025
-     ========================================================= */
 
   {
     name: "Rivals City",
@@ -87,7 +60,6 @@ export const PROJECTS: ProjectItem[] = [
     name: "BINI City",
     year: "2025",
     category: "FiveM",
-    serverId: "kr7g9r",
     logoUrl:
       "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/bini1024.png",
     discordUrl:
@@ -125,10 +97,6 @@ export const PROJECTS: ProjectItem[] = [
     logoUrl:
       "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/cavite1024.png",
   },
-
-  /* =========================================================
-     FIVEM PROJECTS — 2024
-     ========================================================= */
 
   {
     name: "Escolta RP",
@@ -186,10 +154,6 @@ export const PROJECTS: ProjectItem[] = [
       "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/HAVEN_1024.png",
   },
 
-  /* =========================================================
-     FIVEM PROJECTS — 2023
-     ========================================================= */
-
   {
     name: "Majesty City V2",
     year: "2023",
@@ -198,32 +162,37 @@ export const PROJECTS: ProjectItem[] = [
       "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/mjsty_1024.png",
   },
 
-  /* =========================================================
-     WEBSITE PROJECTS
-     ========================================================= */
-
   {
     name: "Toughzone PH",
     year: "2026",
     category: "Website",
+
     projectUrl:
       "https://toughzoneph.com/",
+    logoUrl:
+      "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/tzmain.png",
+    bannerUrl:
+      "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/_DSC9841.jpg",
     description:
       "A modern e-commerce website for Toughzone PH, designed to showcase the brand and provide customers with a streamlined online shopping experience.",
   },
 
   /* =========================================================
-     DISCORD BOT PROJECTS
-
-     Add future Discord bot projects here using:
+     DISCORD BOT PROJECT EXAMPLE
 
      {
-       name: "Bot Name",
+       name: "M Developments Bot",
        year: "2026",
        category: "Discord Bot",
-       logoUrl: "https://...",
-       projectUrl: "https://...",
-       description: "Short project description.",
+
+       logoUrl:
+         "https://your-image-link.com/bot-logo.png",
+
+       projectUrl:
+         "https://github.com/your-project",
+
+       description:
+         "A custom Discord bot built for community management and automation.",
      },
 
      ========================================================= */
