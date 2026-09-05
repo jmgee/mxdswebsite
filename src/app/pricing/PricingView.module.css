@@ -92,6 +92,7 @@
   width: 100%;
   max-width: 1040px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .heroTitle {
@@ -120,35 +121,25 @@
 
 .switcherWrap {
   margin-top: 62px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .tabSwitcher {
-  width:
-    min(
-      100%,
-      820px
-    );
-
+  width: min(100%, 820px);
+  margin: 0 auto;
   display: grid;
-
   grid-template-columns:
-    repeat(
-      3,
-      minmax(0, 1fr)
-    );
-
+    repeat(3, minmax(0, 1fr));
   gap: 5px;
   padding: 6px;
-
   border:
     1px solid
     var(--pricing-border);
-
   border-radius: 18px;
-
   background:
     rgba(255, 255, 255, 0.5);
-
   box-shadow:
     0 10px 28px
     rgba(0, 0, 0, 0.035);
