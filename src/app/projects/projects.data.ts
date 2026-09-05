@@ -38,6 +38,20 @@ export const PROJECT_CATEGORIES: ProjectCategory[] = [
 
 export const PROJECTS: ProjectItem[] = [
   {
+    name: "Toughzone PH",
+    year: "2026",
+    category: "Website",
+    tag: "Business",
+    projectUrl: "https://toughzoneph.com/",
+    description:
+      "A modern e-commerce website for Toughzone PH, designed to present the brand, showcase products, and provide customers with a streamlined online shopping experience.",
+    keyFeatures: [
+      "Responsive E-commerce UI",
+      "Product & Collection Pages",
+      "Mobile-first Shopping Experience",
+    ],
+  },
+  {
     name: "Hybrid City",
     year: "2026",
     category: "FiveM",

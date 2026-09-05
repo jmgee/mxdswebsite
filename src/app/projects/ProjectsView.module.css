@@ -269,6 +269,11 @@
   gap: 20px;
 }
 
+.websiteGrid{
+  grid-template-columns: minmax(0, 980px);
+  justify-content: center;
+}
+
 .projectCard{
   position: relative;
   min-width: 0;
@@ -300,6 +305,158 @@
   transform: translateY(-4px);
   box-shadow: 0 24px 56px rgba(0,0,0,.11);
   border-color: rgba(245,158,11,.52);
+}
+
+.websiteCard{
+  padding: 0;
+}
+
+.websiteCardBody{
+  position: relative;
+  z-index: 2;
+  padding: 22px;
+}
+
+.websitePreview{
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #11100e;
+  border-bottom: 1px solid rgba(245,158,11,.18);
+  isolation: isolate;
+}
+
+.websitePreview::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(11,9,7,.24) 0%, transparent 24%, transparent 70%, rgba(11,9,7,.32) 100%),
+    linear-gradient(135deg, rgba(245,158,11,.08), transparent 42%);
+}
+
+.websitePreviewFallback{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  place-content: center;
+  gap: 6px;
+  padding: 24px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(245,158,11,.18), transparent 34%),
+    linear-gradient(180deg, #17130e, #0f0d0a);
+  color: #fff;
+}
+
+.websitePreviewFallback span{
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 900;
+  letter-spacing: -.04em;
+}
+
+.websitePreviewFallback small{
+  color: rgba(255,255,255,.58);
+  font-size: .78rem;
+  font-weight: 750;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.websitePreviewImage{
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+  opacity: 1;
+  transform: scale(1.001);
+  transition: transform .4s cubic-bezier(.2,.8,.2,1), opacity .2s ease, filter .2s ease;
+}
+
+.websitePreviewTopbar{
+  position: absolute;
+  z-index: 5;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.websitePreviewBadge,
+.websitePreviewDomain{
+  min-height: 31px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 11px;
+  border-radius: 999px;
+  background: rgba(16,14,11,.72);
+  border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.92);
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.websitePreviewBadge{
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.websitePreviewDomain{
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: .73rem;
+  font-weight: 750;
+  color: rgba(255,255,255,.72);
+}
+
+.websitePreviewAction{
+  position: absolute;
+  z-index: 5;
+  right: 16px;
+  bottom: 16px;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(245,158,11,.94);
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 900;
+  box-shadow: 0 10px 24px rgba(0,0,0,.24);
+  transform: translateY(4px);
+  opacity: .92;
+  transition: transform .18s ease, opacity .18s ease, filter .18s ease;
+}
+
+.websitePreview:hover .websitePreviewImage{
+  transform: scale(1.018);
+  filter: saturate(1.03) contrast(1.01);
+}
+
+.websitePreview:hover .websitePreviewAction{
+  transform: translateY(0);
+  opacity: 1;
+  filter: brightness(1.04);
 }
 
 .cardGlow{
@@ -629,6 +786,29 @@
     padding: 18px 16px;
   }
 
+  .websiteCard{
+    padding: 0;
+  }
+
+  .websiteCardBody{
+    padding: 18px 16px;
+  }
+
+  .websitePreviewTopbar{
+    top: 12px;
+    left: 12px;
+    right: 12px;
+  }
+
+  .websitePreviewDomain{
+    display: none;
+  }
+
+  .websitePreviewAction{
+    right: 12px;
+    bottom: 12px;
+  }
+
   .cardTop{
     grid-template-columns: 64px minmax(0, 1fr);
     gap: 12px;
@@ -683,7 +863,9 @@
 
   .projectCard,
   .ctaBtn,
-  .filterBtn{
+  .filterBtn,
+  .websitePreviewImage,
+  .websitePreviewAction{
     transition: none !important;
   }
 }

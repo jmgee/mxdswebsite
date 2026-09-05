@@ -18,6 +18,9 @@ import {
 
 type CardState = "checking" | "online" | "offline";
 
+const WEBSITE_PREVIEW_SERVICE =
+  "https://image.thum.io/get/width/1600/crop/900/noanimate/";
+
 const categoryClassMap: Record<ProjectCategory, string> = {
   FiveM: styles.categoryFiveM,
   Website: styles.categoryWebsite,
@@ -36,6 +39,10 @@ function isValidDiscordUrl(url?: string) {
       /^https:\/\/discord\.gg\//i.test(url) &&
       !url.includes("REPLACE_"),
   );
+}
+
+function getWebsitePreviewUrl(url: string) {
+  return `${WEBSITE_PREVIEW_SERVICE}${encodeURI(url)}`;
 }
 
 function getCardState(
@@ -227,22 +234,31 @@ export function ProjectsView() {
                   <div className={styles.yearRule} />
                 </div>
 
-                <div className={styles.projectGrid}>
+                <div
+                  className={`${styles.projectGrid} ${
+                    activeCategory === "Website" ? styles.websiteGrid : ""
+                  }`}
+                >
                   {groupedByYear[year].map((project, index) => {
                     const live = liveData[project.name];
                     const state = getCardState(project, live);
                     const playersLabel = getPlayersLabel(live);
                     const hasDiscord = isValidDiscordUrl(project.discordUrl);
-                    const ctaUrl = project.projectUrl ??
+                    const ctaUrl =
+                      project.projectUrl ??
                       (hasDiscord ? project.discordUrl : undefined);
                     const ctaLabel = project.projectUrl
-                      ? "View Project"
+                      ? "Visit Website"
                       : "Open Discord";
+                    const isWebsite =
+                      project.category === "Website" && Boolean(project.projectUrl);
 
                     return (
                       <article
                         key={`${project.year}-${project.name}`}
-                        className={styles.projectCard}
+                        className={`${styles.projectCard} ${
+                          isWebsite ? styles.websiteCard : ""
+                        }`}
                         style={
                           {
                             animationDelay: `${
@@ -253,76 +269,128 @@ export function ProjectsView() {
                       >
                         <div className={styles.cardGlow} aria-hidden="true" />
 
-                        <div className={styles.cardTop}>
-                          <div className={styles.avatarWrap}>
-                            {project.logoUrl ? (
-                              <img
-                                src={project.logoUrl}
-                                alt={`${project.name} logo`}
-                                className={styles.avatarImg}
-                                loading="lazy"
-                                referrerPolicy="no-referrer"
-                              />
-                            ) : (
-                              <div className={styles.avatarFallback}>
-                                {project.name.slice(0, 1).toUpperCase()}
-                              </div>
-                            )}
-                          </div>
+                        {isWebsite && project.projectUrl && (
+                          <a
+                            href={project.projectUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.websitePreview}
+                            aria-label={`Open ${project.name} website`}
+                          >
+                            <div className={styles.websitePreviewFallback}>
+                              <span>{project.name}</span>
+                              <small>Website preview</small>
+                            </div>
 
-                          <div className={styles.cardHeading}>
-                            <h2 className={styles.projectName}>{project.name}</h2>
+                            <img
+                              src={getWebsitePreviewUrl(project.projectUrl)}
+                              alt={`${project.name} website preview`}
+                              className={styles.websitePreviewImage}
+                              loading="lazy"
+                              referrerPolicy="no-referrer"
+                              onError={(event) => {
+                                event.currentTarget.style.opacity = "0";
+                              }}
+                            />
 
-                            <div className={styles.badgeRow}>
-                              <span
-                                className={`${styles.category} ${categoryClassMap[project.category]}`}
-                              >
-                                {project.category}
+                            <div className={styles.websitePreviewTopbar}>
+                              <span className={styles.websitePreviewBadge}>
+                                Website Preview
                               </span>
+                              <span className={styles.websitePreviewDomain}>
+                                {project.projectUrl.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+                              </span>
+                            </div>
 
-                              <span className={styles.tag}>{project.tag}</span>
+                            <span className={styles.websitePreviewAction}>
+                              Visit website ↗
+                            </span>
+                          </a>
+                        )}
 
-                              {state && (
-                                <span
-                                  className={`${styles.status} ${statusClassMap[state]}`}
-                                >
-                                  <span className={styles.statusDot} />
-                                  {getStatusLabel(state)}
-                                </span>
+                        <div
+                          className={
+                            isWebsite ? styles.websiteCardBody : undefined
+                          }
+                        >
+                          <div className={styles.cardTop}>
+                            <div className={styles.avatarWrap}>
+                              {project.logoUrl ? (
+                                <img
+                                  src={project.logoUrl}
+                                  alt={`${project.name} logo`}
+                                  className={styles.avatarImg}
+                                  loading="lazy"
+                                  referrerPolicy="no-referrer"
+                                />
+                              ) : (
+                                <div className={styles.avatarFallback}>
+                                  {project.name.slice(0, 1).toUpperCase()}
+                                </div>
                               )}
                             </div>
+
+                            <div className={styles.cardHeading}>
+                              <h2 className={styles.projectName}>{project.name}</h2>
+
+                              <div className={styles.badgeRow}>
+                                <span
+                                  className={`${styles.category} ${categoryClassMap[project.category]}`}
+                                >
+                                  {project.category}
+                                </span>
+
+                                <span className={styles.tag}>{project.tag}</span>
+
+                                {state && (
+                                  <span
+                                    className={`${styles.status} ${statusClassMap[state]}`}
+                                  >
+                                    <span className={styles.statusDot} />
+                                    {getStatusLabel(state)}
+                                  </span>
+                                )}
+                              </div>
+                            </div>
                           </div>
+
+                          <p className={styles.projectDesc}>
+                            {project.description}
+                          </p>
+
+                          {playersLabel && (
+                            <div className={styles.playersLabel}>
+                              {playersLabel}
+                            </div>
+                          )}
+
+                          <div className={styles.featuresBlock}>
+                            <div className={styles.featuresLabel}>Key Features</div>
+                            <div className={styles.featureList}>
+                              {project.keyFeatures.map((feature) => (
+                                <span
+                                  key={feature}
+                                  className={styles.featureChip}
+                                >
+                                  {feature}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+
+                          {ctaUrl && (
+                            <div className={styles.cardFooter}>
+                              <a
+                                href={ctaUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.ctaBtn}
+                              >
+                                {ctaLabel}
+                              </a>
+                            </div>
+                          )}
                         </div>
-
-                        <p className={styles.projectDesc}>{project.description}</p>
-
-                        {playersLabel && (
-                          <div className={styles.playersLabel}>{playersLabel}</div>
-                        )}
-
-                        <div className={styles.featuresBlock}>
-                          <div className={styles.featuresLabel}>Key Features</div>
-                          <div className={styles.featureList}>
-                            {project.keyFeatures.map((feature) => (
-                              <span key={feature} className={styles.featureChip}>
-                                {feature}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-
-                        {ctaUrl && (
-                          <div className={styles.cardFooter}>
-                            <a
-                              href={ctaUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className={styles.ctaBtn}
-                            >
-                              {ctaLabel}
-                            </a>
-                          </div>
-                        )}
                       </article>
                     );
                   })}
