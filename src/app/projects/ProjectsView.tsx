@@ -336,7 +336,7 @@ export function ProjectsView() {
             </span>
 
             <h2>
-              Coming Soon: No projects found in this category.
+              No projects found in this category.
             </h2>
           </section>
         )}
