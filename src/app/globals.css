@@ -2,40 +2,28 @@
   --bg: #000000;
   --text: #f5f5f5;
   --muted: rgba(255, 255, 255, 0.62);
-
   --brand-red: #ffffff;
   --bar-red: #ffffff;
-
   --card-bg: #0d0d0d;
   --chip-bg: rgba(255, 255, 255, 0.06);
   --hero-bg: rgba(255, 255, 255, 0.06);
   --border: rgba(255, 255, 255, 0.14);
   --soft-border: rgba(255, 255, 255, 0.14);
-
   --mxds-card-fill: linear-gradient(180deg, #111111 0%, #0b0b0b 55%, #080808 100%);
-
   --mxds-card-border: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.08) 100%);
-
   --mxds-card-border-strong: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.12) 100%);
-
   --mxds-card-shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
-
   --card-fade: var(--mxds-card-fill);
   --card-fade-soft: var(--mxds-card-fill);
   --card-border: var(--mxds-card-border);
   --card-border-strong: var(--mxds-card-border-strong);
   --card-shadow: var(--mxds-card-shadow);
-
   --footer-bg: #000000;
-
-  --online: #ffffff;
+  --online: #22c55e;
   --offline: #737373;
-
-  --join: #ffffff;
-  --join-hover: #e5e5e5;
-
+  --join: #22c55e;
+  --join-hover: #16a34a;
   --radius: 12px;
-
   color-scheme: dark;
 }
 
@@ -1012,7 +1000,7 @@ button, input, textarea{ font-family: inherit; }
   }
 }
 
-.mxds-brandLogo{
+.mxds-brandLogo {
   display: block;
   height: 48px;
   width: auto;
@@ -1020,6 +1008,6 @@ button, input, textarea{ font-family: inherit; }
   object-fit: contain;
   object-position: left center;
   user-select: none;
-  filter: grayscale(1) brightness(0) invert(1);
-  opacity: 0.96;
+  filter: none;
+  opacity: 1;
 }
