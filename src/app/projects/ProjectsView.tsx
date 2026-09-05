@@ -12,7 +12,6 @@ import {
   PROJECTS,
   PROJECT_CATEGORIES,
   type ProjectCategory,
-  type ProjectCategoryFilter,
   type ProjectItem,
   type ProjectLiveState,
 } from "./projects.data";
@@ -23,7 +22,6 @@ const categoryClassMap: Record<ProjectCategory, string> = {
   FiveM: styles.categoryFiveM,
   Website: styles.categoryWebsite,
   "Discord Bot": styles.categoryDiscord,
-  Software: styles.categorySoftware,
 };
 
 const statusClassMap: Record<CardState, string> = {
@@ -71,7 +69,7 @@ function getPlayersLabel(live?: ProjectLiveState) {
 
 export function ProjectsView() {
   const [activeCategory, setActiveCategory] =
-    useState<ProjectCategoryFilter>("All");
+    useState<ProjectCategory>("FiveM");
   const [liveData, setLiveData] = useState<Record<string, ProjectLiveState>>({});
 
   const liveTrackedProjects = useMemo(
@@ -112,11 +110,9 @@ export function ProjectsView() {
   }, [liveTrackedProjects]);
 
   const categoryCounts = useMemo(() => {
-    const counts = new Map<ProjectCategoryFilter, number>();
-    counts.set("All", PROJECTS.length);
+    const counts = new Map<ProjectCategory, number>();
 
     for (const category of PROJECT_CATEGORIES) {
-      if (category === "All") continue;
       counts.set(
         category,
         PROJECTS.filter((project) => project.category === category).length,
@@ -126,10 +122,10 @@ export function ProjectsView() {
     return counts;
   }, []);
 
-  const filteredProjects = useMemo(() => {
-    if (activeCategory === "All") return PROJECTS;
-    return PROJECTS.filter((project) => project.category === activeCategory);
-  }, [activeCategory]);
+  const filteredProjects = useMemo(
+    () => PROJECTS.filter((project) => project.category === activeCategory),
+    [activeCategory],
+  );
 
   const groupedByYear = useMemo(() => {
     return filteredProjects.reduce<Record<string, ProjectItem[]>>(
@@ -149,7 +145,7 @@ export function ProjectsView() {
 
   const heroStats = useMemo(() => {
     const years = new Set(PROJECTS.map((project) => project.year)).size;
-    const categories = new Set(PROJECTS.map((project) => project.category)).size;
+    const categories = PROJECT_CATEGORIES.length;
     const activeLive = liveTrackedProjects.filter(
       (project) => liveData[project.name]?.status === "Online",
     ).length;
@@ -171,9 +167,8 @@ export function ProjectsView() {
           <h1 className={styles.heroTitle}>Projects</h1>
 
           <p className={styles.heroLead}>
-            A curated collection of FiveM servers, websites, Discord bots, and
-            software projects I&apos;ve built, maintained, optimized, and
-            supported.
+            A curated collection of FiveM servers, websites, and Discord bots
+            I&apos;ve built, maintained, optimized, and supported.
           </p>
 
           <div className={styles.heroStats}>
@@ -230,11 +225,6 @@ export function ProjectsView() {
                   </div>
 
                   <div className={styles.yearRule} />
-
-                  <span className={styles.yearCount}>
-                    {groupedByYear[year].length}{" "}
-                    {groupedByYear[year].length === 1 ? "project" : "projects"}
-                  </span>
                 </div>
 
                 <div className={styles.projectGrid}>

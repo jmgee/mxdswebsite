@@ -1,4 +1,4 @@
-export type ProjectCategory = "FiveM" | "Website" | "Discord Bot" | "Software";
+export type ProjectCategory = "FiveM" | "Website" | "Discord Bot";
 
 export type ProjectTag =
   | "Roleplay"
@@ -19,7 +19,7 @@ export type ProjectItem = {
   logoUrl?: string;
   projectUrl?: string;
 
-  // FiveM-only fields. Leave these undefined for websites, bots, and software.
+  // FiveM-only fields. Leave these undefined for websites and Discord bots.
   serverId?: string;
   discordUrl?: string;
 };
@@ -30,15 +30,11 @@ export type ProjectLiveState = {
   maxPlayers?: number;
 };
 
-export const PROJECT_CATEGORIES = [
-  "All",
+export const PROJECT_CATEGORIES: ProjectCategory[] = [
   "FiveM",
   "Website",
   "Discord Bot",
-  "Software",
-] as const;
-
-export type ProjectCategoryFilter = (typeof PROJECT_CATEGORIES)[number];
+];
 
 export const PROJECTS: ProjectItem[] = [
   {
