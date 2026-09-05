@@ -74,12 +74,7 @@ export function ProfileView() {
               className={`${styles.heroLead} ${styles.reveal}`}
               style={{ animationDelay: "220ms" }}
             >
-              A 🇵🇭 Filipino developer studying Computer
-              Science with a major in Software Engineering,
-              specializing in FiveM development and scalable
-              server systems. I build high-performance
-              experiences with clean code and reliable
-              architecture.
+              A 🇵🇭 Filipino developer currently studying Computer Science with a major in Software Engineering. I develop FiveM servers, modern websites for businesses and portfolios, and custom Discord bots. I focus on writing clean, maintainable code and delivering solutions that are reliable, scalable, and built for long-term use.
             </p>
           </div>
 
