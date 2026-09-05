@@ -76,7 +76,7 @@ export const ALL_PLANS: Record<
     {
       name: "SSRP Server Pack",
       subtitle:
-        "Normal RP server pack perfect for grindings and casual RP.",
+        "Normal RP server pack perfect for grinding and casual RP.",
       setupLabel:
         "Starting at",
       setupPrice:
@@ -88,10 +88,10 @@ export const ALL_PLANS: Record<
         "Latest OX Scripts",
         "Advanced Robbery System",
         "Advanced Whitelisted Jobs System",
-        "All in one resource Sidejobs System",
+        "All-in-One Side Jobs System",
         "Open Source Scripts",
         "Database Configuration",
-        "1 week Free Support for Bug Fixes & Exploits",
+        "1 Week Free Support for Bug Fixes & Exploits",
       ],
       note:
         "Custom modifications require additional support.",
@@ -100,7 +100,7 @@ export const ALL_PLANS: Record<
     {
       name: "Barilan Server Pack",
       subtitle:
-        "PVP focused server pack with custom scripts and features.",
+        "PVP-focused server pack with custom scripts and features.",
       setupLabel:
         "Starting at",
       setupPrice:
@@ -114,7 +114,7 @@ export const ALL_PLANS: Record<
         "Advanced Traphouse System (Unli)",
         "Custom Death System (Includes Death Screen)",
         "Modified Gang System (Includes Unli Gang Car)",
-        "1 week Free Support for Bug Fixes & Exploits",
+        "1 Week Free Support for Bug Fixes & Exploits",
       ],
       note:
         "Custom modifications require additional support.",
@@ -131,7 +131,7 @@ export const ALL_PLANS: Record<
       monthlyPrice:
         "One-time fee",
       features: [
-        "Optimized Cloth Pack",
+        "Optimized Clothing Pack",
         "300+ Clothing Items",
       ],
       note:
@@ -159,7 +159,96 @@ export const ALL_PLANS: Record<
     },
   ],
 
-  discord: [],
+  discord: [
+    {
+      name: "Basic Bot Development",
+      subtitle:
+        "Ideal for Discord communities that need essential automation and management features.",
+      setupLabel:
+        "Starting at",
+      setupPrice:
+        "₱3,000",
+      monthlyPrice:
+        "One-time fee",
+      features: [
+        "Custom Bot Branding",
+        "Custom Moderation Commands",
+        "Basic Logging System",
+      ],
+      note:
+        "Bot hosting is not included.",
+    },
 
-  web: [],
+    {
+      name: "Advanced Bot Development",
+      subtitle:
+        "Ideal for Discord communities that need advanced automation and management features.",
+      setupLabel:
+        "Starting at",
+      setupPrice:
+        "₱15,000",
+      monthlyPrice:
+        "One-time fee",
+      features: [
+        "Fully Custom Discord Bot Development",
+        "Advanced Moderation, Ticket & Automation Systems",
+        "Flexible Database Integration (SQL, NoSQL & Cloud Databases)",
+        "Custom Slash Commands, Buttons, Menus & Modals",
+        "Source Code, Deployment Assistance & 30 Days Support",
+      ],
+      note:
+        "Hosting, premium APIs, third-party services, and advanced custom requirements are quoted separately based on project scope and technical complexity.",
+      popular: true,
+    },
+  ],
+
+  web: [
+    {
+      name: "Portfolio Website",
+      subtitle:
+        "A modern responsive website for personal brands, developers, creatives, and professionals.",
+      setupLabel:
+        "Starting at",
+      setupPrice:
+        "₱10,000",
+      monthlyPrice:
+        "₱5,000 /15 days support",
+      features: [
+        "Custom Responsive Website Design",
+        "Mobile & Desktop Optimization",
+        "Profile / About Section",
+        "Projects or Portfolio Showcase",
+        "Contact & Social Media Integration",
+        "Basic SEO Configuration",
+        "Performance Optimization",
+        "Deployment Assistance",
+      ],
+      note:
+        "Final pricing depends on the project scope, number of pages, design requirements, integrations, and overall complexity. Domain, hosting, premium APIs, and third-party services are quoted separately.",
+    },
+
+    {
+      name: "Business Website",
+      subtitle:
+        "A professional website built for businesses, brands, products, and service-based companies.",
+      setupLabel:
+        "Starting at",
+      setupPrice:
+        "₱20,000",
+      monthlyPrice:
+        "₱10,000 /15 days support",
+      features: [
+        "Custom Business Website Design",
+        "Responsive Mobile-First Development",
+        "Landing, Service & Business Pages",
+        "Product or Collection Pages",
+        "Contact & Inquiry Systems",
+        "SEO-Friendly Structure",
+        "Performance Optimization",
+        "Deployment & Production Setup",
+      ],
+      note:
+        "Final pricing depends on the project scope, required pages, business features, integrations, backend requirements, and overall complexity. E-commerce, payment gateways, custom dashboards, premium APIs, hosting, and third-party services are quoted separately.",
+    },
+  ],
 };
