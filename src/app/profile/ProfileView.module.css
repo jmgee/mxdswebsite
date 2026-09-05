@@ -1,16 +1,16 @@
 .page {
-  --profile-text: #171717;
-  --profile-muted: #69635a;
-  --profile-soft: #928a7f;
+  --profile-text: #f5f5f5;
+  --profile-muted: #a3a3a3;
+  --profile-soft: #737373;
 
-  --profile-accent: #f59e0b;
-  --profile-accent-dark: #a96300;
+  --profile-accent: #ffffff;
+  --profile-accent-dark: #d4d4d4;
 
-  --profile-border: rgba(37, 29, 18, 0.1);
-  --profile-accent-border: rgba(245, 158, 11, 0.28);
+  --profile-border: rgba(255, 255, 255, 0.12);
+  --profile-accent-border: rgba(255, 255, 255, 0.22);
 
-  --profile-surface: rgba(255, 255, 255, 0.62);
-  --profile-surface-strong: rgba(255, 255, 255, 0.82);
+  --profile-surface: rgba(255, 255, 255, 0.05);
+  --profile-surface-strong: rgba(255, 255, 255, 0.08);
 
   --profile-max: 1420px;
 
@@ -43,7 +43,7 @@
   left: -120px;
   width: 350px;
   height: 350px;
-  background: rgba(245, 158, 11, 0.09);
+  background: rgba(255, 255, 255, .058);
 }
 
 .page::after {
@@ -51,7 +51,7 @@
   right: -120px;
   width: 330px;
   height: 330px;
-  background: rgba(245, 158, 11, 0.06);
+  background: rgba(255, 255, 255, .039);
 }
 
 @keyframes pageIn {
@@ -90,8 +90,6 @@
     transform: translateY(0);
   }
 }
-
-/* HERO */
 
 .hero {
   display: grid;
@@ -135,7 +133,7 @@
   border-radius: 999px;
 
   background:
-    rgba(255, 255, 255, 0.65);
+    rgba(255, 255, 255, .066);
 
   color:
     var(--profile-muted);
@@ -145,7 +143,7 @@
 
   box-shadow:
     0 8px 24px
-    rgba(0, 0, 0, 0.04);
+    rgba(0, 0, 0, .06);
 }
 
 .availabilityDot {
@@ -156,11 +154,10 @@
 
   border-radius: 999px;
 
-  background: #22c55e;
+  background: #ffffff;
 
   box-shadow:
-    0 0 0 4px
-    rgba(34, 197, 94, 0.1);
+    0 0 0 4px rgba(255, 255, 255, 0.10);
 }
 
 .heroTitle {
@@ -208,8 +205,6 @@
   line-height: 1.75;
 }
 
-/* PORTRAIT */
-
 .heroVisual {
   width: 100%;
   min-width: 0;
@@ -242,13 +237,13 @@
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.72),
-      rgba(255, 248, 235, 0.66)
+      rgba(255, 255, 255, .07),
+      rgba(255, 255, 255, .066)
     );
 
   box-shadow:
     0 26px 70px
-    rgba(0, 0, 0, 0.09);
+    rgba(0, 0, 0, .09);
 }
 
 .portraitCard::before {
@@ -263,7 +258,7 @@
   background:
     linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.45),
+      rgba(255, 255, 255, .052),
       transparent 40%
     );
 }
@@ -282,7 +277,7 @@
   border-radius: 999px;
 
   background:
-    rgba(245, 158, 11, 0.12);
+    rgba(255, 255, 255, .078);
 
   filter: blur(60px);
 
@@ -310,11 +305,9 @@
     contrast(1.02)
     drop-shadow(
       0 18px 24px
-      rgba(0, 0, 0, 0.15)
+      rgba(255, 255, 255, .15)
     );
 }
-
-/* STATS */
 
 .statsSection {
   display: grid;
@@ -381,7 +374,7 @@
   border-radius: 12px;
 
   background:
-    rgba(245, 158, 11, 0.09);
+    rgba(255, 255, 255, .058);
 
   color:
     var(--profile-accent-dark);
@@ -417,8 +410,6 @@
   font-weight: 700;
 }
 
-/* TECHNICAL SKILLS */
-
 .profileGrid {
   margin-top: 18px;
 }
@@ -438,7 +429,7 @@
 
   box-shadow:
     0 16px 44px
-    rgba(0, 0, 0, 0.045);
+    rgba(0, 0, 0, .06);
 }
 
 .sectionEyebrow {
@@ -500,7 +491,7 @@
   border-radius: 999px;
 
   background:
-    rgba(245, 158, 11, 0.07);
+    rgba(255, 255, 255, .046);
 
   color:
     var(--profile-accent-dark);
@@ -509,8 +500,6 @@
 
   font-weight: 800;
 }
-
-/* SKILLS */
 
 .skillGrid {
   display: grid;
@@ -546,7 +535,7 @@
 }
 
 .skillName {
-  color: #37332e;
+  color: #a3a3a3;
 
   font-size: 0.9rem;
 
@@ -575,7 +564,7 @@
   border-radius: 999px;
 
   background:
-    rgba(30, 25, 18, 0.08);
+    rgba(255, 255, 255, .08);
 }
 
 .skillFill {
@@ -589,11 +578,7 @@
   transform-origin: left;
 
   background:
-    linear-gradient(
-      90deg,
-      #f59e0b,
-      #ffbf47
-    );
+    linear-gradient(90deg, #ffffff, #a3a3a3);
 
   animation:
     skillIn 850ms
@@ -609,8 +594,6 @@
       );
   }
 }
-
-/* RESPONSIVE */
 
 @media (max-width: 1100px) {
   .hero {
@@ -747,6 +730,7 @@
       scaleX(
         var(--skill-fill)
       ) !important;
+    background: linear-gradient(90deg, #ffffff, #a3a3a3);
   }
 
   .stat {

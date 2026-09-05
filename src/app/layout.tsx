@@ -14,11 +14,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <div className="mxds-shell">
           <TopNav />
-
           <main className="mxds-main">
             <div className="mxds-container">{children}</div>
           </main>
-
           <footer className="mxds-footer">
             © 2026 Mxds Atakashi Kuzma - FiveM Developer. All rights reserved.
           </footer>

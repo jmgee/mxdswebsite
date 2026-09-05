@@ -6,76 +6,42 @@ import { usePathname } from "next/navigation";
 const BRAND_LOGO =
   "https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/mdevs1024.png";
 
+const NAV_ITEMS = [
+  { href: "/profile", label: "Profile" },
+  { href: "/projects", label: "Projects" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/contact", label: "Contact" },
+] as const;
+
 export default function TopNav() {
   const pathname = usePathname();
 
   const isActive = (href: string) =>
-    pathname === href || (href !== "/" && pathname?.startsWith(`${href}/`));
+    pathname === href || pathname?.startsWith(`${href}/`);
 
   return (
     <header className="mxds-nav">
-      <Link
-        href="/profile"
-        aria-label="Go to profile"
-        className="mxds-brand"
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "flex-start",
-          textDecoration: "none",
-          lineHeight: 0,
-          minWidth: 0,
-          flexShrink: 0,
-          height: 56,
-          overflow: "hidden",
-        }}
-      >
+      <Link href="/profile" aria-label="Go to profile" className="mxds-brand">
         <img
           src={BRAND_LOGO}
           alt="M Developments"
+          className="mxds-brandLogo"
           loading="eager"
           referrerPolicy="no-referrer"
           draggable={false}
-          style={{
-            display: "block",
-            height: 48,
-            width: "auto",
-            maxWidth: 180,
-            objectFit: "contain",
-            objectPosition: "left center",
-            userSelect: "none",
-          }}
         />
       </Link>
 
       <nav className="mxds-navLinks" aria-label="Primary">
-        <Link
-          className={`mxds-navLink ${isActive("/profile") ? "mxds-navLinkActive" : ""}`}
-          href="/profile"
-        >
-          Profile
-        </Link>
-
-        <Link
-          className={`mxds-navLink ${isActive("/projects") ? "mxds-navLinkActive" : ""}`}
-          href="/projects"
-        >
-          Projects
-        </Link>
-
-        <Link
-          className={`mxds-navLink ${isActive("/pricing") ? "mxds-navLinkActive" : ""}`}
-          href="/pricing"
-        >
-          Pricing
-        </Link>
-
-        <Link
-          className={`mxds-navLink ${isActive("/contact") ? "mxds-navLinkActive" : ""}`}
-          href="/contact"
-        >
-          Contact
-        </Link>
+        {NAV_ITEMS.map(({ href, label }) => (
+          <Link
+            key={href}
+            href={href}
+            className={`mxds-navLink ${isActive(href) ? "mxds-navLinkActive" : ""}`}
+          >
+            {label}
+          </Link>
+        ))}
       </nav>
     </header>
   );

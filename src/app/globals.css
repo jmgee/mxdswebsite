@@ -1,37 +1,24 @@
 :root{
-  --bg: #fefdf7;
-  --text: #111111;
-  --muted: rgba(17, 17, 17, 0.65);
+  --bg: #050505;
+  --text: #f5f5f5;
+  --muted: rgba(255, 255, 255, 0.62);
 
-  --brand-red: #f9a101;
-  --bar-red: #f9a101;
+  --brand-red: #ffffff;
+  --bar-red: #ffffff;
 
-  --card-bg: #ffffff;
-  --chip-bg: rgba(249,161,1,0.10);
-  --hero-bg: rgba(249,161,1,0.10);
-  --border: rgba(0, 0, 0, 0.18);
-  --soft-border: rgba(249, 161, 1, 0.55);
+  --card-bg: #0d0d0d;
+  --chip-bg: rgba(255, 255, 255, 0.06);
+  --hero-bg: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.14);
+  --soft-border: rgba(255, 255, 255, 0.14);
 
-  --mxds-card-fill: linear-gradient(
-    180deg,
-    #fdf4e2 0%,
-    #fefaf2 55%,
-    #ffffff 100%
-  );
+  --mxds-card-fill: linear-gradient(180deg, #111111 0%, #0b0b0b 55%, #080808 100%);
 
-  --mxds-card-border: linear-gradient(
-    180deg,
-    rgba(249,161,1,0.85) 0%,
-    rgba(249,161,1,0.55) 100%
-  );
+  --mxds-card-border: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.08) 100%);
 
-  --mxds-card-border-strong: linear-gradient(
-    180deg,
-    rgba(249,161,1,0.95) 0%,
-    rgba(249,161,1,0.70) 100%
-  );
+  --mxds-card-border-strong: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.12) 100%);
 
-  --mxds-card-shadow: 0 18px 50px rgba(0, 0, 0, 0.10);
+  --mxds-card-shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
 
   --card-fade: var(--mxds-card-fill);
   --card-fade-soft: var(--mxds-card-fill);
@@ -39,15 +26,17 @@
   --card-border-strong: var(--mxds-card-border-strong);
   --card-shadow: var(--mxds-card-shadow);
 
-  --footer-bg: #fefdf7;
+  --footer-bg: #050505;
 
-  --online: #10a84a;
-  --offline: #d8253d;
+  --online: #ffffff;
+  --offline: #737373;
 
-  --join: #08a63e;
-  --join-hover: #079438;
+  --join: #ffffff;
+  --join-hover: #e5e5e5;
 
   --radius: 12px;
+
+  color-scheme: dark;
 }
 
 html,
@@ -79,8 +68,8 @@ button, input, textarea{ font-family: inherit; }
   align-items: center;
   justify-content: space-between;
   padding: 0 28px;
-  border-bottom: 2px solid var(--soft-border);
-  background: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(5, 5, 5, 0.92);
 }
 
 .mxds-brand{
@@ -88,6 +77,15 @@ button, input, textarea{ font-family: inherit; }
   color: var(--brand-red);
   letter-spacing: 0.1px;
   font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+  line-height: 0;
+  min-width: 0;
+  flex-shrink: 0;
+  height: 56px;
+  overflow: hidden;
 }
 
 .mxds-navLinks{
@@ -97,13 +95,13 @@ button, input, textarea{ font-family: inherit; }
 }
 
 .mxds-navLink{
-  color: #222;
+  color: #a3a3a3;
   cursor: pointer;
   user-select: none;
 }
 
 .mxds-navLinkActive{
-  color: var(--brand-red);
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -140,7 +138,7 @@ button, input, textarea{ font-family: inherit; }
 .mxds-subtitle{
   margin-top: 8px;
   font-size: 20px;
-  color: #111;
+  color: #ffffff;
   opacity: 0.9;
 }
 
@@ -156,7 +154,7 @@ button, input, textarea{ font-family: inherit; }
   padding: 6px 12px;
   border-radius: 6px;
   background: var(--chip-bg);
-  color: #333;
+  color: #a3a3a3;
   font-size: 12px;
   line-height: 1;
 }
@@ -188,7 +186,7 @@ button, input, textarea{ font-family: inherit; }
 
 .mxds-cardText{
   margin: 0 0 14px;
-  color: #333;
+  color: #a3a3a3;
   font-size: 14px;
   line-height: 1.65;
 }
@@ -228,7 +226,7 @@ button, input, textarea{ font-family: inherit; }
 
 .mxds-statBottom{
   margin: 2px 0 0;
-  color: #333;
+  color: #a3a3a3;
   opacity: 0.9;
   font-size: 14px;
 }
@@ -240,7 +238,7 @@ button, input, textarea{ font-family: inherit; }
 
 .mxds-skillsSubtitle{
   margin: 0 0 14px;
-  color: #333;
+  color: #a3a3a3;
   opacity: 0.85;
   font-size: 13px;
 }
@@ -260,13 +258,13 @@ button, input, textarea{ font-family: inherit; }
   margin-bottom: 10px;
 }
 
-.mxds-skillName{ font-weight: 700; color: #222; }
-.mxds-skillPct{ color: #222; font-weight: 700; }
+.mxds-skillName{ font-weight: 700; color: #ffffff; }
+.mxds-skillPct{ color: #ffffff; font-weight: 700; }
 
 .mxds-barTrack{
   height: 10px;
   border-radius: 999px;
-  background: rgba(0,0,0,0.07);
+  background: rgba(255, 255, 255, .07);
   overflow: hidden;
 }
 
@@ -286,14 +284,14 @@ button, input, textarea{ font-family: inherit; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--brand-red);
-  color: #fff;
-  border: 0;
+  background: #ffffff;
+  color: #050505;
+  border: 1px solid #ffffff;
   padding: 11px 22px;
   border-radius: 8px;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 2px 0 rgba(0,0,0,0.10);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .1);
 }
 
 .mxds-primaryBtn:active{ transform: translateY(1px); }
@@ -303,7 +301,7 @@ button, input, textarea{ font-family: inherit; }
   border-top: 2px solid var(--soft-border);
   padding: 16px 10px;
   text-align: center;
-  color: #333;
+  color: #a3a3a3;
   font-size: 13px;
 }
 
@@ -316,7 +314,7 @@ button, input, textarea{ font-family: inherit; }
 .mxds-pageLead{
   margin: 10px auto 18px;
   max-width: 760px;
-  color: #333;
+  color: #a3a3a3;
   opacity: 0.9;
   font-size: 12.5px;
   line-height: 1.6;
@@ -341,18 +339,18 @@ button, input, textarea{ font-family: inherit; }
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: rgba(216,37,61,0.10);
+  background: rgba(255, 255, 255, .045);
   display: grid;
   place-items: center;
   margin: 2px auto 10px;
-  border: 1px solid rgba(0,0,0,0.04);
+  border: 1px solid rgba(255, 255, 255, .1);
 }
 
 .mxds-serverLogoInner{
   width: 22px;
   height: 22px;
   border-radius: 6px;
-  background: rgba(0,0,0,0.08);
+  background: rgba(255, 255, 255, .08);
 }
 
 .mxds-serverHead{
@@ -366,7 +364,7 @@ button, input, textarea{ font-family: inherit; }
 .mxds-serverName{
   font-weight: 800;
   font-size: 13.5px;
-  color: #222;
+  color: #ffffff;
 }
 
 .mxds-serverRight{
@@ -401,9 +399,9 @@ button, input, textarea{ font-family: inherit; }
   font-weight: 700;
   padding: 6px 10px;
   border-radius: 6px;
-  border: 2px solid rgba(0,0,0,0.18);         /* pricing border */
-  background: rgba(249,161,1,0.10);            /* soft accent fill */
-  color: #222;
+  border: 2px solid rgba(255, 255, 255, .175);
+  background: rgba(255, 255, 255, .065);
+  color: #ffffff;
   line-height: 1;
 }
 
@@ -411,7 +409,7 @@ button, input, textarea{ font-family: inherit; }
 .mxds-serverDesc{
   margin: 10px 0 12px;
   font-size: 12px;
-  color: #333;
+  color: #a3a3a3;
   opacity: 0.9;
   line-height: 1.6;
 }
@@ -428,7 +426,7 @@ button, input, textarea{ font-family: inherit; }
   flex-wrap: wrap;
   font-size: 11.5px;
   font-weight: 700;
-  color: #333;
+  color: #a3a3a3;
   opacity: 0.95;
   margin-bottom: 8px;
 }
@@ -436,14 +434,14 @@ button, input, textarea{ font-family: inherit; }
 .mxds-kfLast{
   font-size: 11.5px;
   font-weight: 700;
-  color: #333;
+  color: #a3a3a3;
   opacity: 0.95;
 }
 
 .mxds-hr{
   margin: 12px 0 10px;
   border: 0;
-  border-top: 2px solid rgba(0,0,0,0.18);
+  border-top: 2px solid rgba(255, 255, 255, .175);
   opacity: 0.35;
 }
 
@@ -458,10 +456,10 @@ button, input, textarea{ font-family: inherit; }
   gap: 10px;
 
   border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.10);
+  border: 1px solid rgba(255, 255, 255, 0.72);
 
-  background: linear-gradient(180deg, var(--join) 0%, var(--join-hover) 100%);
-  color: #fff;
+  background: linear-gradient(180deg, #ffffff 0%, #e5e5e5 100%);
+  color: #050505;
 
   font-weight: 900;
   font-size: 14px;
@@ -471,8 +469,8 @@ button, input, textarea{ font-family: inherit; }
   user-select: none;
 
   box-shadow:
-    0 14px 34px rgba(8,166,62,0.22),
-    0 2px 0 rgba(0,0,0,0.14);
+    0 14px 34px rgba(255, 255, 255, .11),
+    0 2px 0 rgba(0, 0, 0, .14);
 
   transition:
     transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -493,8 +491,8 @@ button, input, textarea{ font-family: inherit; }
     filter: brightness(1.05);
     transform: translateY(-1px);
     box-shadow:
-      0 18px 44px rgba(8,166,62,0.28),
-      0 2px 0 rgba(0,0,0,0.14);
+      0 18px 44px rgba(255, 255, 255, .14),
+      0 2px 0 rgba(0, 0, 0, .14);
   }
   .mxds-joinBtn:hover::after{
     transform: translateX(3px);
@@ -505,7 +503,7 @@ button, input, textarea{ font-family: inherit; }
 }
 
 .mxds-joinBtn:focus-visible{
-  outline: 3px solid rgba(8,166,62,0.25);
+  outline: 3px solid rgba(255, 255, 255, .228);
   outline-offset: 4px;
 }
 
@@ -518,8 +516,8 @@ button, input, textarea{ font-family: inherit; }
 .mxds-expertise{
   margin: 20px auto 0;
   max-width: 860px;
-  background: #fff3f7;
-  border: 2px solid rgba(216,37,61,0.35);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 14px;
   padding: 18px 22px;
 }
@@ -544,7 +542,7 @@ button, input, textarea{ font-family: inherit; }
 .mxds-bullets{
   margin: 0;
   padding-left: 18px;
-  color: #333;
+  color: #a3a3a3;
   opacity: 0.95;
   line-height: 1.8;
   font-size: 12.5px;
@@ -559,7 +557,7 @@ button, input, textarea{ font-family: inherit; }
 .mxds-contactLead{
   margin: 12px auto 22px;
   max-width: 860px;
-  color: #333;
+  color: #a3a3a3;
   opacity: 0.9;
   line-height: 1.6;
 }
@@ -576,25 +574,27 @@ button, input, textarea{ font-family: inherit; }
   width: 100%;
   height: 46px;
   border-radius: 10px;
-  border: 2px solid #cfcfcf;
-  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: #0d0d0d;
   padding: 0 16px;
   font-size: 14px;
   outline: none;
+  color: #f5f5f5;
 }
 
-.mxds-formField::placeholder{ color: #3a3a3a; opacity: 0.95; }
+.mxds-formField::placeholder{ color: #a3a3a3; opacity: 0.95; }
 
 .mxds-formArea{
   width: 100%;
   min-height: 88px;
   border-radius: 10px;
-  border: 2px solid #cfcfcf;
-  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: #0d0d0d;
   padding: 14px 16px;
   font-size: 14px;
   outline: none;
   resize: none;
+  color: #f5f5f5;
 }
 
 .mxds-formStack{
@@ -609,12 +609,12 @@ button, input, textarea{ font-family: inherit; }
   height: 52px;
   border: 0;
   border-radius: 10px;
-  background: var(--brand-red);
-  color: #fff;
+  background: #ffffff;
+  color: #050505;
   font-weight: 900;
   font-size: 18px;
   cursor: pointer;
-  box-shadow: 0 2px 0 rgba(0,0,0,0.10);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .1);
 }
 
 .mxds-sideStack{
@@ -628,7 +628,7 @@ button, input, textarea{ font-family: inherit; }
   gap: 14px;
   padding: 10px 0;
   font-size: 15px;
-  color: #333;
+  color: #a3a3a3;
 }
 
 .mxds-icon{
@@ -642,7 +642,7 @@ button, input, textarea{ font-family: inherit; }
   .mxds-contactGrid{ grid-template-columns: 1fr; }
   .mxds-skillGrid{ grid-template-columns: 1fr; }
   .mxds-stats{ grid-template-columns: 1fr; gap: 18px; }
-  .mxds-nav{ padding: 0 16px; }
+  .mxds-nav{ padding: 0 16px; background: rgba(5, 5, 5, 0.92); border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
 }
 
 .mxds-svPage {
@@ -662,8 +662,8 @@ button, input, textarea{ font-family: inherit; }
   aspect-ratio: 16 / 9;
   border-radius: 14px;
   overflow: hidden;
-  border: 2px solid rgba(0, 0, 0, 0.10);
-  background: rgba(0, 0, 0, 0.04);
+  border: 2px solid rgba(255, 255, 255, .115);
+  background: rgba(255, 255, 255, .04);
   margin-bottom: 10px;
 }
 
@@ -677,7 +677,7 @@ button, input, textarea{ font-family: inherit; }
   margin-top: -2px;
   font-size: 12px;
   font-weight: 800;
-  color: #333;
+  color: #a3a3a3;
   opacity: 0.9;
 }
 
@@ -689,8 +689,8 @@ button, input, textarea{ font-family: inherit; }
   display: grid;
   place-items: center;
 
-  background: rgba(249,161,1,0.10);
-  border: 2px solid rgba(0,0,0,0.12);
+  background: rgba(255, 255, 255, .065);
+  border: 2px solid rgba(255, 255, 255, .13);
 
   overflow: hidden;
 }
@@ -750,8 +750,8 @@ button, input, textarea{ font-family: inherit; }
   }
 }
 
-.mxds-statusChecking{ color: rgba(17, 17, 17, 0.60); }
-.mxds-statusChecking .mxds-dot{ background: rgba(17, 17, 17, 0.35); }
+.mxds-statusChecking{ color: rgba(255, 255, 255, .6); }
+.mxds-statusChecking .mxds-dot{ background: rgba(255, 255, 255, .14); }
 
 .mxds-reveal{
   opacity: 0;
@@ -781,7 +781,7 @@ button, input, textarea{ font-family: inherit; }
 
   .mxds-svCard:hover{
     transform: translateY(-6px);
-    box-shadow: 0 22px 70px rgba(0,0,0,0.14);
+    box-shadow: 0 22px 70px rgba(0, 0, 0, .14);
   }
 
   .mxds-svAvatar{
@@ -794,10 +794,13 @@ button, input, textarea{ font-family: inherit; }
 
   .mxds-joinBtn{
     transition: transform 140ms ease, filter 140ms ease, box-shadow 140ms ease;
+    background: linear-gradient(180deg, #ffffff 0%, #e5e5e5 100%);
+    color: #050505;
+    border: 1px solid rgba(255, 255, 255, 0.72);
   }
   .mxds-joinBtn:hover{
     filter: brightness(1.05);
-    box-shadow: 0 10px 26px rgba(0,0,0,0.14);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, .14);
   }
   .mxds-joinBtn:active{
     transform: translateY(1px) scale(0.99);
@@ -805,13 +808,13 @@ button, input, textarea{ font-family: inherit; }
 }
 
 .mxds-svCard:focus-within{
-  outline: 3px solid rgba(249,161,1,0.22);
+  outline: 3px solid rgba(255, 255, 255, .205);
   outline-offset: 4px;
   border-radius: var(--radius);
 }
 
-.mxds-statusChecking{ color: rgba(17, 17, 17, 0.60); }
-.mxds-statusChecking .mxds-dot{ background: rgba(17, 17, 17, 0.35); }
+.mxds-statusChecking{ color: rgba(255, 255, 255, .6); }
+.mxds-statusChecking .mxds-dot{ background: rgba(255, 255, 255, .14); }
 
 @media (prefers-reduced-motion: reduce){
   .mxds-reveal,
@@ -844,8 +847,8 @@ button, input, textarea{ font-family: inherit; }
   width: 3px;
   background: linear-gradient(
     180deg,
-    rgba(249,161,1,0.9),
-    rgba(249,161,1,0.4)
+    rgba(255, 255, 255, .13),
+    rgba(255, 255, 255, .13)
   );
   border-radius: 10px;
 }
@@ -868,14 +871,10 @@ button, input, textarea{ font-family: inherit; }
   font-weight: 900;
   font-size: 13px;
 
-  background: linear-gradient(
-    180deg,
-    rgba(249,161,1,0.95),
-    rgba(249,161,1,0.75)
-  );
-  color: white;
+  background: linear-gradient(180deg, #ffffff 0%, #d4d4d4 100%);
+  color: #050505;
 
-  box-shadow: 0 8px 22px rgba(249,161,1,0.35);
+  box-shadow: 0 8px 22px rgba(255, 255, 255, .16);
 }
 
 .mxds-yearMarker::after {
@@ -883,7 +882,7 @@ button, input, textarea{ font-family: inherit; }
   position: absolute;
   inset: -6px;
   border-radius: 999px;
-  border: 2px solid rgba(249,161,1,0.35);
+  border: 2px solid rgba(255, 255, 255, .302);
 }
 
 @media (max-width: 768px) {
@@ -898,21 +897,19 @@ button, input, textarea{ font-family: inherit; }
   .mxds-yearMarker {
     position: relative;
     margin-bottom: 16px;
+    background: linear-gradient(180deg, #ffffff 0%, #d4d4d4 100%);
+    color: #050505;
   }
 }
-/* =========================================================
-   2026 NAVIGATION REFINEMENT
-   Keeps the existing global design system while making the
-   Profile / Projects / Pricing / Contact navigation responsive.
-   ========================================================= */
 
 .mxds-nav {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(5, 5, 5, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .mxds-navLinks {
@@ -925,6 +922,7 @@ button, input, textarea{ font-family: inherit; }
   align-items: center;
   min-height: 56px;
   transition: color 160ms ease;
+  color: #a3a3a3;
 }
 
 .mxds-navLink::after {
@@ -956,6 +954,8 @@ button, input, textarea{ font-family: inherit; }
     height: 56px;
     padding: 0 12px;
     gap: 12px;
+    background: rgba(5, 5, 5, 0.92);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .mxds-brand img {
@@ -974,10 +974,21 @@ button, input, textarea{ font-family: inherit; }
 @media (max-width: 470px) {
   .mxds-nav {
     padding: 0 10px;
+    background: rgba(5, 5, 5, 0.92);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .mxds-brand {
     max-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-decoration: none;
+    line-height: 0;
+    min-width: 0;
+    flex-shrink: 0;
+    height: 56px;
+    overflow: hidden;
   }
 
   .mxds-brand img {
@@ -999,4 +1010,16 @@ button, input, textarea{ font-family: inherit; }
   .mxds-navLink::after {
     transition: none !important;
   }
+}
+
+.mxds-brandLogo{
+  display: block;
+  height: 48px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  object-position: left center;
+  user-select: none;
+  filter: grayscale(1) brightness(0) invert(1);
+  opacity: 0.96;
 }

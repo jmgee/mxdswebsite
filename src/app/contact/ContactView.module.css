@@ -1,11 +1,11 @@
 .page {
-  --contact-text: #171717;
-  --contact-muted: #6d685f;
-  --contact-soft: #918b82;
-  --contact-accent: #f59e0b;
-  --contact-accent-hover: #e88e05;
-  --contact-border: rgba(30, 25, 18, 0.1);
-  --contact-border-accent: rgba(245, 158, 11, 0.32);
+  --contact-text: #f5f5f5;
+  --contact-muted: #a3a3a3;
+  --contact-soft: #737373;
+  --contact-accent: #ffffff;
+  --contact-accent-hover: #d4d4d4;
+  --contact-border: rgba(255, 255, 255, 0.12);
+  --contact-border-accent: rgba(255, 255, 255, 0.22);
   --contact-max: 1120px;
 
   position: relative;
@@ -34,7 +34,7 @@
   border-radius: 50%;
 
   background:
-    rgba(245, 158, 11, 0.08);
+    rgba(255, 255, 255, .052);
 
   filter: blur(80px);
 
@@ -74,8 +74,6 @@
   gap: clamp(60px, 8vw, 110px);
 }
 
-/* LEFT */
-
 .intro {
   max-width: 650px;
 }
@@ -96,7 +94,7 @@
   border-radius: 999px;
 
   background:
-    rgba(255, 255, 255, 0.55);
+    rgba(255, 255, 255, .059);
 
   color: var(--contact-muted);
 
@@ -110,11 +108,10 @@
 
   border-radius: 50%;
 
-  background: #22c55e;
+  background: #ffffff;
 
   box-shadow:
-    0 0 0 4px
-    rgba(34, 197, 94, 0.1);
+    0 0 0 4px rgba(255, 255, 255, 0.10);
 }
 
 .title {
@@ -178,7 +175,7 @@
   border-radius: 14px;
 
   background:
-    rgba(255, 255, 255, 0.5);
+    rgba(255, 255, 255, .055);
 
   color: var(--contact-accent);
 }
@@ -218,8 +215,6 @@
   overflow-wrap: anywhere;
 }
 
-/* RIGHT CARD */
-
 .card {
   position: relative;
 
@@ -231,11 +226,11 @@
   border-radius: 22px;
 
   background:
-    rgba(255, 255, 255, 0.65);
+    rgba(255, 255, 255, .066);
 
   box-shadow:
     0 22px 55px
-    rgba(0, 0, 0, 0.07);
+    rgba(0, 0, 0, .07);
 
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -249,14 +244,14 @@
   place-items: center;
 
   border: 1px solid
-    rgba(245, 158, 11, 0.22);
+    rgba(255, 255, 255, .205);
 
   border-radius: 14px;
 
   background:
-    rgba(245, 158, 11, 0.09);
+    rgba(255, 255, 255, .058);
 
-  color: #b56d00;
+  color: #ffffff;
 }
 
 .cardTitle {
@@ -286,7 +281,7 @@
 }
 
 .email:hover {
-  color: #a56300;
+  color: #ffffff;
 }
 
 .actions {
@@ -329,13 +324,12 @@
 
   padding: 0 16px;
 
-  border: 1px solid
-    var(--contact-accent);
+  border: 1px solid #ffffff;
 
   background:
-    var(--contact-accent);
+    #ffffff;
 
-  color: #fff;
+  color: #050505;
 
   text-decoration: none;
 }
@@ -344,10 +338,10 @@
   transform: translateY(-1px);
 
   background:
-    var(--contact-accent-hover);
+    #d4d4d4;
 
   border-color:
-    var(--contact-accent-hover);
+    #d4d4d4;
 }
 
 .secondaryButton {
@@ -363,9 +357,9 @@
     var(--contact-border);
 
   background:
-    rgba(255, 255, 255, 0.72);
+    rgba(255, 255, 255, 0.05);
 
-  color: var(--contact-text);
+  color: #f5f5f5;
 }
 
 .secondaryButton:hover {
@@ -374,7 +368,7 @@
   border-color:
     var(--contact-border-accent);
 
-  background: #fff;
+  background: rgba(255, 255, 255, 0.09);
 }
 
 .primaryButton:focus-visible,
@@ -386,8 +380,6 @@
 
   outline-offset: 3px;
 }
-
-/* RESPONSIVE */
 
 @media (max-width: 900px) {
   .shell {
@@ -448,6 +440,8 @@
 
   .secondaryButton {
     width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    color: #f5f5f5;
   }
 }
 
