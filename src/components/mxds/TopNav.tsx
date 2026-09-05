@@ -10,7 +10,7 @@ export default function TopNav() {
   const pathname = usePathname();
 
   const isActive = (href: string) =>
-    pathname === href || (href !== "/" && pathname?.startsWith(href + "/"));
+    pathname === href || (href !== "/" && pathname?.startsWith(`${href}/`));
 
   return (
     <header className="mxds-nav">
@@ -57,10 +57,10 @@ export default function TopNav() {
         </Link>
 
         <Link
-          className={`mxds-navLink ${isActive("/servers") ? "mxds-navLinkActive" : ""}`}
-          href="/servers"
+          className={`mxds-navLink ${isActive("/projects") ? "mxds-navLinkActive" : ""}`}
+          href="/projects"
         >
-          Servers
+          Projects
         </Link>
 
         <Link

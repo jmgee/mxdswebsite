@@ -10,37 +10,29 @@ const stats = [
   {
     icon: <IconServer />,
     value: "15+",
-    label: "Servers Managed",
-  },
-  {
-    icon: <IconUsers />,
-    value: "10K+",
-    label: "Community Players",
+    label: "FiveM Projects",
   },
   {
     icon: <IconBrackets />,
+    value: "3",
+    label: "Development Areas",
+  },
+  {
+    icon: <IconUsers />,
     value: "10+",
-    label: "Custom Scripts",
+    label: "Custom Systems",
   },
 ] as const;
 
 const skills = [
-  { name: "Lua Scripting", pct: 90, delayMs: 650 },
-  { name: "ESX", pct: 95, delayMs: 720 },
-  { name: "QBCore", pct: 80, delayMs: 790 },
-  { name: "Qbox", pct: 82, delayMs: 860 },
-  { name: "Custom Script", pct: 90, delayMs: 930 },
-  { name: "Server Management", pct: 92, delayMs: 1000 },
-  {
-    name: "Optimization & Debugging",
-    pct: 94,
-    delayMs: 1070,
-  },
-  {
-    name: "UI/UX Integration",
-    pct: 85,
-    delayMs: 1140,
-  },
+  { name: "Lua / FiveM Development", pct: 92, delayMs: 650 },
+  { name: "Server Management", pct: 92, delayMs: 720 },
+  { name: "Optimization & Debugging", pct: 94, delayMs: 790 },
+  { name: "HTML / CSS", pct: 90, delayMs: 860 },
+  { name: "JavaScript / TypeScript", pct: 88, delayMs: 930 },
+  { name: "React / Next.js", pct: 85, delayMs: 1000 },
+  { name: "Discord Bot Development", pct: 85, delayMs: 1070 },
+  { name: "Database & API Integration", pct: 88, delayMs: 1140 },
 ] as const;
 
 export function ProfileView() {
@@ -53,10 +45,7 @@ export function ProfileView() {
               className={`${styles.availability} ${styles.reveal}`}
               style={{ animationDelay: "80ms" }}
             >
-              <span
-                className={styles.availabilityDot}
-                aria-hidden="true"
-              />
+              <span className={styles.availabilityDot} aria-hidden="true" />
               Available for work
             </div>
 
@@ -64,17 +53,19 @@ export function ProfileView() {
               className={`${styles.heroTitle} ${styles.reveal}`}
               style={{ animationDelay: "150ms" }}
             >
-              Hi, I&apos;m{" "}
-              <span className={styles.heroName}>
-                mxds
-              </span>
+              Hi, I&apos;m <span className={styles.heroName}>mxds</span>
             </h1>
 
             <p
               className={`${styles.heroLead} ${styles.reveal}`}
               style={{ animationDelay: "220ms" }}
             >
-              A 🇵🇭 Filipino developer currently studying Computer Science with a major in Software Engineering. I develop FiveM servers, modern websites for businesses and portfolios, and custom Discord bots. I focus on writing clean, maintainable code and delivering solutions that are reliable, scalable, and built for long-term use.
+              A 🇵🇭 Filipino developer studying Computer Science with a major in
+              Software Engineering. I build and maintain FiveM servers, modern
+              websites for businesses and portfolios, custom Discord bots, and
+              software solutions. My focus is clean architecture, reliable
+              integrations, performance, and maintainable systems built for
+              long-term use.
             </p>
           </div>
 
@@ -83,10 +74,7 @@ export function ProfileView() {
             style={{ animationDelay: "180ms" }}
           >
             <div className={styles.portraitCard}>
-              <div
-                className={styles.portraitGlow}
-                aria-hidden="true"
-              />
+              <div className={styles.portraitGlow} aria-hidden="true" />
 
               <img
                 src="https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/mxds1024.png"
@@ -105,25 +93,14 @@ export function ProfileView() {
           aria-label="Development statistics"
         >
           {stats.map((stat) => (
-            <article
-              key={stat.label}
-              className={styles.stat}
-            >
-              <div
-                className={styles.statIcon}
-                aria-hidden="true"
-              >
+            <article key={stat.label} className={styles.stat}>
+              <div className={styles.statIcon} aria-hidden="true">
                 {stat.icon}
               </div>
 
               <div className={styles.statContent}>
-                <strong className={styles.statValue}>
-                  {stat.value}
-                </strong>
-
-                <span className={styles.statLabel}>
-                  {stat.label}
-                </span>
+                <strong className={styles.statValue}>{stat.value}</strong>
+                <span className={styles.statLabel}>{stat.label}</span>
               </div>
             </article>
           ))}
@@ -136,26 +113,16 @@ export function ProfileView() {
           >
             <div className={styles.skillsHeader}>
               <div>
-                <span className={styles.sectionEyebrow}>
-                  Expertise
-                </span>
-
-                <h2 className={styles.sectionTitle}>
-                  Technical skills
-                </h2>
+                <span className={styles.sectionEyebrow}>Expertise</span>
+                <h2 className={styles.sectionTitle}>Technical skills</h2>
               </div>
 
-              <span className={styles.skillsCount}>
-                {skills.length} skills
-              </span>
+              <span className={styles.skillsCount}>{skills.length} skills</span>
             </div>
 
             <div className={styles.skillGrid}>
               {skills.map((skill) => (
-                <Skill
-                  key={skill.name}
-                  {...skill}
-                />
+                <Skill key={skill.name} {...skill} />
               ))}
             </div>
           </article>
@@ -174,21 +141,13 @@ function Skill({
   pct: number;
   delayMs: number;
 }) {
-  const fill = Math.max(
-    0,
-    Math.min(1, pct / 100),
-  );
+  const fill = Math.max(0, Math.min(1, pct / 100));
 
   return (
     <div className={styles.skill}>
       <div className={styles.skillTop}>
-        <span className={styles.skillName}>
-          {name}
-        </span>
-
-        <span className={styles.skillPct}>
-          {pct}%
-        </span>
+        <span className={styles.skillName}>{name}</span>
+        <span className={styles.skillPct}>{pct}%</span>
       </div>
 
       <div className={styles.skillTrack}>
@@ -197,8 +156,7 @@ function Skill({
           style={
             {
               animationDelay: `${delayMs}ms`,
-              ["--skill-fill" as string]:
-                String(fill),
+              ["--skill-fill" as string]: String(fill),
             } as CSSProperties
           }
         />

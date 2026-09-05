@@ -1,12 +1,5 @@
-import type { Metadata } from "next";
-import { ServersView } from "./ServersView";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: "/servers",
-  },
-};
-
-export default function ServersPage() {
-  return <ServersView />;
+export default function ServersRedirectPage() {
+  redirect("/projects");
 }
