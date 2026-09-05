@@ -9,6 +9,7 @@ import {
 
 import { fetchServerStatuses } from "@/lib/fetchServerStatuses";
 import styles from "./ProjectsView.module.css";
+
 import {
   PROJECTS,
   PROJECT_CATEGORIES,
@@ -26,12 +27,6 @@ const statusClassMap: Record<CardState, string> = {
   checking: styles.statusChecking,
   online: styles.statusOnline,
   offline: styles.statusOffline,
-};
-
-const selectedLabelMap: Record<ProjectCategory, string> = {
-  FiveM: "FiveM Servers",
-  Website: "Web Projects",
-  "Discord Bot": "Discord Bots",
 };
 
 function isValidDiscordUrl(url?: string) {
@@ -79,6 +74,7 @@ function getPlayersLabel(live?: ProjectLiveState) {
 export function ProjectsView() {
   const [activeCategory, setActiveCategory] =
     useState<ProjectCategory>("FiveM");
+
   const [liveData, setLiveData] =
     useState<Record<string, ProjectLiveState>>({});
 
@@ -120,11 +116,21 @@ export function ProjectsView() {
     };
   }, [liveTrackedProjects]);
 
+  const categoryCounts = useMemo(() => {
+    const counts = new Map<ProjectCategory, number>();
+
+    for (const category of PROJECT_CATEGORIES) {
+      counts.set(
+        category,
+        PROJECTS.filter((project) => project.category === category).length,
+      );
+    }
+
+    return counts;
+  }, []);
+
   const filteredProjects = useMemo(
-    () =>
-      PROJECTS.filter(
-        (project) => project.category === activeCategory,
-      ),
+    () => PROJECTS.filter((project) => project.category === activeCategory),
     [activeCategory],
   );
 
@@ -140,48 +146,32 @@ export function ProjectsView() {
   }, [filteredProjects]);
 
   const sortedYears = useMemo(
-    () =>
-      Object.keys(groupedByYear).sort(
-        (a, b) => Number(b) - Number(a),
-      ),
+    () => Object.keys(groupedByYear).sort((a, b) => Number(b) - Number(a)),
     [groupedByYear],
   );
 
-  const heroStats = useMemo(
-    () => [
-      {
-        label: "Categories",
-        value: String(PROJECT_CATEGORIES.length),
-      },
-      {
-        label: "Projects",
-        value: String(PROJECTS.length),
-      },
-      {
-        label: "Selected",
-        value: selectedLabelMap[activeCategory],
-        textValue: true,
-      },
-      {
-        label: "In View",
-        value: String(filteredProjects.length),
-      },
-    ],
-    [activeCategory, filteredProjects.length],
-  );
+  const heroStats = useMemo(() => {
+    const years = new Set(PROJECTS.map((project) => project.year)).size;
+    const categories = PROJECT_CATEGORIES.length;
+    const inView = filteredProjects.length;
+
+    return [
+      { label: "Categories", value: String(categories) },
+      { label: "Projects", value: String(PROJECTS.length) },
+      { label: "Selected", value: activeCategory },
+      { label: "In View", value: String(inView) },
+    ];
+  }, [activeCategory, filteredProjects]);
 
   return (
     <main className={styles.page}>
       <div className={styles.shell}>
         <section className={styles.hero}>
-          <h1 className={styles.heroTitle}>
-            <span className={styles.heroTitleBase}>My </span>
-            <span className={styles.heroTitleAccent}>Projects</span>
-          </h1>
+          <h1 className={styles.heroTitle}>My Projects</h1>
 
           <p className={styles.heroLead}>
-            A categorized showcase of my FiveM servers, websites, and Discord
-            bot projects.
+            A categorized showcase of my work across FiveM servers,
+            websites, and Discord bot projects.
           </p>
 
           <div className={styles.heroStats}>
@@ -190,19 +180,11 @@ export function ProjectsView() {
                 key={stat.label}
                 className={styles.heroStat}
                 style={
-                  {
-                    animationDelay: `${120 + index * 90}ms`,
-                  } as CSSProperties
+                  { animationDelay: `${120 + index * 90}ms` } as CSSProperties
                 }
               >
                 <span className={styles.heroStatLabel}>{stat.label}</span>
-                <span
-                  className={`${styles.heroStatValue} ${
-                    stat.textValue ? styles.heroStatValueText : ""
-                  }`}
-                >
-                  {stat.value}
-                </span>
+                <span className={styles.heroStatValue}>{stat.value}</span>
               </div>
             ))}
           </div>
@@ -210,6 +192,7 @@ export function ProjectsView() {
           <div className={styles.filters} aria-label="Project categories">
             {PROJECT_CATEGORIES.map((category) => {
               const isActive = activeCategory === category;
+              const count = categoryCounts.get(category) ?? 0;
 
               return (
                 <button
@@ -221,7 +204,8 @@ export function ProjectsView() {
                   onClick={() => setActiveCategory(category)}
                   aria-pressed={isActive}
                 >
-                  {category}
+                  <span>{category}</span>
+                  <span className={styles.filterCount}>{count}</span>
                 </button>
               );
             })}
@@ -235,9 +219,7 @@ export function ProjectsView() {
                 key={`${activeCategory}-${year}`}
                 className={styles.yearSection}
                 style={
-                  {
-                    animationDelay: `${yearIndex * 120}ms`,
-                  } as CSSProperties
+                  { animationDelay: `${yearIndex * 120}ms` } as CSSProperties
                 }
               >
                 <div className={styles.yearHeader}>
@@ -250,7 +232,11 @@ export function ProjectsView() {
 
                 <div
                   className={`${styles.projectGrid} ${
-                    activeCategory === "Website" ? styles.websiteGrid : ""
+                    activeCategory === "Website"
+                      ? styles.websiteGrid
+                      : activeCategory === "FiveM"
+                      ? styles.fivemGrid
+                      : ""
                   }`}
                 >
                   {groupedByYear[year].map((project, index) => {
@@ -268,26 +254,61 @@ export function ProjectsView() {
                       : "Open Discord";
 
                     const isWebsite =
-                      project.category === "Website" &&
-                      Boolean(project.projectUrl);
+                      project.category === "Website" && Boolean(project.projectUrl);
 
-                    return (
-                      <article
-                        key={`${project.year}-${project.name}`}
-                        className={`${styles.projectCard} ${
-                          isWebsite ? styles.websiteCard : ""
-                        }`}
-                        style={
-                          {
-                            animationDelay: `${
-                              yearIndex * 90 + index * 90
-                            }ms`,
-                          } as CSSProperties
-                        }
-                      >
-                        <div className={styles.cardGlow} aria-hidden="true" />
+                    const isFiveM = project.category === "FiveM";
 
-                        {isWebsite && project.projectUrl && (
+                    if (isFiveM) {
+                      return (
+                        <article
+                          key={`${project.year}-${project.name}`}
+                          className={styles.fivemCard}
+                          style={
+                            {
+                              animationDelay: `${
+                                yearIndex * 90 + index * 90
+                              }ms`,
+                            } as CSSProperties
+                          }
+                        >
+                          <div className={styles.fivemCardInner}>
+                            <div className={styles.fivemLogoWrap}>
+                              {project.logoUrl ? (
+                                <img
+                                  src={project.logoUrl}
+                                  alt={`${project.name} logo`}
+                                  className={styles.fivemLogo}
+                                  loading="lazy"
+                                  referrerPolicy="no-referrer"
+                                />
+                              ) : (
+                                <div className={styles.fivemLogoFallback}>
+                                  {project.name.slice(0, 1).toUpperCase()}
+                                </div>
+                              )}
+                            </div>
+
+                            <h2 className={styles.fivemName}>{project.name}</h2>
+                          </div>
+                        </article>
+                      );
+                    }
+
+                    if (isWebsite && project.projectUrl) {
+                      return (
+                        <article
+                          key={`${project.year}-${project.name}`}
+                          className={`${styles.projectCard} ${styles.websiteCard}`}
+                          style={
+                            {
+                              animationDelay: `${
+                                yearIndex * 90 + index * 90
+                              }ms`,
+                            } as CSSProperties
+                          }
+                        >
+                          <div className={styles.cardGlow} aria-hidden="true" />
+
                           <a
                             href={project.projectUrl}
                             target="_blank"
@@ -315,6 +336,7 @@ export function ProjectsView() {
                               <span className={styles.websitePreviewBadge}>
                                 Website Preview
                               </span>
+
                               <span className={styles.websitePreviewDomain}>
                                 {project.projectUrl
                                   .replace(/^https?:\/\//, "")
@@ -326,71 +348,122 @@ export function ProjectsView() {
                               Visit website ↗
                             </span>
                           </a>
-                        )}
 
-                        <div
-                          className={
-                            isWebsite ? styles.websiteCardBody : undefined
-                          }
-                        >
-                          <div className={styles.cardTop}>
-                            <div className={styles.avatarWrap}>
-                              {project.logoUrl ? (
-                                <img
-                                  src={project.logoUrl}
-                                  alt={`${project.name} logo`}
-                                  className={styles.avatarImg}
-                                  loading="lazy"
-                                  referrerPolicy="no-referrer"
-                                />
-                              ) : (
-                                <div className={styles.avatarFallback}>
-                                  {project.name.slice(0, 1).toUpperCase()}
-                                </div>
-                              )}
+                          <div className={styles.websiteCardBody}>
+                            <div className={styles.cardTop}>
+                              <div className={styles.avatarWrap}>
+                                {project.logoUrl ? (
+                                  <img
+                                    src={project.logoUrl}
+                                    alt={`${project.name} logo`}
+                                    className={styles.avatarImg}
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer"
+                                  />
+                                ) : (
+                                  <div className={styles.avatarFallback}>
+                                    {project.name.slice(0, 1).toUpperCase()}
+                                  </div>
+                                )}
+                              </div>
+
+                              <div className={styles.cardHeading}>
+                                <h2 className={styles.projectName}>
+                                  {project.name}
+                                </h2>
+                              </div>
                             </div>
 
-                            <div className={styles.cardHeading}>
-                              <h2 className={styles.projectName}>
-                                {project.name}
-                              </h2>
+                            <p className={styles.projectDesc}>
+                              {project.description}
+                            </p>
 
-                              {state && (
-                                <div className={styles.badgeRow}>
-                                  <span
-                                    className={`${styles.status} ${statusClassMap[state]}`}
-                                  >
-                                    <span className={styles.statusDot} />
-                                    {getStatusLabel(state)}
-                                  </span>
-                                </div>
-                              )}
-                            </div>
+                            {ctaUrl && (
+                              <div className={styles.cardFooter}>
+                                <a
+                                  href={ctaUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className={styles.ctaBtn}
+                                >
+                                  {ctaLabel}
+                                </a>
+                              </div>
+                            )}
+                          </div>
+                        </article>
+                      );
+                    }
+
+                    return (
+                      <article
+                        key={`${project.year}-${project.name}`}
+                        className={styles.projectCard}
+                        style={
+                          {
+                            animationDelay: `${
+                              yearIndex * 90 + index * 90
+                            }ms`,
+                          } as CSSProperties
+                        }
+                      >
+                        <div className={styles.cardGlow} aria-hidden="true" />
+
+                        <div className={styles.cardTop}>
+                          <div className={styles.avatarWrap}>
+                            {project.logoUrl ? (
+                              <img
+                                src={project.logoUrl}
+                                alt={`${project.name} logo`}
+                                className={styles.avatarImg}
+                                loading="lazy"
+                                referrerPolicy="no-referrer"
+                              />
+                            ) : (
+                              <div className={styles.avatarFallback}>
+                                {project.name.slice(0, 1).toUpperCase()}
+                              </div>
+                            )}
                           </div>
 
-                          <p className={styles.projectDesc}>
-                            {project.description}
-                          </p>
+                          <div className={styles.cardHeading}>
+                            <h2 className={styles.projectName}>
+                              {project.name}
+                            </h2>
 
-                          {playersLabel && (
-                            <div className={styles.playersLabel}>
-                              {playersLabel}
-                            </div>
-                          )}
-
-                          {ctaUrl && (
-                            <div className={styles.cardFooter}>
-                              <a
-                                href={ctaUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={styles.ctaBtn}
-                              >
-                                {ctaLabel}
-                              </a>
-                            </div>
-                          )}
+                            {state && (
+                              <div className={styles.badgeRow}>
+                                <span
+                                  className={`${styles.status} ${statusClassMap[state]}`}
+                                >
+                                  <span className={styles.statusDot} />
+                                  {getStatusLabel(state)}
+                                </span>
+                              </div>
+                            )}
+                          </div>
                         </div>
+
+                        <p className={styles.projectDesc}>{project.description}</p>
+
+                        {playersLabel && (
+                          <div className={styles.playersLabel}>
+                            {playersLabel}
+                          </div>
+                        )}
+
+                        {ctaUrl && (
+                          <div className={styles.cardFooter}>
+                            <a
+                              href={ctaUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={styles.ctaBtn}
+                            >
+                              {ctaLabel}
+                            </a>
+                          </div>
+                        )}
                       </article>
                     );
                   })}
