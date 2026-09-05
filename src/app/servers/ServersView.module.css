@@ -25,35 +25,7 @@
   opacity: 0;
   transform: translateY(10px);
   animation: mxdsPageIn 700ms cubic-bezier(.2,.8,.2,1) forwards;
-}
-
-.page::before,
-.page::after{
-  content: "";
-  position: fixed;
-  pointer-events: none;
-  z-index: 0;
-  filter: blur(74px);
-  opacity: .5;
-}
-
-.page::before{
-  top: 90px;
-  left: -80px;
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle, rgba(255, 255, 255, .091), transparent 72%);
-}
-
-.page::after{
-  top: 200px;
-  right: -80px;
-  width: 340px;
-  height: 340px;
-  background: radial-gradient(circle, rgba(255, 255, 255, .065), transparent 74%);
-}
-
-@keyframes mxdsPageIn{
+}@keyframes mxdsPageIn{
   to{
     opacity: 1;
     transform: translateY(0);

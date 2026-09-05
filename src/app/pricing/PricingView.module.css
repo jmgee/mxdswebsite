@@ -33,41 +33,7 @@
     650ms
     cubic-bezier(0.2, 0.8, 0.2, 1)
     forwards;
-}
-
-.page::before,
-.page::after {
-  content: "";
-  position: fixed;
-  z-index: 0;
-  pointer-events: none;
-  border-radius: 999px;
-  filter: blur(100px);
-}
-
-.page::before {
-  width: 380px;
-  height: 380px;
-
-  top: 100px;
-  left: -160px;
-
-  background:
-    rgba(255, 255, 255, .052);
-}
-
-.page::after {
-  width: 340px;
-  height: 340px;
-
-  right: -140px;
-  top: 260px;
-
-  background:
-    rgba(255, 255, 255, .039);
-}
-
-@keyframes pageIn {
+}@keyframes pageIn {
   to {
     opacity: 1;
     transform: translateY(0);

@@ -50,47 +50,7 @@
       1
     )
     forwards;
-}
-
-.page::before,
-.page::after {
-  content: "";
-
-  position: fixed;
-
-  z-index: 0;
-
-  pointer-events: none;
-
-  border-radius: 999px;
-
-  filter:
-    blur(100px);
-}
-
-.page::before {
-  width: 420px;
-  height: 420px;
-
-  left: -180px;
-  top: 120px;
-
-  background:
-    rgba(255, 255, 255, .058);
-}
-
-.page::after {
-  width: 360px;
-  height: 360px;
-
-  right: -160px;
-  top: 320px;
-
-  background:
-    rgba(255, 255, 255, .046);
-}
-
-@keyframes pageIn {
+}@keyframes pageIn {
   to {
     opacity: 1;
 

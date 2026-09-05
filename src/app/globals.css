@@ -1,5 +1,5 @@
 :root{
-  --bg: #050505;
+  --bg: #000000;
   --text: #f5f5f5;
   --muted: rgba(255, 255, 255, 0.62);
 
@@ -26,7 +26,7 @@
   --card-border-strong: var(--mxds-card-border-strong);
   --card-shadow: var(--mxds-card-shadow);
 
-  --footer-bg: #050505;
+  --footer-bg: #000000;
 
   --online: #ffffff;
   --offline: #737373;
@@ -69,7 +69,7 @@ button, input, textarea{ font-family: inherit; }
   justify-content: space-between;
   padding: 0 28px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(5, 5, 5, 0.92);
+  background: rgba(0, 0, 0, 0.94);
 }
 
 .mxds-brand{
@@ -642,7 +642,7 @@ button, input, textarea{ font-family: inherit; }
   .mxds-contactGrid{ grid-template-columns: 1fr; }
   .mxds-skillGrid{ grid-template-columns: 1fr; }
   .mxds-stats{ grid-template-columns: 1fr; gap: 18px; }
-  .mxds-nav{ padding: 0 16px; background: rgba(5, 5, 5, 0.92); border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
+  .mxds-nav{ padding: 0 16px; background: rgba(0, 0, 0, 0.94); border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
 }
 
 .mxds-svPage {
@@ -906,7 +906,7 @@ button, input, textarea{ font-family: inherit; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(5, 5, 5, 0.92);
+  background: rgba(0, 0, 0, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -954,7 +954,7 @@ button, input, textarea{ font-family: inherit; }
     height: 56px;
     padding: 0 12px;
     gap: 12px;
-    background: rgba(5, 5, 5, 0.92);
+    background: rgba(0, 0, 0, 0.94);
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
 
@@ -974,7 +974,7 @@ button, input, textarea{ font-family: inherit; }
 @media (max-width: 470px) {
   .mxds-nav {
     padding: 0 10px;
-    background: rgba(5, 5, 5, 0.92);
+    background: rgba(0, 0, 0, 0.94);
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
 
