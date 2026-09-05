@@ -612,40 +612,6 @@
   color: #9b6300;
 }
 
-.featuresBlock{
-  position: relative;
-  margin-top: 18px;
-}
-
-.featuresLabel{
-  margin-bottom: 10px;
-  font-size: .82rem;
-  font-weight: 900;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: #9d6a00;
-}
-
-.featureList{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.featureChip{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 34px;
-  padding: 0 12px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.72);
-  border: 1px solid rgba(245,158,11,.12);
-  color: #5f5040;
-  font-size: .84rem;
-  font-weight: 800;
-}
-
 .cardFooter{
   position: relative;
   margin-top: 18px;
