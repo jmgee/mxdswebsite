@@ -210,9 +210,9 @@ export const ALL_PLANS: Record<
       setupLabel:
         "Starting at",
       setupPrice:
-        "₱10,000",
+        "5,000",
       monthlyPrice:
-        "₱5,000 /15 days support",
+        "₱3,000 /15 days support",
       features: [
         "Custom Responsive Website Design",
         "Mobile & Desktop Optimization",
