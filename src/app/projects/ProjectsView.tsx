@@ -1,13 +1,9 @@
 "use client";
 
-import {
-  useMemo,
-  useState,
-  type CSSProperties,
-} from "react";
-
+import { useMemo, useState } from "react";
+import Link from "next/link";
+import ProjectTile from "@/components/mxds/ProjectTile";
 import styles from "./ProjectsView.module.css";
-
 import {
   PROJECTS,
   PROJECT_CATEGORIES,
@@ -15,543 +11,215 @@ import {
   type ProjectItem,
 } from "./projects.data";
 
-const selectedLabels: Record<ProjectCategory, string> = {
-  FiveM: "FiveM Servers",
-  Website: "Web Projects",
-  "Discord Bot": "Discord Bots",
+const FILTER_LABELS: Record<ProjectCategory, string> = {
+  FiveM: "FiveM servers",
+  Website: "Websites",
+  "Discord Bot": "Discord bots",
 };
+
+const EMPTY_LABELS: Record<ProjectCategory, string> = {
+  FiveM: "FiveM server",
+  Website: "website",
+  "Discord Bot": "Discord bot",
+};
+
+function countByCategory(category: ProjectCategory) {
+  return PROJECTS.filter((project) => project.category === category).length;
+}
 
 export function ProjectsView() {
   const [activeCategory, setActiveCategory] =
     useState<ProjectCategory>("FiveM");
 
-  /*
-   * Projects currently displayed.
-   */
-  const filteredProjects = useMemo(
-    () =>
-      PROJECTS.filter(
-        (project) =>
-          project.category === activeCategory,
-      ),
-    [activeCategory],
-  );
+  const years = useMemo(() => {
+    const grouped = new Map<string, ProjectItem[]>();
 
-  /*
-   * Group selected projects by year.
-   */
-  const groupedByYear = useMemo(() => {
-    return filteredProjects.reduce<
-      Record<string, ProjectItem[]>
-    >((acc, project) => {
-      if (!acc[project.year]) {
-        acc[project.year] = [];
-      }
+    for (const project of PROJECTS) {
+      if (project.category !== activeCategory) continue;
+      const list = grouped.get(project.year) ?? [];
+      list.push(project);
+      grouped.set(project.year, list);
+    }
 
-      acc[project.year].push(project);
-
-      return acc;
-    }, {});
-  }, [filteredProjects]);
-
-  /*
-   * Newest year first.
-   */
-  const sortedYears = useMemo(
-    () =>
-      Object.keys(groupedByYear).sort(
-        (a, b) => Number(b) - Number(a),
-      ),
-    [groupedByYear],
-  );
-
-  /*
-   * Hero statistics.
-   */
-  const heroStats = [
-    {
-      label: "Categories",
-      value: String(PROJECT_CATEGORIES.length),
-    },
-
-    {
-      label: "Projects",
-      value: String(PROJECTS.length),
-    },
-
-    {
-      label: "Selected",
-      value: selectedLabels[activeCategory],
-    },
-
-    {
-      label: "In View",
-      value: String(filteredProjects.length),
-    },
-  ];
+    return [...grouped.entries()].sort(
+      ([a], [b]) => Number(b) - Number(a),
+    );
+  }, [activeCategory]);
 
   return (
-    <main className={styles.page}>
-      <div className={styles.shell}>
-        {/* ===================================================
-            HERO
-            =================================================== */}
+    <div className="mxds-container">
+      <header className="mxds-pageHead">
+        <h1 className="mxds-pageTitle">Projects</h1>
 
-        <section className={styles.hero}>
-          <h1 className={styles.heroTitle}>
-            My{" "}
-            <span className={styles.heroAccent}>
-              Projects
-            </span>
-          </h1>
+        <p className="mxds-pageLead">
+          A categorized showcase of my work across FiveM servers, websites, and
+          Discord bot development.
+        </p>
 
-          <p className={styles.heroLead}>
-            A categorized showcase of my work across
-            FiveM servers, websites, and Discord bot
-            development.
-          </p>
-
-          {/* HERO STATS */}
-          <div className={styles.heroStats}>
-            {heroStats.map((stat, index) => (
-              <article
-                key={stat.label}
-                className={styles.heroStat}
-                style={
-                  {
-                    animationDelay: `${
-                      120 + index * 80
-                    }ms`,
-                  } as CSSProperties
-                }
-              >
-                <span
-                  className={styles.heroStatLabel}
-                >
-                  {stat.label}
-                </span>
-
-                <strong
-                  className={styles.heroStatValue}
-                >
-                  {stat.value}
-                </strong>
-              </article>
-            ))}
-          </div>
-
-          {/* CATEGORY FILTERS */}
-          <div
-            className={styles.filters}
-            aria-label="Project categories"
-          >
-            {PROJECT_CATEGORIES.map(
-              (category) => {
-                const isActive =
-                  activeCategory === category;
-
-                return (
-                  <button
-                    key={category}
-                    type="button"
-                    className={`${
-                      styles.filterBtn
-                    } ${
-                      isActive
-                        ? styles.filterBtnActive
-                        : ""
-                    }`}
-                    onClick={() =>
-                      setActiveCategory(category)
-                    }
-                    aria-pressed={isActive}
-                  >
-                    {category}
-                  </button>
-                );
-              },
-            )}
-          </div>
-        </section>
-
-        {/* ===================================================
-            PROJECTS
-            =================================================== */}
-
-        {sortedYears.length > 0 ? (
-          <div className={styles.timeline}>
-            {sortedYears.map(
-              (year, yearIndex) => (
-                <section
-                  key={`${activeCategory}-${year}`}
-                  className={
-                    styles.yearSection
-                  }
-                  style={
-                    {
-                      animationDelay: `${
-                        yearIndex * 100
-                      }ms`,
-                    } as CSSProperties
-                  }
-                >
-                  {/* YEAR HEADER */}
-                  <div
-                    className={styles.yearHeader}
-                  >
-                    <div
-                      className={
-                        styles.yearPillWrap
-                      }
-                    >
-                      <span
-                        className={
-                          styles.yearPill
-                        }
-                      >
-                        {year}
-                      </span>
-                    </div>
-
-                    <div
-                      className={styles.yearRule}
-                    />
-                  </div>
-
-                  {/* =========================================
-                      FIVEM
-                      ========================================= */}
-
-                  {activeCategory === "FiveM" && (
-                    <div
-                      className={
-                        styles.fivemGrid
-                      }
-                    >
-                      {groupedByYear[
-                        year
-                      ].map(
-                        (
-                          project,
-                          projectIndex,
-                        ) => (
-                          <FiveMProjectCard
-                            key={`${year}-${project.name}`}
-                            project={
-                              project
-                            }
-                            delay={
-                              yearIndex *
-                                80 +
-                              projectIndex *
-                                60
-                            }
-                          />
-                        ),
-                      )}
-                    </div>
-                  )}
-
-                  {/* =========================================
-                      WEBSITE
-                      ========================================= */}
-
-                  {activeCategory ===
-                    "Website" && (
-                    <div
-                      className={
-                        styles.websiteGrid
-                      }
-                    >
-                      {groupedByYear[
-                        year
-                      ].map(
-                        (
-                          project,
-                          projectIndex,
-                        ) => (
-                          <WebsiteProjectCard
-                            key={`${year}-${project.name}`}
-                            project={
-                              project
-                            }
-                            delay={
-                              yearIndex *
-                                80 +
-                              projectIndex *
-                                60
-                            }
-                          />
-                        ),
-                      )}
-                    </div>
-                  )}
-
-                  {/* =========================================
-                      DISCORD BOT
-                      ========================================= */}
-
-                  {activeCategory ===
-                    "Discord Bot" && (
-                    <div
-                      className={
-                        styles.discordGrid
-                      }
-                    >
-                      {groupedByYear[
-                        year
-                      ].map(
-                        (
-                          project,
-                          projectIndex,
-                        ) => (
-                          <DiscordProjectCard
-                            key={`${year}-${project.name}`}
-                            project={
-                              project
-                            }
-                            delay={
-                              yearIndex *
-                                80 +
-                              projectIndex *
-                                60
-                            }
-                          />
-                        ),
-                      )}
-                    </div>
-                  )}
-                </section>
-              ),
-            )}
-          </div>
-        ) : (
-          <section
-            className={styles.emptyState}
-          >
-            <span
-              className={styles.emptyEyebrow}
+        <div
+          className="mxds-pills"
+          role="group"
+          aria-label="Filter projects by category"
+        >
+          {PROJECT_CATEGORIES.map((category) => (
+            <button
+              key={category}
+              type="button"
+              className="mxds-pill"
+              aria-pressed={activeCategory === category}
+              onClick={() => setActiveCategory(category)}
             >
-              {activeCategory}
-            </span>
+              {FILTER_LABELS[category]}
+              <span className="mxds-pillCount">
+                {countByCategory(category)}
+              </span>
+            </button>
+          ))}
+        </div>
+      </header>
 
-            <h2>
-              No projects found in this category.
-            </h2>
+      <div key={activeCategory} className={styles.results}>
+        {years.length > 0 ? (
+          years.map(([year, projects]) => (
+            <section
+              key={year}
+              className="mxds-section"
+              aria-labelledby={`year-${year}`}
+            >
+              <div className={`mxds-sectionLabel ${styles.yearLabel}`}>
+                <h2 id={`year-${year}`} className={styles.year}>
+                  {year}
+                </h2>
+              </div>
+
+              {activeCategory === "FiveM" && (
+                <div className={styles.tileGrid}>
+                  {projects.map((project) => (
+                    <ProjectTile
+                      key={project.name}
+                      name={project.name}
+                      logoUrl={project.logoUrl}
+                    />
+                  ))}
+                </div>
+              )}
+
+              {activeCategory === "Website" && (
+                <div className={styles.stack}>
+                  {projects.map((project) => (
+                    <WebsiteProject key={project.name} project={project} />
+                  ))}
+                </div>
+              )}
+
+              {activeCategory === "Discord Bot" && (
+                <div className={styles.stack}>
+                  {projects.map((project) => (
+                    <DiscordProject key={project.name} project={project} />
+                  ))}
+                </div>
+              )}
+            </section>
+          ))
+        ) : (
+          <section className={`mxds-section ${styles.empty}`}>
+            <div className="mxds-sectionLabel">
+              <h2 className="mxds-sectionTitle">
+                No {EMPTY_LABELS[activeCategory]} projects listed yet.
+              </h2>
+            </div>
+
+            <p className={styles.emptyText}>
+              Need one built? See{" "}
+              <Link href="/pricing" className="mxds-link">
+                pricing
+              </Link>{" "}
+              or{" "}
+              <Link href="/contact" className="mxds-link">
+                get in touch
+              </Link>
+              .
+            </p>
           </section>
         )}
       </div>
-    </main>
+    </div>
   );
 }
 
-function FiveMProjectCard({
-  project,
-  delay,
-}: {
-  project: ProjectItem;
-  delay: number;
-}) {
+function ProjectLogo({ project, className }: { project: ProjectItem; className: string }) {
   return (
-    <article
-      className={styles.fivemCard}
-      style={
-        {
-          animationDelay: `${delay}ms`,
-        } as CSSProperties
-      }
-    >
-      <div
-        className={styles.fivemCardGlow}
-        aria-hidden="true"
-      />
-
-      <div
-        className={styles.fivemLogoWrap}
-      >
-        {project.logoUrl ? (
-          <img
-            src={project.logoUrl}
-            alt={`${project.name} logo`}
-            className={styles.fivemLogo}
-            loading="lazy"
-            referrerPolicy="no-referrer"
-          />
-        ) : (
-          <div
-            className={
-              styles.fivemLogoFallback
-            }
-          >
-            {project.name
-              .slice(0, 1)
-              .toUpperCase()}
-          </div>
-        )}
-      </div>
-
-      <h2 className={styles.fivemName}>
-        {project.name}
-      </h2>
-    </article>
+    <div className={className}>
+      {project.logoUrl ? (
+        <img
+          src={project.logoUrl}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          referrerPolicy="no-referrer"
+        />
+      ) : (
+        <span aria-hidden="true">{project.name.slice(0, 1).toUpperCase()}</span>
+      )}
+    </div>
   );
 }
 
-function WebsiteProjectCard({
-  project,
-  delay,
-}: {
-  project: ProjectItem;
-  delay: number;
-}) {
+function WebsiteProject({ project }: { project: ProjectItem }) {
   return (
-    <article
-      className={styles.websiteCard}
-      style={
-        {
-          animationDelay: `${delay}ms`,
-        } as CSSProperties
-      }
-    >
-      {/* WEBSITE BANNER */}
+    <article className={styles.site}>
       {project.bannerUrl && (
-        <div className={styles.websiteBanner}>
+        <div className={styles.siteMedia}>
           <img
             src={project.bannerUrl}
             alt={`${project.name} website preview`}
-            className={styles.websiteBannerImage}
+            className={styles.siteImg}
             loading="lazy"
+            decoding="async"
             referrerPolicy="no-referrer"
-          />
-
-          <div
-            className={styles.websiteBannerOverlay}
-            aria-hidden="true"
           />
         </div>
       )}
 
-      {/* WEBSITE INFO */}
-      <div className={styles.websiteBody}>
-        <div className={styles.websiteHeader}>
-          <div className={styles.websiteLogoWrap}>
-            {project.logoUrl ? (
-              <img
-                src={project.logoUrl}
-                alt={`${project.name} logo`}
-                className={styles.websiteLogo}
-                loading="lazy"
-                referrerPolicy="no-referrer"
-              />
-            ) : (
-              <div className={styles.websiteLogoFallback}>
-                {project.name
-                  .slice(0, 1)
-                  .toUpperCase()}
-              </div>
-            )}
-          </div>
-
-          <h2 className={styles.websiteName}>
-            {project.name}
-          </h2>
+      <div className={styles.siteBody}>
+        <div className={styles.itemHead}>
+          <ProjectLogo project={project} className={styles.itemLogo} />
+          <h3 className={styles.itemName}>{project.name}</h3>
         </div>
 
         {project.description && (
-          <p className={styles.websiteDescription}>
-            {project.description}
-          </p>
+          <p className={styles.itemText}>{project.description}</p>
         )}
 
         {project.projectUrl && (
-          <div className={styles.websiteFooter}>
-            <a
-              href={project.projectUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.primaryButton}
-              aria-label={`Visit ${project.name} website`}
-            >
-              Visit Website
-              <span
-                className={styles.buttonArrow}
-                aria-hidden="true"
-              >
-                ↗
-              </span>
-            </a>
-          </div>
+          <a
+            href={project.projectUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`mxds-btn mxds-btnGhost ${styles.itemAction}`}
+          >
+            Visit website
+            <ExternalIcon />
+            <span className="mxds-srOnly">(opens in a new tab)</span>
+          </a>
         )}
       </div>
     </article>
   );
 }
 
-/* ===========================================================
-   DISCORD BOT CARD
-   =========================================================== */
-
-function DiscordProjectCard({
-  project,
-  delay,
-}: {
-  project: ProjectItem;
-  delay: number;
-}) {
-  const url =
-    project.projectUrl ??
-    project.discordUrl;
+function DiscordProject({ project }: { project: ProjectItem }) {
+  const url = project.projectUrl ?? project.discordUrl;
 
   return (
-    <article
-      className={styles.discordCard}
-      style={
-        {
-          animationDelay: `${delay}ms`,
-        } as CSSProperties
-      }
-    >
-      <div
-        className={styles.discordLogoWrap}
-      >
-        {project.logoUrl ? (
-          <img
-            src={project.logoUrl}
-            alt={`${project.name} logo`}
-            className={styles.discordLogo}
-            loading="lazy"
-            referrerPolicy="no-referrer"
-          />
-        ) : (
-          <div
-            className={
-              styles.discordLogoFallback
-            }
-          >
-            {project.name
-              .slice(0, 1)
-              .toUpperCase()}
-          </div>
-        )}
-      </div>
+    <article className={styles.bot}>
+      <ProjectLogo project={project} className={styles.itemLogo} />
 
-      <div
-        className={styles.discordContent}
-      >
-        <h2
-          className={styles.discordName}
-        >
-          {project.name}
-        </h2>
+      <div className={styles.botBody}>
+        <h3 className={styles.itemName}>{project.name}</h3>
 
         {project.description && (
-          <p
-            className={
-              styles.discordDescription
-            }
-          >
-            {project.description}
-          </p>
+          <p className={styles.itemText}>{project.description}</p>
         )}
 
         {url && (
@@ -559,14 +227,28 @@ function DiscordProjectCard({
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className={
-              styles.primaryButton
-            }
+            className={`mxds-btn mxds-btnGhost ${styles.itemAction}`}
           >
-            View Project
+            View project
+            <ExternalIcon />
+            <span className="mxds-srOnly">(opens in a new tab)</span>
           </a>
         )}
       </div>
     </article>
+  );
+}
+
+function ExternalIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M7 17 17 7M9 7h8v8"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }

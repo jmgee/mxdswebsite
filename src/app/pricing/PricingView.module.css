@@ -1,575 +1,191 @@
-.page {
-  --pricing-text: #f5f5f5;
-  --pricing-muted: #a3a3a3;
-  --pricing-soft: #737373;
-  --pricing-accent: #ffffff;
-  --pricing-accent-light: #e5e5e5;
+/* Short fade when the category changes, so the switch reads as a response. */
+.panel {
+  border-bottom: 1px solid var(--line);
+  animation: swap 220ms ease-out;
+}
 
-  --pricing-border:
-    rgba(255, 255, 255, 0.12);
-
-  --pricing-accent-border:
-    rgba(255, 255, 255, 0.22);
-
-  --pricing-surface:
-    rgba(255, 255, 255, 0.05);
-
-  --pricing-surface-strong:
-    rgba(255, 255, 255, 0.08);
-
-  --pricing-max: 1320px;
-
-  position: relative;
-  min-height: calc(100vh - 56px);
-  overflow-x: clip;
-
-  color: var(--pricing-text);
-
-  opacity: 0;
-  transform: translateY(8px);
-
-  animation:
-    pageIn
-    650ms
-    cubic-bezier(0.2, 0.8, 0.2, 1)
-    forwards;
-}@keyframes pageIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@keyframes swap {
+  from {
+    opacity: 0;
   }
 }
 
-.shell {
-  position: relative;
-  z-index: 1;
+/* -------------------------------------------------------------
+   Plan row: name | price | what's included
+   ------------------------------------------------------------- */
 
-  width:
-    min(
-      calc(100% - 48px),
-      var(--pricing-max)
-    );
-
-  margin: 0 auto;
-  padding: 64px 0 90px;
-}
-
-.hero {
-  width: 100%;
-  max-width: 1040px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.heroTitle {
-  margin: 0;
-
-  color:
-    var(--pricing-text);
-
-  font-size:
-    clamp(
-      3.4rem,
-      6vw,
-      5.5rem
-    );
-
-  line-height: 0.95;
-  letter-spacing: -0.06em;
-  font-weight: 900;
-  text-wrap: balance;
-}
-
-.heroAccent {
-  color:
-    var(--pricing-accent);
-}
-
-.switcherWrap {
-  margin-top: 62px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.tabSwitcher {
-  width: min(100%, 820px);
-  margin: 0 auto;
+.plan {
   display: grid;
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
-  gap: 5px;
-  padding: 6px;
-  border:
-    1px solid
-    var(--pricing-border);
-  border-radius: 18px;
-  background:
-    rgba(255, 255, 255, .055);
-  box-shadow:
-    0 10px 28px
-    rgba(0, 0, 0, .06);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.75fr) minmax(0, 1.4fr);
+  gap: 24px 40px;
+  padding-block: 40px;
+  border-top: 1px solid var(--line);
 }
 
-.tabBtn {
+.planHead {
   min-width: 0;
-  min-height: 52px;
+}
 
-  padding: 0 18px;
+.nameRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
 
-  border: 0;
-  border-radius: 13px;
-
-  background: transparent;
-
-  color:
-    var(--pricing-muted);
-
-  font-size: 0.9rem;
+.planName {
+  font-size: var(--fs-h3);
+  font-weight: 600;
   line-height: 1.2;
-  font-weight: 900;
-
-  cursor: pointer;
-
-  transition:
-    color 160ms ease,
-    background 160ms ease,
-    transform 160ms ease,
-    box-shadow 160ms ease;
+  letter-spacing: -0.015em;
 }
 
-.tabBtn:hover {
-  color:
-    var(--pricing-text);
-
-  background:
-    rgba(255, 255, 255, .065);
-}
-
-.tabBtn:focus-visible {
-  outline:
-    3px solid
-    rgba(255, 255, 255, .19);
-
-  outline-offset: 3px;
-}
-
-.tabActive {
-  color: #050505;
-
-  background:
-    linear-gradient(180deg, #ffffff 0%, #d4d4d4 100%);
-
-  box-shadow:
-    0 9px 22px
-    rgba(255, 255, 255, .11);
-}
-
-.tabActive:hover {
-  color: #050505;
-
-  background:
-    linear-gradient(180deg, #ffffff 0%, #d4d4d4 100%);
-}
-
-.pricingContent {
-  max-width: 1040px;
-  margin: 52px auto 0;
-}
-
-.grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(0, 1fr)
-    );
-
-  gap: 22px;
-}
-
-.card {
-  position: relative;
-
-  min-width: 0;
-
-  padding: 28px;
-
-  overflow: hidden;
-
-  border:
-    1px solid
-    var(--pricing-accent-border);
-
-  border-radius: 24px;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, .073),
-      rgba(255, 255, 255, .059)
-    );
-
-  box-shadow:
-    0 18px 50px
-    rgba(0, 0, 0, .065);
-
-  opacity: 0;
-  transform: translateY(16px);
-
-  animation:
-    cardIn
-    650ms
-    cubic-bezier(0.2, 0.8, 0.2, 1)
-    forwards;
-
-  transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-
-  border-color:
-    rgba(255, 255, 255, .35);
-
-  box-shadow:
-    0 24px 58px
-    rgba(0, 0, 0, .09);
-}
-
-.cardFeatured {
-  border-color:
-    rgba(255, 255, 255, .35);
-
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.05));
-}
-
-@keyframes cardIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.popularBadge {
+.badge {
   display: inline-flex;
   align-items: center;
-
-  min-height: 30px;
-
-  margin-bottom: 17px;
-
-  padding: 0 11px;
-
+  height: 24px;
+  padding: 0 10px;
   border-radius: 999px;
-
-  background:
-    linear-gradient(180deg, #ffffff 0%, #d4d4d4 100%);
-
-  color: #050505;
-
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.03em;
-
-  box-shadow:
-    0 9px 20px
-    rgba(255, 255, 255, .1);
-}
-
-.cardHeader {
-  position: relative;
-}
-
-.cardTitle {
-  margin: 0;
-
-  color:
-    var(--pricing-text);
-
-  font-size:
-    clamp(
-      1.55rem,
-      2vw,
-      2rem
-    );
-
-  line-height: 1.08;
-  letter-spacing: -0.04em;
-  font-weight: 900;
-}
-
-.cardSubtitle {
-  margin: 10px 0 0;
-
-  color:
-    var(--pricing-muted);
-
-  font-size: 0.95rem;
-  line-height: 1.7;
-}
-
-.priceBlock {
-  margin-top: 24px;
-
-  padding: 20px;
-
-  display: grid;
-
-  gap: 8px;
-
-  border:
-    1px solid
-    rgba(255, 255, 255, .145);
-
-  border-radius: 18px;
-
-  background:
-    rgba(255, 255, 255, .063);
-}
-
-.setupLabel {
-  color:
-    var(--pricing-soft);
-
+  background: var(--text);
+  color: var(--bg);
   font-size: 0.75rem;
-  font-weight: 900;
-
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
-.setupPrice {
-  color:
-    var(--pricing-accent);
+.subtitle {
+  max-width: 38ch;
+  margin-top: 10px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
 
-  font-size:
-    clamp(
-      2rem,
-      3vw,
-      2.7rem
-    );
+.price {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+}
 
+.priceLabel {
+  color: var(--text-quiet);
+  font-size: var(--fs-small);
+}
+
+.priceValue {
+  font-size: 2.25rem;
+  font-weight: 500;
   line-height: 1;
-  letter-spacing: -0.045em;
-  font-weight: 900;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
 }
 
-.monthlyPrice {
-  color:
-    var(--pricing-muted);
-
-  font-size: 0.92rem;
-  font-weight: 800;
+.priceTerm {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
 }
 
-.featureList {
-  margin: 24px 0 0;
+.details {
+  min-width: 0;
+}
+
+.features {
+  display: grid;
+  gap: 10px;
   padding: 0;
-
   list-style: none;
-
-  display: grid;
-  gap: 13px;
 }
 
-.featureItem {
+.feature {
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr);
+  gap: 12px;
+  line-height: 1.5;
+}
+
+.check {
+  margin-top: 4px;
+  color: var(--text-quiet);
+}
+
+.note {
+  max-width: 60ch;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--line-strong);
+  color: var(--text-quiet);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+}
+
+/* -------------------------------------------------------------
+   Empty state
+   ------------------------------------------------------------- */
+
+.empty {
+  padding-block: 40px;
+  border-top: 1px solid var(--line);
+}
+
+/* -------------------------------------------------------------
+   Closing call to action
+   ------------------------------------------------------------- */
+
+.cta {
   display: flex;
-  align-items: flex-start;
-
-  gap: 11px;
-
-  color: #a3a3a3;
-
-  font-size: 0.93rem;
-  line-height: 1.65;
-  font-weight: 700;
-}
-
-.checkIcon {
-  width: 27px;
-  height: 27px;
-
-  flex: 0 0 auto;
-
-  display: grid;
-  place-items: center;
-
-  border:
-    1px solid
-    rgba(255, 255, 255, .175);
-
-  border-radius: 9px;
-
-  background:
-    rgba(255, 255, 255, .058);
-
-  color:
-    var(--pricing-accent);
-}
-
-.planNote {
-  margin: 22px 0 0;
-
-  padding: 14px 15px;
-
-  border:
-    1px solid
-    rgba(255, 255, 255, .16);
-
-  border-radius: 14px;
-
-  background:
-    rgba(255, 255, 255, .039);
-
-  color:
-    var(--pricing-muted);
-
-  font-size: 0.84rem;
-  line-height: 1.65;
-  font-weight: 700;
-}
-
-.emptyState {
-  max-width: 700px;
-
-  padding: 44px 28px;
-
-  border:
-    1px solid
-    var(--pricing-accent-border);
-
-  border-radius: 22px;
-
-  background:
-    var(--pricing-surface);
-
-  box-shadow:
-    0 16px 42px
-    rgba(0, 0, 0, .06);
-}
-
-.emptyLabel {
-  display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
-
-  min-height: 30px;
-
-  padding: 0 11px;
-
-  border-radius: 999px;
-
-  background:
-    rgba(255, 255, 255, .052);
-
-  color: #ffffff;
-
-  font-size: 0.72rem;
-  font-weight: 900;
-
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 64px;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
 }
 
-.emptyState h2 {
-  margin: 17px 0 8px;
-
-  color:
-    var(--pricing-text);
-
-  font-size: 1.7rem;
-  letter-spacing: -0.035em;
-  font-weight: 900;
+.ctaTitle {
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
 }
 
-.emptyState p {
-  margin: 0;
-
-  color:
-    var(--pricing-muted);
-
-  line-height: 1.7;
+.ctaText {
+  margin-top: 6px;
+  color: var(--text-muted);
 }
 
-@media (max-width: 900px) {
-  .shell {
-    width:
-      min(
-        calc(100% - 28px),
-        var(--pricing-max)
-      );
+/* -------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------- */
 
-    padding: 44px 0 68px;
+@media (max-width: 960px) {
+  .plan {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr);
   }
 
-  .heroTitle {
-    font-size:
-      clamp(
-        3rem,
-        12vw,
-        4.4rem
-      );
-  }
-
-  .switcherWrap {
-    margin-top: 42px;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
+  .details {
+    grid-column: 1 / -1;
   }
 }
 
-@media (max-width: 650px) {
-  .shell {
-    width:
-      min(
-        calc(100% - 20px),
-        var(--pricing-max)
-      );
-
-    padding-top: 32px;
+@media (max-width: 640px) {
+  .plan {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    padding-block: 32px;
   }
 
-  .tabSwitcher {
-    grid-template-columns: 1fr;
-    gap: 6px;
+  .priceValue {
+    font-size: 2rem;
   }
 
-  .tabBtn {
-    min-height: 46px;
+  .cta {
+    margin-top: 48px;
+    padding: 24px 20px;
   }
 
-  .pricingContent {
-    margin-top: 34px;
-  }
-
-  .card {
-    padding: 22px 18px;
-  }
-
-  .emptyState {
-    padding: 32px 20px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .page,
-  .card {
-    animation: none !important;
-
-    opacity: 1 !important;
-
-    transform: none !important;
-  }
-
-  .tabBtn,
-  .card {
-    transition: none !important;
+  .cta > a {
+    width: 100%;
   }
 }
