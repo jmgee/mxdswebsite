@@ -1,12 +1,8 @@
 "use client";
 
-import {
-  useState,
-  type CSSProperties,
-} from "react";
-
+import { useState } from "react";
+import Link from "next/link";
 import styles from "./PricingView.module.css";
-
 import {
   ALL_PLANS,
   CATEGORY_LABELS,
@@ -16,206 +12,143 @@ import {
 } from "./pricing.data";
 
 export function PricingView() {
-  const [activeCategory, setActiveCategory] =
-    useState<PlanCategory>("fivem");
+  const [activeCategory, setActiveCategory] = useState<PlanCategory>("fivem");
 
-  const currentPlans =
-    ALL_PLANS[activeCategory];
+  const plans = ALL_PLANS[activeCategory];
 
   return (
-    <main className={styles.page}>
-      <div className={styles.shell}>
-        <section className={styles.hero}>
-          <h1 className={styles.heroTitle}>
-            <span className={styles.heroAccent}>
-              Pricing
-            </span>{" "}
-            Plans
-          </h1>
+    <div className="mxds-container">
+      <header className="mxds-pageHead">
+        <h1 className="mxds-pageTitle">Pricing</h1>
 
-          <div className={styles.switcherWrap}>
-            <div
-              className={styles.tabSwitcher}
-              role="tablist"
-              aria-label="Pricing categories"
-            >
-              {PRICING_CATEGORIES.map(
-                (category) => {
-                  const isActive =
-                    activeCategory === category;
+        <p className="mxds-pageLead">
+          Starting prices for each service, in Philippine pesos. Final quotes
+          depend on the scope of your project.
+        </p>
 
-                  return (
-                    <button
-                      key={category}
-                      id={`pricing-tab-${category}`}
-                      type="button"
-                      role="tab"
-                      aria-selected={isActive}
-                      aria-controls="pricing-panel"
-                      className={`${styles.tabBtn} ${
-                        isActive
-                          ? styles.tabActive
-                          : ""
-                      }`}
-                      onClick={() =>
-                        setActiveCategory(category)
-                      }
-                    >
-                      {CATEGORY_LABELS[category]}
-                    </button>
-                  );
-                },
-              )}
-            </div>
-          </div>
-        </section>
-
-        <section
-          id="pricing-panel"
-          role="tabpanel"
-          aria-labelledby={`pricing-tab-${activeCategory}`}
-          className={styles.pricingContent}
+        <div
+          className="mxds-pills"
+          role="tablist"
+          aria-label="Pricing categories"
         >
-          {currentPlans.length > 0 ? (
-            <div className={styles.grid}>
-              {currentPlans.map(
-                (plan, index) => (
-                  <PlanCard
-                    key={plan.name}
-                    plan={plan}
-                    index={index}
-                  />
-                ),
-              )}
-            </div>
-          ) : (
-            <EmptyPricing
-              category={
-                CATEGORY_LABELS[
-                  activeCategory
-                ]
-              }
-            />
-          )}
-        </section>
-      </div>
-    </main>
-  );
-}
+          {PRICING_CATEGORIES.map((category) => {
+            const isActive = activeCategory === category;
 
-function PlanCard({
-  plan,
-  index,
-}: {
-  plan: Plan;
-  index: number;
-}) {
-  return (
-    <article
-      className={`${styles.card} ${
-        plan.popular
-          ? styles.cardFeatured
-          : ""
-      }`}
-      style={
-        {
-          animationDelay: `${index * 100}ms`,
-        } as CSSProperties
-      }
-    >
-      {plan.popular && (
-        <span className={styles.popularBadge}>
-          Most Popular
-        </span>
-      )}
+            return (
+              <button
+                key={category}
+                id={`pricing-tab-${category}`}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                aria-controls="pricing-panel"
+                tabIndex={isActive ? 0 : -1}
+                className="mxds-pill"
+                onClick={() => setActiveCategory(category)}
+                onKeyDown={(event) => {
+                  if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+                  event.preventDefault();
+                  const step = event.key === "ArrowRight" ? 1 : -1;
+                  const index = PRICING_CATEGORIES.indexOf(category);
+                  const next =
+                    PRICING_CATEGORIES[
+                      (index + step + PRICING_CATEGORIES.length) %
+                        PRICING_CATEGORIES.length
+                    ];
+                  setActiveCategory(next);
+                  document.getElementById(`pricing-tab-${next}`)?.focus();
+                }}
+              >
+                {CATEGORY_LABELS[category]}
+              </button>
+            );
+          })}
+        </div>
+      </header>
 
-      <div className={styles.cardHeader}>
-        <h2 className={styles.cardTitle}>
-          {plan.name}
-        </h2>
+      <section
+        key={activeCategory}
+        id="pricing-panel"
+        role="tabpanel"
+        aria-labelledby={`pricing-tab-${activeCategory}`}
+        className={styles.panel}
+      >
+        {plans.length > 0 ? (
+          plans.map((plan) => <PlanRow key={plan.name} plan={plan} />)
+        ) : (
+          <div className={styles.empty}>
+            <h2 className={styles.planName}>Pricing coming soon.</h2>
+            <p className={styles.subtitle}>
+              Plans for {CATEGORY_LABELS[activeCategory]} are being prepared.
+              Email me for a quote in the meantime.
+            </p>
+          </div>
+        )}
+      </section>
 
-        <p className={styles.cardSubtitle}>
-          {plan.subtitle}
-        </p>
-      </div>
+      <aside className={styles.cta}>
+        <div>
+          <h2 className={styles.ctaTitle}>Not sure which plan fits?</h2>
+          <p className={styles.ctaText}>
+            Tell me what you need and I&apos;ll put together a quote.
+          </p>
+        </div>
 
-      <div className={styles.priceBlock}>
-        <span className={styles.setupLabel}>
-          {plan.setupLabel}
-        </span>
-
-        <strong className={styles.setupPrice}>
-          {plan.setupPrice}
-        </strong>
-
-        <span className={styles.monthlyPrice}>
-          {plan.monthlyPrice}
-        </span>
-      </div>
-
-      <ul className={styles.featureList}>
-        {plan.features.map((feature) => (
-          <li
-            key={feature}
-            className={styles.featureItem}
-          >
-            <span
-              className={styles.checkIcon}
-              aria-hidden="true"
-            >
-              <CheckIcon />
-            </span>
-
-            <span>{feature}</span>
-          </li>
-        ))}
-      </ul>
-
-      {plan.note && (
-        <p className={styles.planNote}>
-          {plan.note}
-        </p>
-      )}
-    </article>
-  );
-}
-
-function EmptyPricing({
-  category,
-}: {
-  category: string;
-}) {
-  return (
-    <div className={styles.emptyState}>
-      <span className={styles.emptyLabel}>
-        {category}
-      </span>
-
-      <h2>
-        Pricing coming soon.
-      </h2>
-
-      <p>
-        Pricing plans for this service are
-        currently being prepared.
-      </p>
+        <Link href="/contact" className="mxds-btn mxds-btnPrimary">
+          Contact me
+        </Link>
+      </aside>
     </div>
+  );
+}
+
+function PlanRow({ plan }: { plan: Plan }) {
+  return (
+    <article className={styles.plan}>
+      <div className={styles.planHead}>
+        <div className={styles.nameRow}>
+          <h2 className={styles.planName}>{plan.name}</h2>
+          {plan.popular && <span className={styles.badge}>Most popular</span>}
+        </div>
+        <p className={styles.subtitle}>{plan.subtitle}</p>
+      </div>
+
+      <div className={styles.price}>
+        <span className={styles.priceLabel}>{plan.setupLabel}</span>
+        <strong className={styles.priceValue}>{plan.setupPrice}</strong>
+        <span className={styles.priceTerm}>{plan.monthlyPrice}</span>
+      </div>
+
+      <div className={styles.details}>
+        <ul className={styles.features} aria-label={`${plan.name} includes`}>
+          {plan.features.map((feature) => (
+            <li key={feature} className={styles.feature}>
+              <CheckIcon />
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
+
+        {plan.note && <p className={styles.note}>{plan.note}</p>}
+      </div>
+    </article>
   );
 }
 
 function CheckIcon() {
   return (
     <svg
-      width="18"
-      height="18"
+      className={styles.check}
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
     >
       <path
-        d="M20 7L10.5 16.5L4 10"
+        d="M20 7 10.5 16.5 4 10"
         stroke="currentColor"
-        strokeWidth="2.4"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />

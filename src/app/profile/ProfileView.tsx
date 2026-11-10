@@ -1,166 +1,147 @@
 import type { CSSProperties } from "react";
-import {
-  IconBrackets,
-  IconServer,
-  IconUsers,
-} from "@/components/mxds/icons";
+import Link from "next/link";
+import ProjectTile from "@/components/mxds/ProjectTile";
+import { SITE } from "@/lib/site";
+import { PROJECTS } from "../projects/projects.data";
 import styles from "./ProfileView.module.css";
 
 const stats = [
+  { value: "15+", label: "FiveM projects" },
+  { value: "3", label: "Development areas" },
+  { value: "10+", label: "Custom systems" },
+] as const;
+
+/*
+ * Skills grouped by the three development areas.
+ */
+const areas = [
   {
-    icon: <IconServer />,
-    value: "15+",
-    label: "FiveM Projects",
+    title: "FiveM servers",
+    skills: [
+      "Lua / FiveM Development",
+      "Server Management",
+      "Optimization & Debugging",
+    ],
   },
   {
-    icon: <IconBrackets />,
-    value: "3",
-    label: "Development Areas",
+    title: "Websites",
+    skills: ["HTML / CSS", "JavaScript / TypeScript", "React / Next.js"],
   },
   {
-    icon: <IconUsers />,
-    value: "10+",
-    label: "Custom Systems",
+    title: "Discord bots",
+    skills: ["Discord Bot Development", "Database & API Integration"],
   },
 ] as const;
 
-const skills = [
-  { name: "Lua / FiveM Development", pct: 92, delayMs: 650 },
-  { name: "Server Management", pct: 92, delayMs: 720 },
-  { name: "Optimization & Debugging", pct: 94, delayMs: 790 },
-  { name: "HTML / CSS", pct: 90, delayMs: 860 },
-  { name: "JavaScript / TypeScript", pct: 88, delayMs: 930 },
-  { name: "React / Next.js", pct: 85, delayMs: 1000 },
-  { name: "Discord Bot Development", pct: 85, delayMs: 1070 },
-  { name: "Database & API Integration", pct: 88, delayMs: 1140 },
-] as const;
+const RECENT_COUNT = 6;
+
+const recentServers = PROJECTS.filter(
+  (project) => project.category === "FiveM",
+)
+  .sort((a, b) => Number(b.year) - Number(a.year))
+  .slice(0, RECENT_COUNT);
+
+const enter = (order: number): CSSProperties => ({
+  animationDelay: `${order * 70}ms`,
+});
 
 export function ProfileView() {
   return (
-    <main className={styles.page}>
-      <div className={styles.shell}>
-        <section className={styles.hero}>
-          <div className={styles.heroContent}>
-            <div
-              className={`${styles.availability} ${styles.reveal}`}
-              style={{ animationDelay: "80ms" }}
-            >
-              <span className={styles.availabilityDot} aria-hidden="true" />
-              Available for work
-            </div>
+    <div className="mxds-container">
+      <section className={styles.hero}>
+        <div className={styles.intro}>
+          <p className={`mxds-status ${styles.enter}`} style={enter(0)}>
+            <span className="mxds-statusDot" aria-hidden="true" />
+            Available for work
+          </p>
 
-            <h1
-              className={`${styles.heroTitle} ${styles.reveal}`}
-              style={{ animationDelay: "150ms" }}
-            >
-              Hi, I&apos;m <span className={styles.heroName}>mxds</span>
-            </h1>
+          <h1 className={`${styles.title} ${styles.enter}`} style={enter(1)}>
+            Hi, I&apos;m mxds
+          </h1>
 
-            <p
-              className={`${styles.heroLead} ${styles.reveal}`}
-              style={{ animationDelay: "220ms" }}
-            >
-              A 🇵🇭 Filipino developer studying Computer Science with a major in
-              Software Engineering. I build and maintain FiveM servers, modern
-              websites for businesses and portfolios, custom Discord bots, and
-              software solutions. My focus is clean architecture, reliable
-              integrations, performance, and maintainable systems built for
-              long-term use.
-            </p>
+          <p className={`${styles.lead} ${styles.enter}`} style={enter(2)}>
+            A 🇵🇭 Filipino developer studying Computer Science with a major in
+            Software Engineering. I build and maintain FiveM servers, modern
+            websites for businesses and portfolios, custom Discord bots, and
+            software solutions. My focus is clean architecture, reliable
+            integrations, performance, and maintainable systems built for
+            long-term use.
+          </p>
+
+          <div className={`${styles.actions} ${styles.enter}`} style={enter(3)}>
+            <Link href="/contact" className="mxds-btn mxds-btnPrimary">
+              Contact me
+            </Link>
+            <Link href="/projects" className="mxds-btn mxds-btnGhost">
+              View projects
+            </Link>
           </div>
+        </div>
 
-          <div
-            className={`${styles.heroVisual} ${styles.reveal}`}
-            style={{ animationDelay: "180ms" }}
-          >
-            <div className={styles.portraitCard}>
-              <div className={styles.portraitGlow} aria-hidden="true" />
+        <div className={`${styles.portrait} ${styles.enter}`} style={enter(2)}>
+          <img
+            src={SITE.portraitUrl}
+            alt="Portrait of mxds"
+            className={styles.portraitImg}
+            width={1024}
+            height={1024}
+            loading="eager"
+            referrerPolicy="no-referrer"
+          />
+        </div>
+      </section>
 
-              <img
-                src="https://r2.fivemanage.com/j8pmvTQ4T0tTaPRfv1JNy/mxds1024.png"
-                alt="Mxds profile portrait"
-                loading="eager"
-                referrerPolicy="no-referrer"
-                className={styles.portraitImg}
-              />
-            </div>
+      <dl className={styles.stats} aria-label="At a glance">
+        {stats.map((stat) => (
+          <div key={stat.label} className={styles.stat}>
+            <dt className={styles.statLabel}>{stat.label}</dt>
+            <dd className={styles.statValue}>{stat.value}</dd>
           </div>
-        </section>
+        ))}
+      </dl>
 
-        <section
-          className={`${styles.statsSection} ${styles.reveal}`}
-          style={{ animationDelay: "360ms" }}
-          aria-label="Development statistics"
-        >
-          {stats.map((stat) => (
-            <article key={stat.label} className={styles.stat}>
-              <div className={styles.statIcon} aria-hidden="true">
-                {stat.icon}
-              </div>
+      <section className="mxds-section" aria-labelledby="skills-title">
+        <div className="mxds-sectionLabel">
+          <h2 id="skills-title" className="mxds-sectionTitle">
+            What I build
+          </h2>
+        </div>
 
-              <div className={styles.statContent}>
-                <strong className={styles.statValue}>{stat.value}</strong>
-                <span className={styles.statLabel}>{stat.label}</span>
-              </div>
-            </article>
+        <div className={styles.areas}>
+          {areas.map((area) => (
+            <div key={area.title} className={styles.area}>
+              <h3 className={styles.areaTitle}>{area.title}</h3>
+              <ul className={styles.skillList}>
+                {area.skills.map((skill) => (
+                  <li key={skill}>{skill}</li>
+                ))}
+              </ul>
+            </div>
           ))}
-        </section>
+        </div>
+      </section>
 
-        <section className={styles.profileGrid}>
-          <article
-            className={`${styles.skillsCard} ${styles.reveal}`}
-            style={{ animationDelay: "460ms" }}
-          >
-            <div className={styles.skillsHeader}>
-              <div>
-                <span className={styles.sectionEyebrow}>Expertise</span>
-                <h2 className={styles.sectionTitle}>Technical skills</h2>
-              </div>
+      <section className="mxds-section" aria-labelledby="recent-title">
+        <div className="mxds-sectionLabel">
+          <h2 id="recent-title" className="mxds-sectionTitle">
+            Recent servers
+          </h2>
+          <Link href="/projects" className={`mxds-link ${styles.sectionLink}`}>
+            See all projects
+          </Link>
+        </div>
 
-              <span className={styles.skillsCount}>{skills.length} skills</span>
-            </div>
-
-            <div className={styles.skillGrid}>
-              {skills.map((skill) => (
-                <Skill key={skill.name} {...skill} />
-              ))}
-            </div>
-          </article>
-        </section>
-      </div>
-    </main>
-  );
-}
-
-function Skill({
-  name,
-  pct,
-  delayMs,
-}: {
-  name: string;
-  pct: number;
-  delayMs: number;
-}) {
-  const fill = Math.max(0, Math.min(1, pct / 100));
-
-  return (
-    <div className={styles.skill}>
-      <div className={styles.skillTop}>
-        <span className={styles.skillName}>{name}</span>
-        <span className={styles.skillPct}>{pct}%</span>
-      </div>
-
-      <div className={styles.skillTrack}>
-        <div
-          className={styles.skillFill}
-          style={
-            {
-              animationDelay: `${delayMs}ms`,
-              ["--skill-fill" as string]: String(fill),
-            } as CSSProperties
-          }
-        />
-      </div>
+        <div className={styles.recentGrid}>
+          {recentServers.map((project) => (
+            <ProjectTile
+              key={project.name}
+              name={project.name}
+              logoUrl={project.logoUrl}
+              caption={project.year}
+            />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
