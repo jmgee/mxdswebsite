@@ -59,14 +59,14 @@ export const ALL_PLANS: Record<
       setupLabel:
         "Initial hiring fee",
       setupPrice:
-        "₱6,000",
+        "₱5,000",
       monthlyPrice:
-        "₱5,000 /month",
+        "₱4,000 /month",
       features: [
         "Full Maintenance and Optimization",
         "Minor to Major Script Bug Fixes",
         "Script Customization (Major Changes)",
-        "Full Managed Server (24/7 Support)",
+        "Full Managed Server (24/7 Support via Viber/Discord)",
       ],
       note:
         "Includes stability checks, performance optimization, and continuous improvements.",
